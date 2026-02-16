@@ -1,7 +1,7 @@
 <svg width="24" height="24" viewBox="0 0 23.9979 15.5185" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Vector">
-<path d="M0 6.51938V15.5185L11.9989 8.99915V0L0 6.51938Z" fill="var(--fill-0, black)"/>
-<path d="M23.9979 6.50937L11.9989 0L11.999 2.9997L23.9979 9.50909V6.50937Z" fill="var(--fill-0, black)"/>
-<path d="M23.9979 12.5088L11.999 5.99945L11.9989 8.99915L23.9979 15.5086V12.5088Z" fill="var(--fill-0, black)"/>
+<path d="M0 6.51938V15.5185L11.9989 8.99915V0L0 6.51938Z" fill="black"/>
+<path d="M23.9979 6.50937L11.9989 0L11.999 2.9997L23.9979 9.50909V6.50937Z" fill="black"/>
+<path d="M23.9979 12.5088L11.999 5.99945L11.9989 8.99915L23.9979 15.5086V12.5088Z" fill="black"/>
 </g>
 </svg>
