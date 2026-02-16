@@ -263,14 +263,22 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .state-label { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--page-text-secondary); margin-top:4px; text-align:center; }
 .comp-preview { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:var(--sp-7); background:var(--surface); display:flex; align-items:center; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; }
 
-/* Buttons */
-.btn { display:inline-flex; align-items:center; justify-content:center; padding:8px 32px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:var(--tracking-tight); border:none; cursor:pointer; line-height:1.5; height:40px; transition:all 0.12s; white-space:nowrap; }
-.btn--big { height:58px; font-size:18px; padding:8px 40px; line-height:1.45; }
-.btn--primary { background:var(--btn-primary-bg); color:var(--btn-primary-text); }
-.btn--primary:hover { background:var(--orange-500); }
-.btn--secondary { background:transparent; border:1.5px solid var(--btn-secondary-stroke); color:var(--btn-secondary-text); }
-.btn--secondary:hover { background:var(--surface-overlay); }
-.btn--ghost { background:transparent; border:1px solid var(--stroke); color:var(--page-text); }
+/* Buttons — exact Figma specs */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:var(--tracking-tight); border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
+.btn--big { height:58px; font-size:18px; padding:16px 24px; }
+.btn--small { padding:8px 14px; font-size:16px; }
+.btn--primary { background:#FF4601; color:#FFFFFF; }
+.btn--primary:hover { background:#CC3801; }
+.btn--primary.btn--disabled { background:#FFC2B3; pointer-events:none; cursor:default; }
+.btn--secondary { background:transparent; border:1px solid #0575F3; color:#0575F3; }
+.btn--secondary:hover { border-color:#0575F3; color:#045CBF; }
+.btn--secondary.btn--disabled { border-color:#A7C4EC; color:#A7C4EC; pointer-events:none; cursor:default; }
+.btn--icon-only { padding:11px; border:1px solid #0575F3; border-radius:var(--radius-full); background:transparent; }
+.btn__icon { width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.btn__icon img { width:18px; height:18px; }
+.btn--primary .btn__icon img { filter:brightness(0) invert(1); }
+.btn--secondary .btn__icon img { filter:invert(42%) sepia(93%) saturate(1352%) hue-rotate(196deg) brightness(99%) contrast(101%); }
+.btn--secondary.btn--disabled .btn__icon img { filter:invert(78%) sepia(14%) saturate(646%) hue-rotate(183deg) brightness(96%) contrast(92%); }
 
 /* Inputs */
 .input { display:block; height:40px; padding:8px 16px; border-radius:var(--radius-md); font-family:var(--font-body); font-size:14px; line-height:1.2; color:var(--page-text); border:1px solid var(--input-stroke); background:var(--input-bg); width:240px; outline:none; transition:border-color 0.12s; }
@@ -282,21 +290,44 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .tab { font-family:var(--font-body); font-size:16px; font-weight:600; padding:10px 20px; border:none; background:none; cursor:pointer; color:var(--tab-default-text); border-bottom:2px solid transparent; transition:all 0.12s; line-height:22px; }
 .tab--active { color:var(--tab-active-text); border-bottom-color:var(--tab-active-stroke); background:var(--tab-active-fill); }
 
-/* Stats */
-.stat-card { border:1px solid var(--stroke); border-radius:var(--radius-md); padding:16px 20px; min-width:180px; }
-.stat-card--accent { background:var(--stat-accent-fill); border-color:transparent; color:var(--stat-accent-text); }
-.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.7); }
-.stat-card__header { font-family:var(--font-mono); font-size:12px; color:var(--stat-primary-header); margin-bottom:4px; text-transform:uppercase; }
-.stat-card__value { font-family:var(--font-mono); font-size:28px; font-weight:400; line-height:28px; text-transform:uppercase; }
-.stat-card__sub { font-family:var(--font-mono); font-size:12px; margin-top:4px; text-transform:uppercase; }
-.stat-card__sub--up { color:var(--sub-green); }
-.stat-card__sub--down { color:var(--sub-red); }
+/* Stats — exact Figma specs */
+.stat-card { padding:16px; min-width:200px; width:262px; border:none; border-radius:0; }
+.stat-card--primary { background:#F5F5F5; }
+.stat-card--secondary { background:#FFFFFF; }
+.stat-card--accent { background:#0575F3; }
+.stat-card--small { padding:12px; }
+.stat-card--small .stat-card__value { font-size:20px; line-height:20px; }
+.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.8); }
+.stat-card--accent .stat-card__value { color:#FFFFFF; }
+.stat-card__header { font-family:var(--font-mono); font-size:12px; color:#858585; margin-bottom:4px; text-transform:uppercase; display:flex; align-items:center; gap:4px; }
+.stat-card__header-icon { width:14px; height:14px; opacity:0.6; }
+.stat-card__value { font-family:var(--font-mono); font-size:28px; font-weight:400; line-height:28px; color:#000000; }
+.stat-card__sub { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:16px; margin-top:8px; }
+.stat-card__sub--grey { color:#858585; }
+.stat-card__sub--green { color:#009E50; }
+.stat-card__sub--red { color:#FF4601; }
+.stat-card__sub-icon { width:16px; height:16px; }
+[data-theme="dark"] .stat-card--primary { background:var(--surface-raised); }
+[data-theme="dark"] .stat-card--secondary { background:var(--surface); }
+[data-theme="dark"] .stat-card__value { color:var(--page-text); }
 
-/* Sidebar component */
-.sidebar-demo { border:1px solid var(--stroke); border-radius:var(--radius-md); width:220px; overflow:hidden; }
-.sidebar-demo__item { display:flex; align-items:center; gap:10px; padding:10px 16px; font-family:var(--font-body); font-size:16px; font-weight:500; color:var(--page-text); line-height:1.2; }
-.sidebar-demo__item--active { background:var(--sidebar-active); color:#fff; border-radius:var(--radius-md); margin:4px; }
-.sidebar-demo__icon { width:18px; height:18px; border-radius:3px; background:currentColor; opacity:0.3; }
+/* Sidebar component — exact Figma specs */
+.sidebar-demo { border:1px solid var(--stroke); border-radius:var(--radius-md); width:220px; overflow:hidden; background:var(--surface); }
+.sidebar-demo__item { display:flex; align-items:center; gap:10px; padding:10px 16px; font-family:var(--font-body); font-size:16px; font-weight:500; color:var(--page-text); line-height:1.2; cursor:pointer; transition:background 0.12s; }
+.sidebar-demo__item:hover { background:var(--surface-raised); }
+.sidebar-demo__item--active { background:#FF4601; color:#FFFFFF; border-radius:var(--radius-md); margin:4px; }
+.sidebar-demo__item--active:hover { background:#FF4601; }
+.sidebar-demo__icon { width:20px; height:20px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.sidebar-demo__icon img { width:20px; height:20px; }
+.sidebar-demo__item--active .sidebar-demo__icon img { filter:brightness(0) invert(1); }
+[data-theme="dark"] .sidebar-demo__icon img { filter:invert(1); }
+[data-theme="dark"] .sidebar-demo__item--active .sidebar-demo__icon img { filter:brightness(0) invert(1); }
+
+/* Sidebar collapsed */
+.sidebar-demo--collapsed { width:56px; }
+.sidebar-demo--collapsed .sidebar-demo__item { justify-content:center; padding:10px; }
+.sidebar-demo--collapsed .sidebar-demo__item span:not(.sidebar-demo__icon) { display:none; }
+.sidebar-demo--collapsed .sidebar-demo__item--active { margin:4px; }
 
 /* Dropdown */
 .dropdown { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; background:var(--dropdown-fill); border:1px solid var(--dropdown-stroke); border-radius:var(--radius-md); font-family:var(--font-mono); font-size:13px; color:var(--dropdown-text); cursor:pointer; text-transform:uppercase; }
@@ -355,11 +386,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .tag--blue-outline { background:transparent; border:1px solid var(--blue-600); color:var(--blue-600); }
 .tag--green { background:var(--green-600); color:#fff; }
 
-/* Checkbox */
-.checkbox { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:var(--font-body); font-size:14px; font-weight:400; line-height:1.2; }
-.checkbox__box { width:20px; height:20px; border:1px solid var(--stroke); background:var(--surface); border-radius:2px; display:flex; align-items:center; justify-content:center; transition:all 0.12s; flex-shrink:0; }
-.checkbox--active .checkbox__box { background:var(--blue-600); border-color:var(--blue-600); }
-.checkbox__check { color:#fff; font-size:14px; line-height:1; }
+/* Checkbox — exact Figma specs */
+.checkbox { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:#000000; }
+.checkbox__box { width:20px; height:20px; border:1px solid #E0E0E0; background:#FFFFFF; border-radius:2px; display:flex; align-items:center; justify-content:center; transition:all 0.12s; flex-shrink:0; }
+.checkbox--active .checkbox__box { background:#0575F3; border-color:#0575F3; }
+.checkbox__check { display:flex; align-items:center; justify-content:center; width:14px; height:14px; }
+.checkbox__check img { width:14px; height:14px; filter:brightness(0) invert(1); }
+[data-theme="dark"] .checkbox { color:var(--page-text); }
+[data-theme="dark"] .checkbox__box { border-color:var(--stroke); background:var(--surface); }
 
 /* Tooltip demo */
 .tooltip-demo { display:inline-flex; flex-direction:column; align-items:center; position:relative; }
@@ -470,28 +504,102 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .tokens-table code { font-family:var(--font-mono); font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px; }
 
 /* ============================
-   TOKEN PICKER
+   TOKEN PICKER — exact Figma specs
    ============================ */
-.token-picker-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:var(--sp-6); }
-.token-picker-item { display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid var(--stroke); border-radius:var(--radius-lg); transition:border-color 0.12s,background 0.12s; }
-.token-picker-item:hover { border-color:var(--accent); background:var(--surface-overlay); }
-.token-picker-item--active { border-color:var(--accent); background:var(--surface-overlay); box-shadow:0 0 0 1px var(--accent); }
-.token-picker-icon { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#fff; flex-shrink:0; }
-.token-picker-info { display:flex; flex-direction:column; gap:2px; }
-.token-picker-name { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
-.token-picker-network { font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); text-transform:uppercase; }
-.token-menu-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border:1px solid var(--stroke); border-radius:var(--radius-md); margin-bottom:8px; transition:background 0.12s; cursor:pointer; }
-.token-menu-item:hover { background:var(--surface-overlay); }
-.token-menu-item__left { display:flex; align-items:center; gap:12px; }
-.token-menu-item__icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; }
-.token-menu-item__details { display:flex; flex-direction:column; }
-.token-menu-item__name { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text); }
-.token-menu-item__addr { font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); }
-.token-menu-item__balance { text-align:right; display:flex; flex-direction:column; }
-.token-menu-item__amount { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text); }
-.token-menu-item__value { font-family:var(--font-mono); font-size:11px; color:var(--accent); }
-.token-select-panel { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:16px; background:var(--surface); max-width:380px; }
-.token-select-panel__title { font-family:var(--font-body); font-size:14px; font-weight:600; margin-bottom:12px; color:var(--page-text); }
+.token-badge { display:inline-flex; align-items:center; gap:8px; }
+.token-badge__icon { width:22px; height:22px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+.token-badge__icon img { width:22px; height:22px; border-radius:50%; }
+.token-badge__name { font-family:var(--font-body); font-size:20px; font-weight:500; color:#000000; }
+[data-theme="dark"] .token-badge__name { color:var(--page-text); }
+.token-badge__chevron { width:16px; height:16px; }
+.token-badge__network-label { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.token-badge--with-network .token-badge__icon-wrap { position:relative; width:40px; height:40px; flex-shrink:0; }
+.token-badge--with-network .token-badge__main-icon { width:22px; height:22px; border-radius:50%; position:absolute; top:0; left:0; }
+.token-badge--with-network .token-badge__network-icon { width:18px; height:18px; border-radius:4px; border:2px solid #FFFFFF; position:absolute; bottom:0; right:0; overflow:hidden; }
+
+/* Token Menu Item — exact Figma specs: bg white, p=16px, w=325px */
+.token-menu-item { display:flex; align-items:center; justify-content:space-between; padding:16px; gap:10px; width:325px; max-width:100%; background:#FFFFFF; transition:background 0.12s; cursor:pointer; }
+.token-menu-item:hover { background:var(--surface-raised); }
+.token-menu-item__left { display:flex; align-items:center; gap:10px; }
+.token-menu-item__icon-wrap { position:relative; width:32px; height:32px; flex-shrink:0; }
+.token-menu-item__icon { width:32px; height:32px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:#fff; }
+.token-menu-item__icon img { width:32px; height:32px; border-radius:50%; }
+.token-menu-item__network-badge { width:14px; height:14px; border-radius:3px; border:1.5px solid #FFFFFF; position:absolute; bottom:-1px; right:-1px; overflow:hidden; }
+.token-menu-item__details { display:flex; flex-direction:column; gap:2px; }
+.token-menu-item__name { font-family:var(--font-body); font-size:16px; font-weight:500; color:#000000; display:flex; align-items:center; gap:4px; }
+.token-menu-item__addr { font-family:var(--font-mono); font-size:12px; color:#858585; display:flex; align-items:center; gap:4px; }
+.token-menu-item__addr-copy { width:12px; height:12px; opacity:0.5; cursor:pointer; }
+.token-menu-item__network { font-family:var(--font-body); font-size:12px; font-weight:500; color:#858585; }
+.token-menu-item__balance { text-align:right; display:flex; flex-direction:column; gap:2px; margin-left:auto; }
+.token-menu-item__amount { font-family:var(--font-body); font-size:16px; font-weight:500; color:#000000; }
+.token-menu-item__value { font-family:var(--font-mono); font-size:12px; color:#0575F3; }
+[data-theme="dark"] .token-menu-item { background:var(--surface); }
+[data-theme="dark"] .token-menu-item__name, [data-theme="dark"] .token-menu-item__amount { color:var(--page-text); }
+
+/* Token Select Menu — exact Figma specs: bg white, border 1px #e0e0e0, shadow, w=357px */
+.token-select-menu { background:#FFFFFF; border:1px solid #E0E0E0; box-shadow:0 8px 16px 4px rgba(16,24,40,0.06); width:357px; max-width:100%; }
+.token-select-menu .token-menu-item { width:100%; border-bottom:1px solid #F5F5F5; }
+.token-select-menu .token-menu-item:last-child { border-bottom:none; }
+[data-theme="dark"] .token-select-menu { background:var(--surface); border-color:var(--stroke); }
+
+/* Swap Form — exact Figma specs */
+.swap-input { background:#FFFFFF; padding:12px 16px 16px 16px; width:500px; max-width:100%; }
+[data-theme="dark"] .swap-input { background:var(--surface); }
+.swap-input__header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.swap-input__label { font-family:var(--font-mono); font-size:12px; color:#858585; text-transform:uppercase; }
+.swap-input__dollar { font-family:var(--font-mono); font-size:12px; color:#0575F3; }
+.swap-input__token-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.swap-input__token { display:flex; align-items:center; gap:8px; }
+.swap-input__token-icon-wrap { position:relative; width:40px; height:40px; flex-shrink:0; }
+.swap-input__token-main-icon { width:40px; height:40px; border-radius:50%; }
+.swap-input__token-network-badge { width:18px; height:18px; border-radius:4px; border:2px solid #FFFFFF; position:absolute; bottom:0; right:0; overflow:hidden; }
+.swap-input__token-info { display:flex; flex-direction:column; }
+.swap-input__token-name-row { display:flex; align-items:center; gap:4px; }
+.swap-input__token-name { font-family:var(--font-body); font-size:20px; font-weight:500; color:#000000; }
+[data-theme="dark"] .swap-input__token-name { color:var(--page-text); }
+.swap-input__token-network { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.swap-input__amount { font-family:var(--font-mono); font-size:20px; color:#858585; text-align:right; }
+.swap-input__amount--filled { color:#000000; }
+[data-theme="dark"] .swap-input__amount--filled { color:var(--page-text); }
+.swap-input__balance-row { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.swap-input__balance { font-family:var(--font-body); font-size:14px; font-weight:500; }
+.swap-input__balance-label { color:#858585; }
+.swap-input__balance-value { color:#000000; }
+[data-theme="dark"] .swap-input__balance-value { color:var(--page-text); }
+.swap-input__controls { display:flex; gap:4px; }
+.swap-input__max-btn { font-family:var(--font-mono); font-size:12px; text-transform:uppercase; border:1px solid #FF4601; border-radius:var(--radius-full); color:#FF4601; background:transparent; padding:2px 8px; cursor:pointer; }
+.swap-stat-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; }
+.swap-stat-row__label { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; display:flex; align-items:center; gap:4px; }
+.swap-stat-row__value { font-family:var(--font-mono); font-size:14px; color:#000000; }
+[data-theme="dark"] .swap-stat-row__value { color:var(--page-text); }
+.swap-divider { display:flex; align-items:center; gap:12px; padding:8px 0; }
+.swap-divider__line { flex:1; height:1px; background:#E0E0E0; }
+.swap-divider__text { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.swap-arrow-btn { width:40px; height:40px; border-radius:var(--radius-full); background:#F5F5F5; border:1px solid #E0E0E0; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.12s; }
+.swap-arrow-btn:hover { background:#E0E0E0; }
+.swap-arrow-btn img { width:20px; height:20px; }
+[data-theme="dark"] .swap-arrow-btn { background:var(--surface-raised); border-color:var(--stroke); }
+
+/* Staking/Cooldown — exact Figma specs */
+.cooldown-card { background:#FFFFFF; padding:16px; width:500px; max-width:100%; display:flex; flex-direction:column; gap:12px; }
+[data-theme="dark"] .cooldown-card { background:var(--surface); }
+.cooldown-card__top-row { display:flex; justify-content:space-between; align-items:center; }
+.cooldown-card__amount { font-family:var(--font-mono); font-size:20px; color:#000000; }
+[data-theme="dark"] .cooldown-card__amount { color:var(--page-text); }
+.cooldown-card__progress-info { display:flex; align-items:center; gap:8px; }
+.cooldown-card__percent { font-family:var(--font-body); font-size:14px; font-weight:500; color:#000000; }
+[data-theme="dark"] .cooldown-card__percent { color:var(--page-text); }
+.cooldown-card__time { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.cooldown-card__progress-bar { height:8px; background:#E0E0E0; border-radius:var(--radius-full); position:relative; overflow:visible; }
+.cooldown-card__progress-fill { height:8px; background:#0575F3; border-radius:var(--radius-full); position:absolute; left:0; top:0; }
+.cooldown-card__progress-marker { width:8px; height:8px; border-radius:50%; background:#FFFFFF; border:1px solid #0575F3; position:absolute; top:0; }
+.cooldown-card__dates { display:flex; justify-content:space-between; align-items:center; }
+.cooldown-card__date { display:flex; align-items:center; gap:4px; font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.cooldown-card__date img { width:14px; height:14px; opacity:0.5; }
+.cooldown-card--claimable { flex-direction:row; gap:12px; align-items:center; }
+.cooldown-card--claimable .cooldown-card__left { flex:1; display:flex; flex-direction:column; gap:4px; }
+.cooldown-card--claimable .cooldown-card__completed { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
+.cooldown-card--claimed .cooldown-card__claim-btn { background:#FFC2B3; pointer-events:none; }
 
 /* ============================
    REWARD CALCULATOR
@@ -1018,36 +1126,87 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="buttons">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Buttons</h2>
-  <p class="section__desc">Three button variants: primary (orange CTA), secondary (blue outline), and ghost (neutral outline).</p>
+  <p class="section__desc">Two button variants (primary orange, secondary blue outline) in two sizes (big, small). No ghost variant. Primary big includes left+right sun icons. Rounded-full (pill shape).</p>
+
   <div class="comp-group">
-    <p class="color-group__label">Primary Button &mdash; Big</p>
+    <p class="color-group__label">Primary Big</p>
     <div class="comp-preview">
-      <div class="comp-card"><button class="btn btn--primary btn--big">Label</button><span class="state-label">Default</span></div>
-      <div class="comp-card"><button class="btn btn--primary btn--big" style="background:var(--orange-500)">Label</button><span class="state-label">Hover</span></div>
-      <div class="comp-card"><button class="btn btn--primary btn--big" style="box-shadow:0 0 0 2px var(--orange-400)">Label</button><span class="state-label">Focus</span></div>
-      <div class="comp-card"><button class="btn btn--primary btn--big" style="background:var(--orange-700)">Label</button><span class="state-label">Active</span></div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--big"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
+        <span class="state-label">Default</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--big" style="background:#CC3801"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
+        <span class="state-label">Hover</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--big btn--disabled"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
+        <span class="state-label">Disabled</span>
+      </div>
     </div>
   </div>
+
   <div class="comp-group">
-    <p class="color-group__label">Primary Button &mdash; Small</p>
+    <p class="color-group__label">Secondary Big</p>
     <div class="comp-preview">
-      <div class="comp-card"><button class="btn btn--primary">Label</button><span class="state-label">Default</span></div>
-      <div class="comp-card"><button class="btn btn--primary" style="background:var(--orange-500)">Label</button><span class="state-label">Hover</span></div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--big">Label</button>
+        <span class="state-label">Default</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--big" style="border-color:#0575F3;color:#045CBF">Label</button>
+        <span class="state-label">Hover</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--big btn--disabled">Label</button>
+        <span class="state-label">Disabled</span>
+      </div>
     </div>
   </div>
+
   <div class="comp-group">
-    <p class="color-group__label">Secondary &amp; Ghost</p>
+    <p class="color-group__label">Primary Small</p>
     <div class="comp-preview">
-      <div class="comp-card"><button class="btn btn--secondary">Label</button><span class="state-label">Secondary</span></div>
-      <div class="comp-card"><button class="btn btn--ghost">Label</button><span class="state-label">Ghost</span></div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--small">Label</button>
+        <span class="state-label">Default</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--small" style="background:#CC3801">Label</button>
+        <span class="state-label">Hover</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--primary btn--small btn--disabled">Label</button>
+        <span class="state-label">Disabled</span>
+      </div>
     </div>
   </div>
+
   <div class="comp-group">
-    <p class="color-group__label">Disabled State</p>
+    <p class="color-group__label">Secondary Small</p>
     <div class="comp-preview">
-      <div class="comp-card"><button class="btn btn--primary" style="opacity:0.4;pointer-events:none">Label</button><span class="state-label">Primary Disabled</span></div>
-      <div class="comp-card"><button class="btn btn--secondary" style="opacity:0.4;pointer-events:none">Label</button><span class="state-label">Secondary Disabled</span></div>
-      <div class="comp-card"><button class="btn btn--ghost" style="opacity:0.4;pointer-events:none">Label</button><span class="state-label">Ghost Disabled</span></div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--small">Label</button>
+        <span class="state-label">Default</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--small" style="border-color:#0575F3;color:#045CBF">Label</button>
+        <span class="state-label">Hover</span>
+      </div>
+      <div class="comp-card">
+        <button class="btn btn--secondary btn--small btn--disabled">Label</button>
+        <span class="state-label">Disabled</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Secondary Small &mdash; Icon Only</p>
+    <div class="comp-preview">
+      <div class="comp-card">
+        <button class="btn btn--icon-only"><span class="btn__icon"><img src="assets/icons/sun.svg" alt="" style="filter:invert(42%) sepia(93%) saturate(1352%) hue-rotate(196deg) brightness(99%) contrast(101%)"></span></button>
+        <span class="state-label">Icon Only</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1105,21 +1264,104 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="stats">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Stat Cards</h2>
-  <p class="section__desc">Data display cards with primary (neutral) and accent (blue) variants. Sub-rows show directional changes in green/red.</p>
+  <p class="section__desc">Three variants: Primary (gray bg #F5F5F5), Secondary (white bg), Accent (blue bg #0575F3). Default and small sizes. Sub-rows with directional icons in grey/green/red.</p>
+
   <div class="comp-group">
-    <p class="color-group__label">Large Stat Cards</p>
+    <p class="color-group__label">Primary &mdash; Default Size</p>
     <div class="comp-preview" style="gap:16px">
-      <div class="stat-card"><div class="stat-card__header">Total Value Locked</div><div class="stat-card__value">$112,482</div><div class="stat-card__sub stat-card__sub--up">+2.4%</div></div>
-      <div class="stat-card"><div class="stat-card__header">Staking APY</div><div class="stat-card__value">8.3%</div><div class="stat-card__sub stat-card__sub--down">-0.5%</div></div>
-      <div class="stat-card stat-card--accent"><div class="stat-card__header">Protocol Revenue</div><div class="stat-card__value">$1,209</div></div>
+      <div class="comp-card">
+        <div class="stat-card stat-card--primary">
+          <div class="stat-card__header">Total Value Locked <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__value">$112,482</div>
+          <div class="stat-card__sub stat-card__sub--green"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +2.4%</div>
+        </div>
+        <span class="state-label">Primary Default</span>
+      </div>
     </div>
   </div>
+
   <div class="comp-group">
-    <p class="color-group__label">Small Stat Cards</p>
+    <p class="color-group__label">Primary &mdash; Small Size</p>
     <div class="comp-preview" style="gap:16px">
-      <div class="stat-card" style="padding:12px 16px;min-width:140px"><div class="stat-card__header">HEI Allocation</div><div class="stat-card__value" style="font-size:20px;line-height:24px">38%</div></div>
-      <div class="stat-card" style="padding:12px 16px;min-width:140px"><div class="stat-card__header">Points</div><div class="stat-card__value" style="font-size:20px;line-height:24px">12,450</div><div class="stat-card__sub stat-card__sub--up">+340</div></div>
-      <div class="stat-card stat-card--accent" style="padding:12px 16px;min-width:140px"><div class="stat-card__header">Rank</div><div class="stat-card__value" style="font-size:20px;line-height:24px">#42</div></div>
+      <div class="comp-card">
+        <div class="stat-card stat-card--primary stat-card--small">
+          <div class="stat-card__header">HEI Allocation <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__value">38%</div>
+        </div>
+        <span class="state-label">Primary Small</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Secondary &mdash; Default Size</p>
+    <div class="comp-preview" style="gap:16px">
+      <div class="comp-card">
+        <div class="stat-card stat-card--secondary">
+          <div class="stat-card__header">Staking APY <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__value">8.3%</div>
+          <div class="stat-card__sub stat-card__sub--red"><img src="assets/icons/arrow-trend-down.svg" alt="" class="stat-card__sub-icon"> -0.5%</div>
+        </div>
+        <span class="state-label">Secondary Default</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Secondary &mdash; Small Size</p>
+    <div class="comp-preview" style="gap:16px">
+      <div class="comp-card">
+        <div class="stat-card stat-card--secondary stat-card--small">
+          <div class="stat-card__header">Points <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__value">12,450</div>
+          <div class="stat-card__sub stat-card__sub--grey"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon" style="opacity:0.5"> +340</div>
+        </div>
+        <span class="state-label">Secondary Small</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Accent &mdash; Default Size</p>
+    <div class="comp-preview" style="gap:16px">
+      <div class="comp-card">
+        <div class="stat-card stat-card--accent">
+          <div class="stat-card__header">Protocol Revenue <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1);opacity:0.8"></div>
+          <div class="stat-card__value">$1,209</div>
+        </div>
+        <span class="state-label">Accent Default</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Accent &mdash; Small Size</p>
+    <div class="comp-preview" style="gap:16px">
+      <div class="comp-card">
+        <div class="stat-card stat-card--accent stat-card--small">
+          <div class="stat-card__header">Rank <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1);opacity:0.8"></div>
+          <div class="stat-card__value">#42</div>
+        </div>
+        <span class="state-label">Accent Small</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Sub Row Colors</p>
+    <div class="comp-preview" style="gap:24px">
+      <div class="comp-card">
+        <div class="stat-card__sub stat-card__sub--grey" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon" style="opacity:0.5"> +340</div>
+        <span class="state-label">Grey (#858585)</span>
+      </div>
+      <div class="comp-card">
+        <div class="stat-card__sub stat-card__sub--green" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +2.4%</div>
+        <span class="state-label">Green (#009E50)</span>
+      </div>
+      <div class="comp-card">
+        <div class="stat-card__sub stat-card__sub--red" style="font-size:16px"><img src="assets/icons/arrow-trend-down.svg" alt="" class="stat-card__sub-icon"> -0.5%</div>
+        <span class="state-label">Red (#FF4601)</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1156,9 +1398,10 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="navigation">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Header, Sidebar &amp; Footer</h2>
-  <p class="section__desc">Application shell components. The header contains the logo and wallet connection. The sidebar holds primary navigation with icon-only collapsed and expanded states.</p>
+  <p class="section__desc">Application shell components. The header contains the logo and wallet connection. The sidebar has 8 items with real SVG icons: Dashboard, Stake, Swap, Mint, Points, Leaderboard, Docs, Settings. States: Default, Hover, Active. Types: Open and Collapsed.</p>
+
   <div class="comp-group">
-    <p class="color-group__label">Header</p>
+    <p class="color-group__label">Header Bar</p>
     <div class="header-demo">
       <img src="assets/logo-black.svg" alt="Manifest" class="header-demo__logo">
       <div class="header-demo__right">
@@ -1167,18 +1410,83 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
     </div>
   </div>
+
   <div class="comp-group" style="margin-top:32px">
-    <p class="color-group__label">Sidebar (expanded)</p>
-    <div class="comp-preview" style="justify-content:flex-start">
-      <div class="sidebar-demo">
-        <div class="sidebar-demo__item sidebar-demo__item--active"><div class="sidebar-demo__icon"></div>Dashboard</div>
-        <div class="sidebar-demo__item"><div class="sidebar-demo__icon"></div>Stake</div>
-        <div class="sidebar-demo__item"><div class="sidebar-demo__icon"></div>Swap</div>
-        <div class="sidebar-demo__item"><div class="sidebar-demo__icon"></div>Mint</div>
-        <div class="sidebar-demo__item"><div class="sidebar-demo__icon"></div>Points</div>
+    <p class="color-group__label">Sidebar &mdash; Open (Expanded)</p>
+    <div class="comp-preview" style="justify-content:flex-start;gap:32px;align-items:flex-start">
+      <div class="comp-card">
+        <div class="sidebar-demo">
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg" alt=""></span>Stake</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span>Swap</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span>Mint</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg" alt=""></span>Points</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg" alt=""></span>Leaderboard</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span>Docs</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg" alt=""></span>Settings</div>
+        </div>
+        <span class="state-label">Default + Active</span>
       </div>
     </div>
   </div>
+
+  <div class="comp-group" style="margin-top:32px">
+    <p class="color-group__label">Sidebar &mdash; Collapsed (Icon Only)</p>
+    <div class="comp-preview" style="justify-content:flex-start">
+      <div class="comp-card">
+        <div class="sidebar-demo sidebar-demo--collapsed">
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg" alt=""></span></div>
+        </div>
+        <span class="state-label">Collapsed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group" style="margin-top:32px">
+    <p class="color-group__label">Sidebar Item States</p>
+    <div class="comp-preview" style="gap:24px;align-items:flex-start">
+      <div class="comp-card">
+        <div class="sidebar-demo" style="width:auto;border:none">
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+        </div>
+        <span class="state-label">Default</span>
+      </div>
+      <div class="comp-card">
+        <div class="sidebar-demo" style="width:auto;border:none">
+          <div class="sidebar-demo__item" style="background:var(--surface-raised)"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+        </div>
+        <span class="state-label">Hover</span>
+      </div>
+      <div class="comp-card">
+        <div class="sidebar-demo" style="width:auto;border:none">
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+        </div>
+        <span class="state-label">Active</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group" style="margin-top:32px">
+    <p class="color-group__label">Wallet Button</p>
+    <div class="comp-preview" style="gap:16px">
+      <div class="comp-card">
+        <div class="header-demo__pill">Connect</div>
+        <span class="state-label">Disconnected</span>
+      </div>
+      <div class="comp-card">
+        <div class="header-demo__pill" style="background:var(--surface-raised);color:var(--page-text);font-size:12px">0x1234...5678</div>
+        <span class="state-label">Connected</span>
+      </div>
+    </div>
+  </div>
+
   <div class="comp-group" style="margin-top:32px">
     <p class="color-group__label">Footer</p>
     <div class="footer-demo">
@@ -1204,23 +1512,23 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="checkboxes">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Checkboxes</h2>
-  <p class="section__desc">20px square checkboxes with default (unchecked) and active (checked) states. Optional text label.</p>
+  <p class="section__desc">20x20px checkboxes. Default: white bg, 1px border #E0E0E0. Active: bg #0575F3 with white check-big icon. Optional "Label" text in Season Sans Medium 14px black. Horizontal row with gap=8px between box and label.</p>
   <div class="comp-preview" style="gap:24px">
     <div class="comp-card">
       <div class="checkbox"><div class="checkbox__box"></div></div>
-      <span class="state-label">Default</span>
+      <span class="state-label">Default (no text)</span>
     </div>
     <div class="comp-card">
-      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check">&#10003;</span></div></div>
-      <span class="state-label">Active</span>
+      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg" alt=""></span></div></div>
+      <span class="state-label">Active (no text)</span>
     </div>
     <div class="comp-card">
       <div class="checkbox"><div class="checkbox__box"></div><span>Label</span></div>
-      <span class="state-label">With Label</span>
+      <span class="state-label">Default with text</span>
     </div>
     <div class="comp-card">
-      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check">&#10003;</span></div><span>Label</span></div>
-      <span class="state-label">Active + Label</span>
+      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg" alt=""></span></div><span>Label</span></div>
+      <span class="state-label">Active with text</span>
     </div>
   </div>
 </section>
@@ -1783,29 +2091,131 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="swapform">
   <p class="section__eyebrow">Patterns</p>
   <h2 class="section__title">Swap Form</h2>
-  <p class="section__desc">Two-panel swap interface with "You pay" and "You receive" inputs. Includes token selector, stat row, divider, and swap arrow. States: Off (empty) and On (active).</p>
+  <p class="section__desc">Swap interface with "You pay" and "You receive" inputs. Each input: bg white, pt=12px pb=16px px=16px, w=500px. Header row with label and dollar value. Token display with 40px icon + network badge. Amount in GT America Mono 20px. Balance row with MAX button. Includes stat row, divider with "or", and arrow button.</p>
+
   <div class="comp-group">
-    <p class="color-group__label">Swap Input — Off</p>
-    <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
-      <div style="border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:20px;background:var(--surface)">
-        <div style="font-family:var(--font-mono);font-size:12px;color:var(--page-text-secondary);text-transform:uppercase;margin-bottom:8px">You pay</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-          <span style="font-family:var(--font-mono);font-size:28px;font-weight:400;line-height:28px;color:var(--page-text-secondary);text-transform:uppercase">0.00</span>
-          <div class="dropdown">USDC <span class="dropdown__arrow">&#9662;</span></div>
+    <p class="color-group__label">Swap Input &mdash; "You pay" (empty)</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
+      <div class="swap-input">
+        <div class="swap-input__header">
+          <span class="swap-input__label">You pay</span>
+          <span class="swap-input__dollar">~ $0.00</span>
+        </div>
+        <div class="swap-input__token-row">
+          <div class="swap-input__token">
+            <div class="swap-input__token-icon-wrap">
+              <div style="width:40px;height:40px;border-radius:50%;background:#2775CA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px">$</div>
+            </div>
+            <div class="swap-input__token-info">
+              <div class="swap-input__token-name-row">
+                <span class="swap-input__token-name">USDC</span>
+                <img src="assets/icons/chevron-down.svg" alt="" style="width:16px;height:16px;opacity:0.5">
+              </div>
+              <span class="swap-input__token-network">Ethereum</span>
+            </div>
+          </div>
+          <span class="swap-input__amount">0.00</span>
+        </div>
+        <div class="swap-input__balance-row">
+          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">213.44</span></span>
+          <div class="swap-input__controls">
+            <button class="swap-input__max-btn">MAX</button>
+          </div>
         </div>
       </div>
-      <div style="display:flex;justify-content:center;margin:-12px 0;position:relative;z-index:1">
-        <div style="width:32px;height:32px;border-radius:50%;background:var(--surface);border:1px solid var(--stroke);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--page-text-secondary)">⇅</div>
-      </div>
-      <div style="border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:20px;background:var(--surface)">
-        <div style="font-family:var(--font-mono);font-size:12px;color:var(--page-text-secondary);text-transform:uppercase;margin-bottom:8px">You receive</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-          <span style="font-family:var(--font-mono);font-size:28px;font-weight:400;line-height:28px;color:var(--page-text-secondary);text-transform:uppercase">0.00</span>
-          <div class="dropdown">USH <span class="dropdown__arrow">&#9662;</span></div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Swap Input &mdash; "You pay" (filled)</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
+      <div class="swap-input">
+        <div class="swap-input__header">
+          <span class="swap-input__label">You pay</span>
+          <span class="swap-input__dollar">~ $100.00</span>
+        </div>
+        <div class="swap-input__token-row">
+          <div class="swap-input__token">
+            <div class="swap-input__token-icon-wrap">
+              <div style="width:40px;height:40px;border-radius:50%;background:#2775CA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px">$</div>
+            </div>
+            <div class="swap-input__token-info">
+              <div class="swap-input__token-name-row">
+                <span class="swap-input__token-name">USDC</span>
+                <img src="assets/icons/chevron-down.svg" alt="" style="width:16px;height:16px;opacity:0.5">
+              </div>
+              <span class="swap-input__token-network">Ethereum</span>
+            </div>
+          </div>
+          <span class="swap-input__amount swap-input__amount--filled">100.00</span>
+        </div>
+        <div class="swap-input__balance-row">
+          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">213.44</span></span>
+          <div class="swap-input__controls">
+            <button class="swap-input__max-btn">MAX</button>
+          </div>
         </div>
       </div>
-      <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;color:var(--page-text-secondary);margin-top:12px;text-transform:uppercase">
-        <span>Rate: 1 USDC = 1.02 USH</span><span>Fee: 0.1%</span>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Swap Input &mdash; "You receive"</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
+      <div class="swap-input">
+        <div class="swap-input__header">
+          <span class="swap-input__label">You receive</span>
+          <span class="swap-input__dollar">~ $101.50</span>
+        </div>
+        <div class="swap-input__token-row">
+          <div class="swap-input__token">
+            <div class="swap-input__token-icon-wrap">
+              <div style="width:40px;height:40px;border-radius:50%;background:#FF4601;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px">U</div>
+            </div>
+            <div class="swap-input__token-info">
+              <div class="swap-input__token-name-row">
+                <span class="swap-input__token-name">USH</span>
+                <img src="assets/icons/chevron-down.svg" alt="" style="width:16px;height:16px;opacity:0.5">
+              </div>
+              <span class="swap-input__token-network">Ethereum</span>
+            </div>
+          </div>
+          <span class="swap-input__amount swap-input__amount--filled">102.04</span>
+        </div>
+        <div class="swap-input__balance-row">
+          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">0.00</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Swap Sub-components</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start;gap:24px;max-width:500px">
+      <div class="comp-card" style="width:100%">
+        <div class="swap-stat-row" style="width:100%">
+          <span class="swap-stat-row__label">Price impact <img src="assets/icons/info.svg" alt="" style="width:14px;height:14px;opacity:0.4"></span>
+          <span class="swap-stat-row__value">0.12%</span>
+        </div>
+        <span class="state-label">Stat Row</span>
+      </div>
+      <div class="comp-card" style="width:100%">
+        <div class="swap-divider" style="width:100%">
+          <div class="swap-divider__line"></div>
+          <span class="swap-divider__text">or</span>
+          <div class="swap-divider__line"></div>
+        </div>
+        <span class="state-label">Divider</span>
+      </div>
+      <div class="comp-card">
+        <div class="swap-arrow-btn">
+          <img src="assets/icons/arrow-down-up.svg" alt="">
+        </div>
+        <span class="state-label">Arrow Button</span>
+      </div>
+      <div class="comp-card">
+        <button class="swap-input__max-btn">MAX</button>
+        <span class="state-label">MAX Button</span>
       </div>
     </div>
   </div>
@@ -1815,45 +2225,60 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="staking">
   <p class="section__eyebrow">Patterns</p>
   <h2 class="section__title">Staking &amp; Cooldown</h2>
-  <p class="section__desc">Cooldown cards showing staking withdrawal status across three states: Active (in cooldown), Claimable (ready), and Claimed (completed).</p>
+  <p class="section__desc">Cooldown cards: bg white, p=16px, w=500px. Active state has amount (GT America Mono 20px), percentage + time remaining, 8px progress bar with blue fill and white marker dot, and date rows with calendar icons. Claimable shows amount with Claim button. Claimed shows disabled button.</p>
+
   <div class="comp-group">
-    <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px;gap:16px">
+    <p class="color-group__label">Active (in cooldown)</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
       <div class="comp-card" style="width:100%">
-        <div style="border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px 20px;background:var(--surface)">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-family:var(--font-body);font-size:14px;font-weight:500;line-height:1.2">1,500 sUSH</div>
-              <div style="font-family:var(--font-mono);font-size:12px;color:var(--page-text-secondary);margin-top:2px;text-transform:uppercase">Unstaking · 3d 12h left</div>
+        <div class="cooldown-card">
+          <div class="cooldown-card__top-row">
+            <span class="cooldown-card__amount">2,438.24 USH</span>
+            <div class="cooldown-card__progress-info">
+              <span class="cooldown-card__percent">51%</span>
+              <span class="cooldown-card__time">13D 19H 49S</span>
             </div>
-            <span class="tag tag--blue-outline">Active</span>
           </div>
-          <div style="margin-top:12px;height:4px;background:var(--surface-raised);border-radius:2px;overflow:hidden">
-            <div style="width:40%;height:100%;background:var(--blue-600);border-radius:2px"></div>
+          <div class="cooldown-card__progress-bar">
+            <div class="cooldown-card__progress-fill" style="width:51%"></div>
+            <div class="cooldown-card__progress-marker" style="left:calc(51% - 4px)"></div>
+          </div>
+          <div class="cooldown-card__dates">
+            <span class="cooldown-card__date"><img src="assets/icons/calendar.svg" alt=""> Started: 06/24/2025</span>
+            <span class="cooldown-card__date">Ends: 07/22/2025</span>
           </div>
         </div>
-        <span class="state-label">Active (in cooldown)</span>
+        <span class="state-label">Active</span>
       </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Claimable</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
       <div class="comp-card" style="width:100%">
-        <div style="border:1px solid var(--green-600);border-radius:var(--radius-lg);padding:16px 20px;background:var(--surface)">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-family:var(--font-body);font-size:14px;font-weight:500;line-height:1.2">2,000 sUSH</div>
-              <div style="font-family:var(--font-mono);font-size:12px;color:var(--green-600);margin-top:2px;text-transform:uppercase">Ready to claim</div>
-            </div>
-            <button class="btn btn--primary" style="height:32px;font-size:12px;padding:4px 16px">Claim</button>
+        <div class="cooldown-card cooldown-card--claimable">
+          <div class="cooldown-card__left">
+            <span class="cooldown-card__amount">2,438.24 USH</span>
+            <span class="cooldown-card__completed">Completed: 07/22/2025</span>
           </div>
+          <button class="btn btn--primary btn--small cooldown-card__claim-btn">Claim</button>
         </div>
         <span class="state-label">Claimable</span>
       </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Claimed</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
       <div class="comp-card" style="width:100%">
-        <div style="border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px 20px;background:var(--surface);opacity:0.6">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-family:var(--font-body);font-size:14px;font-weight:500;line-height:1.2">500 sUSH</div>
-              <div style="font-family:var(--font-mono);font-size:12px;color:var(--page-text-secondary);margin-top:2px;text-transform:uppercase">Claimed · Feb 10, 2026</div>
-            </div>
-            <span class="tag tag--green">Claimed</span>
+        <div class="cooldown-card cooldown-card--claimable cooldown-card--claimed">
+          <div class="cooldown-card__left">
+            <span class="cooldown-card__amount">2,438.24 USH</span>
+            <span class="cooldown-card__completed">Completed: 07/22/2025</span>
           </div>
+          <button class="btn btn--primary btn--small cooldown-card__claim-btn" style="background:#FFC2B3;pointer-events:none">Claimed</button>
         </div>
         <span class="state-label">Claimed</span>
       </div>
@@ -1921,126 +2346,181 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="token-picker">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Token Picker</h2>
-  <p class="section__desc">Token selection component with icon badges, wallet addresses, balance display, and network indicators. Used in swap forms and portfolio views.</p>
+  <p class="section__desc">Token selection with badges, network indicators, wallet addresses, and balance display. Token badge (no network): 22px icon + name in Season Sans Medium 20px. Token badge (with network): 40px container with 22px token icon + 18px network badge (border 2px white, rounded-4px). Token Menu Item: bg white, p=16px, w=325px. Token Select Menu: bg white, border 1px #E0E0E0, shadow 0 8px 16px 4px rgba(16,24,40,0.06), w=357px.</p>
 
-  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Badge</h3>
-  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px">
-    <div class="token-picker-item">
-      <div class="token-picker-icon" style="background:#2775CA">$</div>
-      <div class="token-picker-info">
-        <span class="token-picker-name">USDC</span>
-        <span class="token-picker-network">Network off</span>
-      </div>
-    </div>
-    <div class="token-picker-item token-picker-item--active">
-      <div class="token-picker-icon" style="background:#2775CA">$</div>
-      <div class="token-picker-info">
-        <span class="token-picker-name">USDC</span>
-        <span class="token-picker-network">Ethereum</span>
+  <div class="comp-group">
+    <p class="color-group__label">Token Badge &mdash; No Network</p>
+    <div class="comp-preview" style="gap:24px">
+      <div class="comp-card">
+        <div class="token-badge">
+          <div class="token-badge__icon" style="background:#2775CA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:10px">$</div>
+          <span class="token-badge__name">USDC</span>
+        </div>
+        <span class="state-label">No network</span>
       </div>
     </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Menu Item</h3>
-  <div style="max-width:400px;margin-bottom:40px">
-    <div class="token-menu-item">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
-          <span class="token-menu-item__addr">Ethereum</span>
+  <div class="comp-group">
+    <p class="color-group__label">Token Badge &mdash; With Network</p>
+    <div class="comp-preview" style="gap:24px">
+      <div class="comp-card">
+        <div class="token-badge token-badge--with-network">
+          <div class="token-badge__icon-wrap">
+            <div style="width:22px;height:22px;border-radius:50%;background:#2775CA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:10px;position:absolute;top:0;left:0">$</div>
+            <div class="token-badge__network-icon" style="background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px;font-weight:700">E</div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:4px">
+              <span class="token-badge__name">USDC</span>
+              <img src="assets/icons/chevron-down.svg" alt="" style="width:16px;height:16px;opacity:0.5">
+            </div>
+            <span class="token-badge__network-label">Ethereum</span>
+          </div>
         </div>
-      </div>
-      <div class="token-menu-item__balance">
-        <span class="token-menu-item__amount">213.44</span>
-        <span class="token-menu-item__value">~ $213.38</span>
-      </div>
-    </div>
-    <div class="token-menu-item" style="background:var(--surface-overlay)">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
-          <span class="token-menu-item__addr">Ethereum</span>
-        </div>
-      </div>
-      <div class="token-menu-item__balance">
-        <span class="token-menu-item__amount">213.44</span>
-        <span class="token-menu-item__value">~ $213.38</span>
+        <span class="state-label">With network</span>
       </div>
     </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Select Menu</h3>
-  <div class="token-select-panel">
-    <div class="token-select-panel__title">Select token</div>
-    <div class="token-menu-item">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
-          <span class="token-menu-item__addr">Ethereum</span>
+  <div class="comp-group">
+    <p class="color-group__label">Token Menu Item</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start;gap:0">
+      <div class="comp-card" style="width:auto">
+        <div class="token-menu-item" style="border-bottom:1px solid #F5F5F5">
+          <div class="token-menu-item__left">
+            <div class="token-menu-item__icon-wrap">
+              <div class="token-menu-item__icon" style="background:#2775CA;font-size:14px">$</div>
+              <div class="token-menu-item__network-badge" style="background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">E</div>
+            </div>
+            <div class="token-menu-item__details">
+              <span class="token-menu-item__name">USDC</span>
+              <span class="token-menu-item__addr">0x123...456 <img src="assets/icons/copy.svg" alt="" class="token-menu-item__addr-copy"></span>
+              <span class="token-menu-item__network">Ethereum</span>
+            </div>
+          </div>
+          <div class="token-menu-item__balance">
+            <span class="token-menu-item__amount">213.44</span>
+            <span class="token-menu-item__value">~ $213.38</span>
+          </div>
         </div>
+        <span class="state-label">Default</span>
       </div>
-      <div class="token-menu-item__balance">
-        <span class="token-menu-item__amount">213.44</span>
-        <span class="token-menu-item__value">~ $213.38</span>
-      </div>
-    </div>
-    <div class="token-menu-item">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#000">U</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDe <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
-          <span class="token-menu-item__addr">Ethereum</span>
+      <div class="comp-card" style="width:auto">
+        <div class="token-menu-item" style="background:var(--surface-raised)">
+          <div class="token-menu-item__left">
+            <div class="token-menu-item__icon-wrap">
+              <div class="token-menu-item__icon" style="background:#2775CA;font-size:14px">$</div>
+              <div class="token-menu-item__network-badge" style="background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">E</div>
+            </div>
+            <div class="token-menu-item__details">
+              <span class="token-menu-item__name">USDC</span>
+              <span class="token-menu-item__addr">0x123...456 <img src="assets/icons/copy.svg" alt="" class="token-menu-item__addr-copy"></span>
+              <span class="token-menu-item__network">Ethereum</span>
+            </div>
+          </div>
+          <div class="token-menu-item__balance">
+            <span class="token-menu-item__amount">213.44</span>
+            <span class="token-menu-item__value">~ $213.38</span>
+          </div>
         </div>
+        <span class="state-label">Hover</span>
       </div>
-      <div class="token-menu-item__balance">
-        <span class="token-menu-item__amount">86.15</span>
-        <span class="token-menu-item__value">~ $86.11</span>
-      </div>
-    </div>
-    <div class="token-menu-item">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDC</span>
-          <span class="token-menu-item__addr">Avalanche</span>
-        </div>
-      </div>
-      <div class="token-menu-item__balance"></div>
-    </div>
-    <div class="token-menu-item">
-      <div class="token-menu-item__left">
-        <div class="token-menu-item__icon" style="background:#000">U</div>
-        <div class="token-menu-item__details">
-          <span class="token-menu-item__name">USDe</span>
-          <span class="token-menu-item__addr">Avalanche</span>
-        </div>
-      </div>
-      <div class="token-menu-item__balance"></div>
     </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:20px;margin:40px 0 16px">Token Icons</h3>
-  <p class="section__desc" style="margin-bottom:16px">Small circular token icons used throughout the app for USDC, ETH, AVAX, USH, USDe, sUSH, Ethena, and wallet providers (MetaMask, Coinbase, WalletConnect, Phantom, Zerion, BitKeep, Kaikas, Core).</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap">
-    <div class="token-picker-icon" style="background:#2775CA;width:28px;height:28px;font-size:11px">$</div>
-    <div class="token-picker-icon" style="background:#627EEA;width:28px;height:28px;font-size:11px">E</div>
-    <div class="token-picker-icon" style="background:#E84142;width:28px;height:28px;font-size:11px">A</div>
-    <div class="token-picker-icon" style="background:#0575F3;width:28px;height:28px;font-size:11px">M</div>
-    <div class="token-picker-icon" style="background:#000;width:28px;height:28px;font-size:11px">U</div>
-    <div class="token-picker-icon" style="background:#26D07C;width:28px;height:28px;font-size:11px">s</div>
-    <div class="token-picker-icon" style="background:#FF4601;width:28px;height:28px;font-size:11px">U</div>
-    <div class="token-picker-icon" style="background:#000;width:28px;height:28px;font-size:11px">E</div>
-    <div class="token-picker-icon" style="background:#F6851B;width:28px;height:28px;font-size:9px">MM</div>
-    <div class="token-picker-icon" style="background:#0052FF;width:28px;height:28px;font-size:11px">C</div>
-    <div class="token-picker-icon" style="background:#3B99FC;width:28px;height:28px;font-size:11px">W</div>
-    <div class="token-picker-icon" style="background:#AB9FF2;width:28px;height:28px;font-size:11px">P</div>
-    <div class="token-picker-icon" style="background:#2962EF;width:28px;height:28px;font-size:11px">Z</div>
-    <div class="token-picker-icon" style="background:#7524F9;width:28px;height:28px;font-size:11px">B</div>
-    <div class="token-picker-icon" style="background:#3366FF;width:28px;height:28px;font-size:11px">K</div>
-    <div class="token-picker-icon" style="background:#FF9332;width:28px;height:28px;font-size:11px">Co</div>
+  <div class="comp-group">
+    <p class="color-group__label">Token Select Menu</p>
+    <div class="comp-preview" style="align-items:flex-start">
+      <div class="comp-card">
+        <div class="token-select-menu">
+          <div class="token-menu-item">
+            <div class="token-menu-item__left">
+              <div class="token-menu-item__icon-wrap">
+                <div class="token-menu-item__icon" style="background:#2775CA;font-size:14px">$</div>
+                <div class="token-menu-item__network-badge" style="background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">E</div>
+              </div>
+              <div class="token-menu-item__details">
+                <span class="token-menu-item__name">USDC</span>
+                <span class="token-menu-item__addr">0x123...456 <img src="assets/icons/copy.svg" alt="" class="token-menu-item__addr-copy"></span>
+                <span class="token-menu-item__network">Ethereum</span>
+              </div>
+            </div>
+            <div class="token-menu-item__balance">
+              <span class="token-menu-item__amount">213.44</span>
+              <span class="token-menu-item__value">~ $213.38</span>
+            </div>
+          </div>
+          <div class="token-menu-item">
+            <div class="token-menu-item__left">
+              <div class="token-menu-item__icon-wrap">
+                <div class="token-menu-item__icon" style="background:#000;font-size:14px">U</div>
+                <div class="token-menu-item__network-badge" style="background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">E</div>
+              </div>
+              <div class="token-menu-item__details">
+                <span class="token-menu-item__name">USDe</span>
+                <span class="token-menu-item__addr">0x123...456 <img src="assets/icons/copy.svg" alt="" class="token-menu-item__addr-copy"></span>
+                <span class="token-menu-item__network">Ethereum</span>
+              </div>
+            </div>
+            <div class="token-menu-item__balance">
+              <span class="token-menu-item__amount">86.15</span>
+              <span class="token-menu-item__value">~ $86.11</span>
+            </div>
+          </div>
+          <div class="token-menu-item">
+            <div class="token-menu-item__left">
+              <div class="token-menu-item__icon-wrap">
+                <div class="token-menu-item__icon" style="background:#2775CA;font-size:14px">$</div>
+                <div class="token-menu-item__network-badge" style="background:#E84142;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">A</div>
+              </div>
+              <div class="token-menu-item__details">
+                <span class="token-menu-item__name">USDC</span>
+                <span class="token-menu-item__network">Avalanche</span>
+              </div>
+            </div>
+            <div class="token-menu-item__balance"></div>
+          </div>
+          <div class="token-menu-item">
+            <div class="token-menu-item__left">
+              <div class="token-menu-item__icon-wrap">
+                <div class="token-menu-item__icon" style="background:#000;font-size:14px">U</div>
+                <div class="token-menu-item__network-badge" style="background:#E84142;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;font-weight:700">A</div>
+              </div>
+              <div class="token-menu-item__details">
+                <span class="token-menu-item__name">USDe</span>
+                <span class="token-menu-item__network">Avalanche</span>
+              </div>
+            </div>
+            <div class="token-menu-item__balance"></div>
+          </div>
+        </div>
+        <span class="state-label">Token Select Menu (w=357px)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Token Icons</p>
+    <p class="comp-group__desc">Circular token icons for USDC, ETH, AVAX, Manifest, USDe, sUSH, USH, Ethena, and wallet providers.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <div style="width:28px;height:28px;border-radius:50%;background:#2775CA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="USDC">$</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#627EEA;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="ETH">E</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#E84142;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="AVAX">A</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#0575F3;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Manifest">M</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="USDe">U</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#26D07C;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="sUSH">s</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#FF4601;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="USH">U</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Ethena">E</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#F6851B;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:9px" title="MetaMask">MM</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#0052FF;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Coinbase">C</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#3B99FC;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="WalletConnect">W</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#AB9FF2;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Phantom">P</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#2962EF;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Zerion">Z</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#7524F9;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="BitKeep">B</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#3366FF;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px" title="Kaikas">K</div>
+      <div style="width:28px;height:28px;border-radius:50%;background:#FF9332;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:9px" title="Core">Co</div>
+    </div>
   </div>
 </section>
 
