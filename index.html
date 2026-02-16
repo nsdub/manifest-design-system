@@ -470,6 +470,149 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .tokens-table code { font-family:var(--font-mono); font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px; }
 
 /* ============================
+   TOKEN PICKER
+   ============================ */
+.token-picker-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:var(--sp-6); }
+.token-picker-item { display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid var(--stroke); border-radius:var(--radius-lg); transition:border-color 0.12s,background 0.12s; }
+.token-picker-item:hover { border-color:var(--accent); background:var(--surface-overlay); }
+.token-picker-item--active { border-color:var(--accent); background:var(--surface-overlay); box-shadow:0 0 0 1px var(--accent); }
+.token-picker-icon { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#fff; flex-shrink:0; }
+.token-picker-info { display:flex; flex-direction:column; gap:2px; }
+.token-picker-name { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
+.token-picker-network { font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); text-transform:uppercase; }
+.token-menu-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border:1px solid var(--stroke); border-radius:var(--radius-md); margin-bottom:8px; transition:background 0.12s; cursor:pointer; }
+.token-menu-item:hover { background:var(--surface-overlay); }
+.token-menu-item__left { display:flex; align-items:center; gap:12px; }
+.token-menu-item__icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; }
+.token-menu-item__details { display:flex; flex-direction:column; }
+.token-menu-item__name { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text); }
+.token-menu-item__addr { font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); }
+.token-menu-item__balance { text-align:right; display:flex; flex-direction:column; }
+.token-menu-item__amount { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text); }
+.token-menu-item__value { font-family:var(--font-mono); font-size:11px; color:var(--accent); }
+.token-select-panel { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:16px; background:var(--surface); max-width:380px; }
+.token-select-panel__title { font-family:var(--font-body); font-size:14px; font-weight:600; margin-bottom:12px; color:var(--page-text); }
+
+/* ============================
+   REWARD CALCULATOR
+   ============================ */
+.calc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--sp-6); }
+.calc-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:24px; transition:border-color 0.12s; }
+.calc-card:hover { border-color:var(--accent); }
+.calc-card__header { font-family:var(--font-body); font-size:16px; font-weight:600; margin-bottom:16px; color:var(--page-text); }
+.calc-card__row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--stroke-subtle); }
+.calc-card__row:last-child { border-bottom:none; }
+.calc-card__label { font-family:var(--font-body); font-size:13px; color:var(--page-text-secondary); }
+.calc-card__value { font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--page-text); }
+.calc-input-demo { border:1px solid var(--stroke); border-radius:var(--radius-md); padding:16px 20px; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.calc-input-demo__label { font-family:var(--font-body); font-size:13px; color:var(--page-text-secondary); }
+.calc-input-demo__value { font-family:var(--font-body); font-size:16px; font-weight:500; color:var(--page-text); }
+.calc-slider { width:100%; height:4px; border-radius:2px; background:var(--stroke); appearance:none; -webkit-appearance:none; margin:16px 0; }
+.calc-slider::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); cursor:pointer; }
+.calc-tab-bar { display:flex; gap:4px; margin-bottom:20px; }
+.calc-tab { font-family:var(--font-mono); font-size:11px; padding:6px 14px; border-radius:var(--radius-full); border:1px solid var(--stroke); background:transparent; color:var(--page-text-secondary); cursor:pointer; transition:all 0.12s; }
+.calc-tab--active { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* ============================
+   EVOLUTION PAGE
+   ============================ */
+.evo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:var(--sp-6); }
+.evo-nav { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
+.evo-nav__title { font-family:var(--font-display); font-size:18px; font-weight:600; margin-bottom:4px; color:var(--page-text); }
+.evo-nav__subtitle { font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); margin-bottom:16px; }
+.evo-phase { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:var(--radius-md); margin-bottom:4px; transition:background 0.12s; cursor:pointer; }
+.evo-phase:hover { background:var(--surface-overlay); }
+.evo-phase--active { background:var(--accent); color:#fff; border-radius:var(--radius-md); }
+.evo-phase--active .evo-phase__label,
+.evo-phase--active .evo-phase__detail { color:#fff; }
+.evo-phase__icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+.evo-phase__icon--complete { background:var(--green-400); color:#fff; }
+.evo-phase__icon--current { background:var(--accent); color:#fff; }
+.evo-phase__icon--future { background:var(--surface-raised); color:var(--page-text-secondary); border:1px solid var(--stroke); }
+.evo-phase__info { display:flex; flex-direction:column; }
+.evo-phase__label { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--page-text); }
+.evo-phase__detail { font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
+.evo-cap-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
+.evo-cap-card__row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.evo-cap-card__label { font-family:var(--font-body); font-size:13px; color:var(--page-text-secondary); }
+.evo-cap-card__value { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
+.evo-cap-bar { width:100%; height:8px; background:var(--stroke); border-radius:4px; overflow:hidden; margin-bottom:8px; }
+.evo-cap-bar__fill { height:100%; border-radius:4px; transition:width 0.3s; }
+.evo-cap-bar__fill--blue { background:var(--accent); }
+.evo-cap-bar__fill--green { background:var(--green-400); }
+.evo-cap-bar__fill--orange { background:var(--accent-secondary); }
+.evo-cap-sub { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
+.evo-chart-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; display:flex; flex-direction:column; align-items:center; }
+.evo-chart-title { font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--page-text); margin-bottom:12px; text-align:center; }
+.evo-donut { position:relative; width:160px; height:160px; }
+.evo-donut svg { width:100%; height:100%; }
+.evo-donut__label { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+.evo-donut__label-title { font-family:var(--font-body); font-size:12px; color:var(--page-text-secondary); }
+.evo-donut__label-value { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
+.evo-legend { display:flex; gap:16px; margin-top:12px; flex-wrap:wrap; justify-content:center; }
+.evo-legend__item { display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
+.evo-legend__dot { width:8px; height:8px; border-radius:2px; }
+
+/* ============================
+   FAQ
+   ============================ */
+.faq-panel { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:24px; max-width:480px; }
+.faq-panel__title { font-family:var(--font-display); font-size:22px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+.faq-panel__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; }
+.faq-item { border-bottom:1px solid var(--stroke-subtle); }
+.faq-item:last-child { border-bottom:none; }
+.faq-item__question { display:flex; justify-content:space-between; align-items:center; padding:14px 0; cursor:pointer; font-family:var(--font-body); font-size:15px; font-weight:600; color:var(--page-text); user-select:none; }
+.faq-item__arrow { font-size:14px; color:var(--page-text-secondary); transition:transform 0.2s; flex-shrink:0; }
+.faq-item--open .faq-item__arrow { transform:rotate(180deg); }
+.faq-item__answer { font-family:var(--font-body); font-size:14px; line-height:1.6; color:var(--page-text-secondary); padding:0 0 14px; display:none; }
+.faq-item--open .faq-item__answer { display:block; }
+.faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff; border:none; cursor:pointer; font-size:20px; transition:transform 0.12s,box-shadow 0.12s; }
+.faq-trigger:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(5,117,243,0.3); }
+.faq-trigger--active { background:var(--accent-secondary); }
+
+/* ============================
+   QR MODAL
+   ============================ */
+.qr-modal { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:32px; max-width:456px; background:var(--surface); box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+.qr-modal__header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+.qr-modal__title { font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--page-text); }
+.qr-modal__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; padding:4px; }
+.qr-modal__desc { font-family:var(--font-body); font-size:14px; color:var(--page-text-secondary); margin-bottom:24px; }
+.qr-modal__frame { background:var(--surface-raised); border-radius:var(--radius-lg); padding:32px; display:flex; align-items:center; justify-content:center; position:relative; }
+.qr-modal__corners { position:absolute; inset:16px; pointer-events:none; }
+.qr-modal__corners::before,
+.qr-modal__corners::after { content:''; position:absolute; width:24px; height:24px; border-color:var(--page-text); border-style:solid; }
+.qr-modal__corners::before { top:0; left:0; border-width:2px 0 0 2px; }
+.qr-modal__corners::after { top:0; right:0; border-width:2px 2px 0 0; }
+.qr-modal__corners-bottom { position:absolute; inset:16px; pointer-events:none; }
+.qr-modal__corners-bottom::before,
+.qr-modal__corners-bottom::after { content:''; position:absolute; width:24px; height:24px; border-color:var(--page-text); border-style:solid; }
+.qr-modal__corners-bottom::before { bottom:0; left:0; border-width:0 0 2px 2px; }
+.qr-modal__corners-bottom::after { bottom:0; right:0; border-width:0 2px 2px 0; }
+.qr-placeholder { width:180px; height:180px; background:var(--surface); border:2px dashed var(--stroke); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; }
+.qr-placeholder__icon { font-size:48px; color:var(--page-text-secondary); }
+
+/* ============================
+   REFERRAL STATUS
+   ============================ */
+.ref-status-grid { display:flex; gap:var(--sp-6); flex-wrap:wrap; }
+.ref-status { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:var(--radius-full); font-family:var(--font-body); font-size:14px; font-weight:500; }
+.ref-status--applied { background:rgba(0,158,80,0.1); color:var(--green-600); }
+.ref-status--applied .ref-status__icon { color:var(--green-600); }
+.ref-status--error { background:rgba(255,70,1,0.1); color:var(--accent-secondary); }
+.ref-status--error .ref-status__icon { color:var(--accent-secondary); }
+.ref-status--sm { font-size:12px; padding:4px 10px; }
+
+/* ============================
+   POINTS RISK TAG
+   ============================ */
+.risk-tag-grid { display:flex; gap:var(--sp-4); flex-wrap:wrap; align-items:center; }
+.risk-tag { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border:1px solid var(--accent); border-radius:var(--radius-full); font-family:var(--font-mono); font-size:11px; color:var(--accent); }
+.risk-tag__dots { display:flex; gap:3px; }
+.risk-tag__dot { width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.risk-tag__dot--empty { background:transparent; border:1px solid var(--accent); }
+
+/* ============================
    RESPONSIVE
    ============================ */
 @media(max-width:900px) {
@@ -535,6 +678,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <a href="#toasts" class="sidebar__link">Toasts</a>
         <a href="#icons" class="sidebar__link">Icons</a>
         <a href="#modals" class="sidebar__link">Modals</a>
+        <a href="#token-picker" class="sidebar__link">Token Picker</a>
+        <a href="#faq" class="sidebar__link">FAQ</a>
+        <a href="#qr-modal" class="sidebar__link">QR Modal</a>
+        <a href="#referral-status" class="sidebar__link">Referral Status</a>
+        <a href="#risk-tag" class="sidebar__link">Points Risk Tag</a>
       </div>
     </div>
     <div class="sidebar__group collapsed" data-group="patterns">
@@ -551,6 +699,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <a href="#swapform" class="sidebar__link">Swap Form</a>
         <a href="#staking" class="sidebar__link">Staking &amp; Cooldown</a>
         <a href="#slippage" class="sidebar__link">Slippage Popover</a>
+        <a href="#reward-calc" class="sidebar__link">Reward Calculator</a>
+        <a href="#evolution" class="sidebar__link">Evolution Page</a>
       </div>
     </div>
     <div class="sidebar__group collapsed" data-group="brand">
@@ -1767,6 +1917,512 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   </div>
 </section>
 
+<!-- ======== TOKEN PICKER ======== -->
+<section class="section" id="token-picker">
+  <p class="section__eyebrow">Components</p>
+  <h2 class="section__title">Token Picker</h2>
+  <p class="section__desc">Token selection component with icon badges, wallet addresses, balance display, and network indicators. Used in swap forms and portfolio views.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Badge</h3>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px">
+    <div class="token-picker-item">
+      <div class="token-picker-icon" style="background:#2775CA">$</div>
+      <div class="token-picker-info">
+        <span class="token-picker-name">USDC</span>
+        <span class="token-picker-network">Network off</span>
+      </div>
+    </div>
+    <div class="token-picker-item token-picker-item--active">
+      <div class="token-picker-icon" style="background:#2775CA">$</div>
+      <div class="token-picker-info">
+        <span class="token-picker-name">USDC</span>
+        <span class="token-picker-network">Ethereum</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Menu Item</h3>
+  <div style="max-width:400px;margin-bottom:40px">
+    <div class="token-menu-item">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
+          <span class="token-menu-item__addr">Ethereum</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance">
+        <span class="token-menu-item__amount">213.44</span>
+        <span class="token-menu-item__value">~ $213.38</span>
+      </div>
+    </div>
+    <div class="token-menu-item" style="background:var(--surface-overlay)">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
+          <span class="token-menu-item__addr">Ethereum</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance">
+        <span class="token-menu-item__amount">213.44</span>
+        <span class="token-menu-item__value">~ $213.38</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Token Select Menu</h3>
+  <div class="token-select-panel">
+    <div class="token-select-panel__title">Select token</div>
+    <div class="token-menu-item">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDC <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
+          <span class="token-menu-item__addr">Ethereum</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance">
+        <span class="token-menu-item__amount">213.44</span>
+        <span class="token-menu-item__value">~ $213.38</span>
+      </div>
+    </div>
+    <div class="token-menu-item">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#000">U</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDe <span style="font-family:var(--font-mono);font-size:11px;color:var(--page-text-secondary)">0x123...456</span></span>
+          <span class="token-menu-item__addr">Ethereum</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance">
+        <span class="token-menu-item__amount">86.15</span>
+        <span class="token-menu-item__value">~ $86.11</span>
+      </div>
+    </div>
+    <div class="token-menu-item">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#2775CA">$</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDC</span>
+          <span class="token-menu-item__addr">Avalanche</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance"></div>
+    </div>
+    <div class="token-menu-item">
+      <div class="token-menu-item__left">
+        <div class="token-menu-item__icon" style="background:#000">U</div>
+        <div class="token-menu-item__details">
+          <span class="token-menu-item__name">USDe</span>
+          <span class="token-menu-item__addr">Avalanche</span>
+        </div>
+      </div>
+      <div class="token-menu-item__balance"></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin:40px 0 16px">Token Icons</h3>
+  <p class="section__desc" style="margin-bottom:16px">Small circular token icons used throughout the app for USDC, ETH, AVAX, USH, USDe, sUSH, Ethena, and wallet providers (MetaMask, Coinbase, WalletConnect, Phantom, Zerion, BitKeep, Kaikas, Core).</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <div class="token-picker-icon" style="background:#2775CA;width:28px;height:28px;font-size:11px">$</div>
+    <div class="token-picker-icon" style="background:#627EEA;width:28px;height:28px;font-size:11px">E</div>
+    <div class="token-picker-icon" style="background:#E84142;width:28px;height:28px;font-size:11px">A</div>
+    <div class="token-picker-icon" style="background:#0575F3;width:28px;height:28px;font-size:11px">M</div>
+    <div class="token-picker-icon" style="background:#000;width:28px;height:28px;font-size:11px">U</div>
+    <div class="token-picker-icon" style="background:#26D07C;width:28px;height:28px;font-size:11px">s</div>
+    <div class="token-picker-icon" style="background:#FF4601;width:28px;height:28px;font-size:11px">U</div>
+    <div class="token-picker-icon" style="background:#000;width:28px;height:28px;font-size:11px">E</div>
+    <div class="token-picker-icon" style="background:#F6851B;width:28px;height:28px;font-size:9px">MM</div>
+    <div class="token-picker-icon" style="background:#0052FF;width:28px;height:28px;font-size:11px">C</div>
+    <div class="token-picker-icon" style="background:#3B99FC;width:28px;height:28px;font-size:11px">W</div>
+    <div class="token-picker-icon" style="background:#AB9FF2;width:28px;height:28px;font-size:11px">P</div>
+    <div class="token-picker-icon" style="background:#2962EF;width:28px;height:28px;font-size:11px">Z</div>
+    <div class="token-picker-icon" style="background:#7524F9;width:28px;height:28px;font-size:11px">B</div>
+    <div class="token-picker-icon" style="background:#3366FF;width:28px;height:28px;font-size:11px">K</div>
+    <div class="token-picker-icon" style="background:#FF9332;width:28px;height:28px;font-size:11px">Co</div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="section" id="faq">
+  <p class="section__eyebrow">Components</p>
+  <h2 class="section__title">FAQ</h2>
+  <p class="section__desc">Frequently Asked Questions accordion component with expandable/collapsible items. Includes a floating trigger button and a panel view.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Trigger Button</h3>
+  <div style="display:flex;gap:16px;margin-bottom:40px">
+    <button class="faq-trigger" title="FAQ closed">
+      <img src="assets/icons/chevron-up.svg" alt="FAQ" style="width:20px;height:20px;filter:brightness(0) invert(1)">
+    </button>
+    <button class="faq-trigger faq-trigger--active" title="FAQ open">
+      <img src="assets/icons/chevron-down.svg" alt="FAQ" style="width:20px;height:20px;filter:brightness(0) invert(1)">
+    </button>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Item States</h3>
+  <div style="max-width:440px;margin-bottom:40px;border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px">
+    <div class="faq-item">
+      <div class="faq-item__question">Question 1 <span class="faq-item__arrow">▾</span></div>
+    </div>
+    <div class="faq-item faq-item--open">
+      <div class="faq-item__question">Question 1 <span class="faq-item__arrow">▴</span></div>
+      <div class="faq-item__answer" style="display:block">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Panel</h3>
+  <div class="faq-panel">
+    <div class="faq-panel__title">Frequently Asked Questions <button class="faq-panel__close">&times;</button></div>
+    <div class="faq-item">
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <span class="faq-item__arrow">▾</span></div>
+      <div class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <span class="faq-item__arrow">▾</span></div>
+      <div class="faq-item__answer">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+    </div>
+    <div class="faq-item faq-item--open">
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <span class="faq-item__arrow">▴</span></div>
+      <div class="faq-item__answer" style="display:block">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <span class="faq-item__arrow">▾</span></div>
+      <div class="faq-item__answer">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== QR MODAL ======== -->
+<section class="section" id="qr-modal">
+  <p class="section__eyebrow">Components</p>
+  <h2 class="section__title">QR Modal</h2>
+  <p class="section__desc">Modal overlay displaying a QR code for sharing referral links. Features scan-frame corners and a placeholder code area.</p>
+
+  <div class="qr-modal">
+    <div class="qr-modal__header">
+      <div class="qr-modal__title">Scan QR code</div>
+      <button class="qr-modal__close">&times;</button>
+    </div>
+    <div class="qr-modal__desc">Scan this code with your camera to access your referral link.</div>
+    <div class="qr-modal__frame">
+      <div class="qr-modal__corners"></div>
+      <div class="qr-modal__corners-bottom"></div>
+      <div class="qr-placeholder">
+        <span class="qr-placeholder__icon">
+          <img src="assets/icons/qr-code.svg" alt="QR" style="width:48px;height:48px;opacity:0.4">
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REFERRAL STATUS ======== -->
+<section class="section" id="referral-status">
+  <p class="section__eyebrow">Components</p>
+  <h2 class="section__title">Referral Status</h2>
+  <p class="section__desc">Status badges for referral code application. Shows applied (success) and error states, available in desktop and mobile sizes.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Desktop Size</h3>
+  <div class="ref-status-grid" style="margin-bottom:32px">
+    <div class="ref-status ref-status--applied">
+      <span class="ref-status__icon">✓</span>
+      Applied
+    </div>
+    <div class="ref-status ref-status--error">
+      <span class="ref-status__icon">↻</span>
+      Clear
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Mobile Size</h3>
+  <div class="ref-status-grid">
+    <div class="ref-status ref-status--applied ref-status--sm">
+      <span class="ref-status__icon">✓</span>
+      Applied
+    </div>
+    <div class="ref-status ref-status--error ref-status--sm">
+      <span class="ref-status__icon">↻</span>
+      Clear
+    </div>
+  </div>
+</section>
+
+<!-- ======== POINTS RISK TAG ======== -->
+<section class="section" id="risk-tag">
+  <p class="section__eyebrow">Components</p>
+  <h2 class="section__title">Points Risk Tag</h2>
+  <p class="section__desc">Dot-based risk indicator tags used in the points system. Each dot represents a risk level — 1 dot (low), 2 dots (medium), 3 dots (high).</p>
+
+  <div class="risk-tag-grid">
+    <div class="risk-tag">
+      <div class="risk-tag__dots">
+        <div class="risk-tag__dot"></div>
+        <div class="risk-tag__dot risk-tag__dot--empty"></div>
+        <div class="risk-tag__dot risk-tag__dot--empty"></div>
+      </div>
+    </div>
+    <div class="risk-tag">
+      <div class="risk-tag__dots">
+        <div class="risk-tag__dot"></div>
+        <div class="risk-tag__dot"></div>
+        <div class="risk-tag__dot risk-tag__dot--empty"></div>
+      </div>
+    </div>
+    <div class="risk-tag">
+      <div class="risk-tag__dots">
+        <div class="risk-tag__dot"></div>
+        <div class="risk-tag__dot"></div>
+        <div class="risk-tag__dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px">
+    <table class="tokens-table" style="max-width:300px">
+      <thead><tr><th>Dots</th><th>Level</th></tr></thead>
+      <tbody>
+        <tr><td>●○○</td><td>Low risk</td></tr>
+        <tr><td>●●○</td><td>Medium risk</td></tr>
+        <tr><td>●●●</td><td>High risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======== REWARD CALCULATOR ======== -->
+<section class="section" id="reward-calc">
+  <p class="section__eyebrow">Patterns</p>
+  <h2 class="section__title">Reward Calculator</h2>
+  <p class="section__desc">Multi-variant calculator for estimating rewards across HODLer, Influencer, and Degen strategies. Features token input, TVL hypothesis, time period slider, and reward breakdowns.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Calculator Type Tabs</h3>
+  <div class="calc-tab-bar" style="margin-bottom:32px">
+    <button class="calc-tab calc-tab--active">HODLer</button>
+    <button class="calc-tab">Influencer</button>
+    <button class="calc-tab">Degen</button>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Calculator Input</h3>
+  <div style="max-width:460px;margin-bottom:40px">
+    <div class="calc-input-demo">
+      <span class="calc-input-demo__label">Amount</span>
+      <span class="calc-input-demo__value">USDC</span>
+    </div>
+    <div class="calc-input-demo">
+      <span class="calc-input-demo__label">FDV Hypothesis</span>
+      <span class="calc-input-demo__value">Ethena ↔ 3518 M</span>
+    </div>
+    <div style="padding:8px 0">
+      <div style="font-family:var(--font-body);font-size:13px;color:var(--page-text-secondary);margin-bottom:8px">Time period</div>
+      <input type="range" class="calc-slider" min="0" max="4" value="1" disabled>
+      <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--page-text-secondary)">
+        <span>3M</span><span>6M</span><span>12M</span><span>14M</span><span>18M</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Reward Cards</h3>
+  <div class="calc-grid">
+    <div class="calc-card">
+      <div class="calc-card__header">HODLer — Empty</div>
+      <div class="calc-card__row"><span class="calc-card__label">Amount</span><span class="calc-card__value">USDC</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">TVL Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">USH returns</span><span class="calc-card__value">USH</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC</span></div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-card__header">HODLer — Filled</div>
+      <div class="calc-card__row"><span class="calc-card__label">Amount</span><span class="calc-card__value">USDC &emsp; 999,999.0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">TVL Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">USH returns</span><span class="calc-card__value">USH &emsp; 999,999.0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC &emsp; 999,999.0</span></div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-card__header">Influencer — Empty</div>
+      <div class="calc-card__row"><span class="calc-card__label">Points supply earned by referrals</span><span class="calc-card__value">0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">FDV Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC</span></div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-card__header">Influencer — Filled</div>
+      <div class="calc-card__row"><span class="calc-card__label">Points supply earned by referrals</span><span class="calc-card__value">999,999.0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">TVL Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC &emsp; 999,999.0</span></div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-card__header">Degen — Empty</div>
+      <div class="calc-card__row"><span class="calc-card__label">Points supply earned</span><span class="calc-card__value">0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">FDV Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC</span></div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-card__header">Degen — Filled</div>
+      <div class="calc-card__row"><span class="calc-card__label">Points supply earned</span><span class="calc-card__value">999,999.0</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">TVL Hypothesis</span><span class="calc-card__value">Ethena ↔ 3518 M</span></div>
+      <div class="calc-card__row"><span class="calc-card__label">Approximate reward</span><span class="calc-card__value">USDC &emsp; 999,999.0</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== EVOLUTION PAGE ======== -->
+<section class="section" id="evolution">
+  <p class="section__eyebrow">Patterns</p>
+  <h2 class="section__title">Evolution Page</h2>
+  <p class="section__desc">Phase progression navigation, deposit caps, capacity meters, and donut charts for the Evolution page. Tracks protocol growth phases from Bootstrap through Target.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Phase Navigation</h3>
+  <div class="evo-grid" style="margin-bottom:40px">
+    <div class="evo-nav">
+      <div class="evo-nav__title">Phase Progression</div>
+      <div class="evo-nav__subtitle">Phase 3 of 5</div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--complete">✓</div>
+        <div class="evo-phase__info">
+          <span class="evo-phase__label">Bootstrap</span>
+          <span class="evo-phase__detail">Up to 200% HEI, Jan–Feb 2025</span>
+        </div>
+      </div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--complete">✓</div>
+        <div class="evo-phase__info">
+          <span class="evo-phase__label">First Homes</span>
+          <span class="evo-phase__detail">Up to 300% HEI, Mar–Apr 2025</span>
+        </div>
+      </div>
+      <div class="evo-phase evo-phase--active">
+        <div class="evo-phase__icon evo-phase__icon--current">3</div>
+        <div class="evo-phase__info">
+          <span class="evo-phase__label">Growth</span>
+          <span class="evo-phase__detail">Up to 50% HEI, May–Jul 2025</span>
+        </div>
+      </div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--future">4</div>
+        <div class="evo-phase__info">
+          <span class="evo-phase__label">Scale</span>
+          <span class="evo-phase__detail">Up to 170% HEI, Aug–Oct 2025</span>
+        </div>
+      </div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--future">5</div>
+        <div class="evo-phase__info">
+          <span class="evo-phase__label">Target</span>
+          <span class="evo-phase__detail">Up to 85% HEI, Nov–Dec 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="evo-nav">
+      <div class="evo-nav__title">Navigation Items</div>
+      <div class="evo-nav__subtitle">States</div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--complete">✓</div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Completed</span></div>
+      </div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--current">2</div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Current</span></div>
+      </div>
+      <div class="evo-phase">
+        <div class="evo-phase__icon evo-phase__icon--future">3</div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Future</span></div>
+      </div>
+      <div class="evo-phase evo-phase--active">
+        <div class="evo-phase__icon evo-phase__icon--current">4</div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Active (selected)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Deposit Cap</h3>
+  <div class="evo-grid" style="margin-bottom:40px">
+    <div class="evo-cap-card">
+      <div class="evo-cap-card__row">
+        <span class="evo-cap-card__label">Deposit Cap</span>
+        <span class="evo-cap-card__value">$74.8M / $100M</span>
+      </div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:74.8%"></div></div>
+      <div class="evo-cap-sub"><span>Deposits: $40.1</span><span>Remaining: $55.9M</span></div>
+    </div>
+    <div class="evo-cap-card">
+      <div class="evo-cap-card__row">
+        <span class="evo-cap-card__label">Deposit Cap</span>
+        <span class="evo-cap-card__value">$100M / $100M</span>
+      </div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
+      <div class="evo-cap-sub"><span>Deposits: $100</span><span>Filled</span></div>
+    </div>
+    <div class="evo-cap-card">
+      <div class="evo-cap-card__row">
+        <span class="evo-cap-card__label">Deposits Open</span>
+        <span class="evo-cap-card__value">$249M</span>
+      </div>
+      <div class="evo-cap-sub"><span>Deposits: $249</span><span>Open</span></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Capacity Meter</h3>
+  <div class="evo-grid" style="margin-bottom:40px">
+    <div class="evo-cap-card">
+      <div class="evo-cap-card__row">
+        <span class="evo-cap-card__label">Capacity:</span>
+        <span class="evo-cap-card__value">$12.4M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">69%</span></span>
+      </div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:69%"></div></div>
+      <div class="evo-cap-sub"><span>Last Tx: $14.3M</span><span>ETA: 3 Weeks</span></div>
+    </div>
+    <div class="evo-cap-card">
+      <div class="evo-cap-card__row">
+        <span class="evo-cap-card__label">Capacity:</span>
+        <span class="evo-cap-card__value">$18M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">100%</span></span>
+      </div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
+      <div class="evo-cap-sub"><span>Last Tx: $14.2M</span><span>ETA: —</span></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Evolution Charts</h3>
+  <div class="evo-grid">
+    <div class="evo-chart-card">
+      <div class="evo-chart-title">Room to grow</div>
+      <div class="evo-donut">
+        <svg viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--stroke)" stroke-width="20"/>
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--accent)" stroke-width="20" stroke-dasharray="188.5 377" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--accent-secondary)" stroke-width="20" stroke-dasharray="94 377" stroke-dashoffset="-188.5" transform="rotate(-90 80 80)"/>
+        </svg>
+        <div class="evo-donut__label">
+          <div class="evo-donut__label-title">Room to grow:</div>
+          <div class="evo-donut__label-value">+25% HEI</div>
+        </div>
+      </div>
+      <div class="evo-legend">
+        <div class="evo-legend__item"><div class="evo-legend__dot" style="background:var(--accent)"></div>HEI</div>
+        <div class="evo-legend__item"><div class="evo-legend__dot" style="background:var(--stroke)"></div>Available for HEI</div>
+        <div class="evo-legend__item"><div class="evo-legend__dot" style="background:var(--accent-secondary)"></div>USDe</div>
+      </div>
+    </div>
+    <div class="evo-chart-card">
+      <div class="evo-chart-title">Composition</div>
+      <div class="evo-donut">
+        <svg viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--accent-secondary)" stroke-width="20"/>
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--accent)" stroke-width="20" stroke-dasharray="264 377" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+        </svg>
+        <div class="evo-donut__label">
+          <div class="evo-donut__label-title">Composition</div>
+          <div class="evo-donut__label-value">67% HEI / 33% USDe</div>
+        </div>
+      </div>
+      <div class="evo-legend">
+        <div class="evo-legend__item"><div class="evo-legend__dot" style="background:var(--accent)"></div>HEI</div>
+        <div class="evo-legend__item"><div class="evo-legend__dot" style="background:var(--accent-secondary)"></div>USDe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======== BRAND ======== -->
 <section class="section" id="brand">
   <p class="section__eyebrow">Brand</p>
@@ -2106,7 +2762,7 @@ function toggleGroup(header){
   page_node: 461:4463
   brand_file: ClpUCdebqhgtta0HZx9e2b
   brand_node: 0:1
-  last_synced: 2026-02-16
+  last_synced: 2026-02-16 (all components documented)
 
   section:colors         | source: brand_file variables
   section:semantic       | source: brand_file variables (light/dark)
@@ -2135,16 +2791,16 @@ function toggleGroup(header){
   section:swapform       | figma_node: 508:1342 | children: inputs,stat,divider,arrow
   section:staking        | figma_node: 6055:65887 | children: 3 cooldown states
   section:slippage       | figma_node: 6213:91666 | children: 4 popover states
+  section:token-picker   | figma_node: 508:1339 | children: token badge,menu item,token icons,select menu
+  section:reward-calc    | figma_node: 567:21166 | children: token picker,calculator input,reward cards (6 variants)
+  section:evolution      | figma_node: 2774:229240 | children: nav,nav items,deposit cap,capacity,donut charts
+  section:faq            | figma_node: 636:67327 | children: trigger button,item states,panel
+  section:qr-modal       | figma_node: 6050:119601 | children: 1 modal with QR frame
+  section:referral-status| figma_node: 642:60244 | children: applied + error, desktop + mobile
+  section:risk-tag       | figma_node: 6077:66465 | children: 3 dot levels
   section:brand          | source: brand_file assets
 
   NOT_YET_DOCUMENTED:
-  figma_node: 567:21166 | name: Reward calculator | priority: low (complex multi-variant)
-  figma_node: 2774:229240 | name: Evolution page | priority: medium (nav + charts)
-  figma_node: 636:67327 | name: FAQ | priority: low (accordion pattern)
-  figma_node: 6050:119601 | name: QR | priority: low (modal variant)
-  figma_node: 6077:66465 | name: Points Risk Tag | priority: low (dot variants)
-  figma_node: 642:60244 | name: Referral status | priority: low (applied/error states)
-  figma_node: 508:1339 | name: Tokens (token picker) | priority: medium
   figma_node: 527:5478 | name: Table [old] | priority: skip (superseded by 2732:362472)
   figma_node: 2816:132013 | name: [old] | priority: skip (deprecated)
   FIGMA_MANIFEST_END
