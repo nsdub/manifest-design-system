@@ -2066,11 +2066,40 @@ function toggleGroup(header){
   on node 461:4463 in file 9eWdoJt2D3gt7nz04BlU9b) to identify
   components that have been added, modified, or removed.
 
-  To perform a diff:
-  1. Call get_metadata(fileKey="9eWdoJt2D3gt7nz04BlU9b", nodeId="461:4463")
-  2. Compare the returned frame IDs and names against this manifest
-  3. Any new frames in Figma not in this manifest = new components to add
-  4. Any frames with changed children = components to update
+  HOW TO PERFORM A DIFF (for future AI agents):
+
+  Step 1 — Get current Figma state:
+    Call get_metadata(fileKey="9eWdoJt2D3gt7nz04BlU9b", nodeId="461:4463")
+    This returns all top-level frames on the Design System page.
+
+  Step 2 — Compare frame IDs:
+    For each <frame> in the Figma response, check if its ID appears in
+    the DOCUMENTED sections below. The frame ID is the figma_node value.
+
+    - Frame ID exists in manifest → component is documented (check children count for changes)
+    - Frame ID is NEW (not in manifest) → NEW component needs to be added to website
+    - Frame ID is in NOT_YET_DOCUMENTED → known gap, implement if priority warrants
+    - Frame ID in manifest but MISSING from Figma → component was deleted, remove from website
+
+  Step 3 — Check for modifications:
+    For documented frames, compare the children count/names from get_metadata
+    against the "children:" note. If children changed, call get_design_context
+    on that node to see what's different, then update the HTML.
+
+  Step 4 — For new components:
+    Call get_design_context(fileKey, nodeId) and get_screenshot(fileKey, nodeId)
+    to understand the design, then implement the HTML/CSS section.
+
+  Step 5 — After updating:
+    Update this FIGMA_MANIFEST (add new sections, update children counts,
+    move items from NOT_YET_DOCUMENTED to documented). Update last_synced date.
+    Commit and push — GitHub Pages auto-deploys from main branch.
+
+  Step 6 — Icon updates:
+    If icons frame (508:1343) has new/changed children, re-export SVGs via
+    get_design_context, download to assets/icons/, fix SVG attributes
+    (remove preserveAspectRatio="none", replace CSS vars with "black",
+    set width="24" height="24"), and update the icon grid HTML.
 
   FIGMA_MANIFEST_START
   file: 9eWdoJt2D3gt7nz04BlU9b
