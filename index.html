@@ -264,18 +264,18 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .comp-preview { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:var(--sp-7); background:var(--surface); display:flex; align-items:center; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; }
 
 /* Buttons — exact Figma specs */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:var(--tracking-tight); border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
-.btn--big { height:58px; font-size:18px; padding:16px 24px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
+.btn--big { height:58px; font-size:18px; padding:16px 24px; gap:10px; line-height:1.45; }
 .btn--small { padding:8px 14px; font-size:16px; }
 .btn--primary { background:#FF4601; color:#FFFFFF; }
 .btn--primary:hover { background:#CC3801; }
 .btn--primary.btn--disabled { background:#FFC2B3; pointer-events:none; cursor:default; }
 .btn--secondary { background:transparent; border:1px solid #0575F3; color:#0575F3; }
-.btn--secondary:hover { border-color:#0575F3; color:#045CBF; }
+.btn--secondary:hover { border-color:#045CBF; color:#045CBF; }
 .btn--secondary.btn--disabled { border-color:#A7C4EC; color:#A7C4EC; pointer-events:none; cursor:default; }
 .btn--icon-only { padding:11px; border:1px solid #0575F3; border-radius:var(--radius-full); background:transparent; }
-.btn__icon { width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.btn__icon img { width:18px; height:18px; }
+.btn__icon { width:24px; height:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.btn__icon img { width:24px; height:24px; }
 .btn--primary .btn__icon img { filter:brightness(0) invert(1); }
 .btn--secondary .btn__icon img { filter:invert(42%) sepia(93%) saturate(1352%) hue-rotate(196deg) brightness(99%) contrast(101%); }
 .btn--secondary.btn--disabled .btn__icon img { filter:invert(78%) sepia(14%) saturate(646%) hue-rotate(183deg) brightness(96%) contrast(92%); }
@@ -287,8 +287,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Tabs */
 .tab-bar { display:flex; border-bottom:1px solid var(--tab-default-stroke); gap:0; }
-.tab { font-family:var(--font-body); font-size:16px; font-weight:600; padding:10px 20px; border:none; background:none; cursor:pointer; color:var(--tab-default-text); border-bottom:2px solid transparent; transition:all 0.12s; line-height:22px; }
-.tab--active { color:var(--tab-active-text); border-bottom-color:var(--tab-active-stroke); background:var(--tab-active-fill); }
+.tab { font-family:var(--font-body); font-size:16px; font-weight:600; padding:12px 16px; border:none; background:none; cursor:pointer; color:var(--tab-default-text); border-bottom:1px solid transparent; transition:all 0.12s; line-height:22px; }
+.tab--active { color:var(--tab-active-text); border-bottom:2px solid var(--tab-active-stroke); background:var(--tab-active-fill); }
 
 /* Stats — exact Figma specs */
 .stat-card { padding:16px; min-width:200px; width:262px; border:none; border-radius:0; }
@@ -299,10 +299,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .stat-card--small .stat-card__value { font-size:20px; line-height:20px; }
 .stat-card--accent .stat-card__header { color:rgba(255,255,255,0.8); }
 .stat-card--accent .stat-card__value { color:#FFFFFF; }
-.stat-card__header { font-family:var(--font-mono); font-size:12px; color:#858585; margin-bottom:4px; text-transform:uppercase; display:flex; align-items:center; gap:4px; }
-.stat-card__header-icon { width:14px; height:14px; opacity:0.6; }
+.stat-card__header { font-family:var(--font-mono); font-size:12px; color:#858585; margin-bottom:8px; text-transform:uppercase; display:flex; align-items:center; gap:4px; line-height:1.4; }
+.stat-card--small .stat-card__header { margin-bottom:4px; }
+.stat-card__header-icon { width:24px; height:24px; }
 .stat-card__value { font-family:var(--font-mono); font-size:28px; font-weight:400; line-height:28px; color:#000000; }
-.stat-card__sub { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:16px; margin-top:8px; }
+.stat-card__sub { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:16px; margin-top:2px; line-height:1.4; }
 .stat-card__sub--grey { color:#858585; }
 .stat-card__sub--green { color:#009E50; }
 .stat-card__sub--red { color:#FF4601; }
@@ -353,6 +354,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .toast__icon--green { color:var(--green-600); }
 .toast__text { flex:1; min-width:0; font-family:var(--font-body); font-weight:500; line-height:1.2; color:var(--page-text); }
 .toast__title { font-size:20px; }
+.toast--blue .toast__title { color:#0575F3; }
+.toast--red .toast__title { color:#FF4601; }
+.toast--green .toast__title { color:#009E50; }
 .toast__desc { font-size:16px; margin-top:4px; }
 .toast__close { position:absolute; top:7px; right:7px; width:24px; height:24px; display:flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; color:var(--page-text-secondary); font-size:16px; }
 .toast__close:hover { color:var(--page-text); }
@@ -408,7 +412,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .large-input { width:100%; max-width:523px; height:100px; padding:12px 16px; background:var(--input-bg); border:1px solid transparent; border-radius:0; font-family:var(--font-body); font-size:16px; font-weight:500; line-height:1.2; color:var(--page-text); resize:none; outline:none; transition:border-color 0.12s; display:flex; flex-direction:column; }
 .large-input::placeholder { color:var(--page-text-secondary); }
 .large-input--active { border-color:var(--stroke); }
-.large-input--filled { border-color:var(--stroke); color:var(--page-text); }
+.large-input--filled { border-color:transparent; color:var(--page-text); }
 .large-input-wrap { position:relative; max-width:523px; }
 .large-input-wrap__counter { position:absolute; bottom:12px; right:16px; font-family:var(--font-mono); font-size:12px; font-weight:400; line-height:1.4; color:var(--page-text-secondary); pointer-events:none; text-transform:uppercase; }
 
@@ -444,7 +448,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .progress-bar { display:flex; align-items:center; justify-content:space-between; background:var(--surface-raised); border-radius:var(--radius-full); height:36px; position:relative; }
 .progress-bar__fill { position:absolute; left:0; top:0; bottom:0; background:var(--blue-600); border-radius:var(--radius-full); transition:width 0.3s; }
 .progress-mark { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; position:relative; z-index:1; flex-shrink:0; box-sizing:border-box; }
-.progress-mark--on { background:var(--surface); border:2px solid var(--blue-600); }
+.progress-mark--on { background:var(--surface); border:1px solid var(--blue-600); }
 .progress-mark--off { background:var(--surface-raised); }
 .progress-mark__icon { font-size:14px; }
 .progress-labels { display:flex; justify-content:space-between; margin-top:8px; }
@@ -455,21 +459,26 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 /* Infobox */
 .infobox { display:flex; gap:8px; align-items:flex-start; padding:12px; background:rgba(5,117,243,0.1); border:1px solid #a7c4ec; }
 [data-theme="dark"] .infobox { background:rgba(65,160,247,0.08); border-color:rgba(65,160,247,0.3); }
-.infobox__icon { flex-shrink:0; width:24px; height:20px; display:flex; align-items:center; color:var(--blue-600); font-size:18px; }
-.infobox__text { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.4; color:var(--page-text); flex:1; }
+.infobox__icon { flex-shrink:0; width:24px; height:24px; display:flex; align-items:center; color:var(--blue-600); }
+.infobox__icon img { width:24px; height:24px; }
+.infobox__text { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:var(--page-text); flex:1; }
 
 /* Banners */
 .banner-demo { background:var(--surface-raised); min-width:200px; display:flex; align-items:center; overflow:hidden; }
 .banner-demo__content { flex:1; padding:24px; display:flex; flex-direction:column; gap:16px; }
-.banner-demo__title { font-family:var(--font-display); font-size:24px; font-weight:500; line-height:1.2; }
-.banner-demo__desc { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.4; color:var(--page-text-secondary); }
+.banner-demo__title { font-family:var(--font-display); font-size:24px; font-weight:600; line-height:1.2; }
+.banner-demo__desc { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:var(--page-text-secondary); }
 .banner-demo__image { width:200px; height:100%; background:var(--surface-overlay); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); min-height:120px; text-transform:uppercase; }
 
 /* Menu */
 .menu-demo { border:1px solid var(--stroke); box-shadow:0 8px 16px 4px rgba(16,24,40,0.06); width:416px; max-width:100%; background:var(--surface); }
 .menu-demo__item { display:flex; align-items:center; gap:8px; padding:16px; height:60px; font-family:var(--font-body); font-size:20px; font-weight:500; line-height:1.2; color:var(--page-text); transition:background 0.12s; cursor:pointer; }
-.menu-demo__item:hover { background:var(--surface-raised); }
-.menu-demo__item-icon { width:24px; height:24px; flex-shrink:0; display:flex; align-items:center; justify-content:center; opacity:0.4; font-size:18px; }
+.menu-demo__item:hover { background:var(--surface-raised); gap:16px; }
+.menu-demo__item-icon { width:24px; height:24px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.menu-demo__item-icon img { width:24px; height:24px; }
+.menu-demo__item-label { flex:1; }
+.menu-demo__item-icon-right { width:24px; height:24px; flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-left:auto; }
+.menu-demo__item-icon-right img { width:24px; height:24px; }
 
 /* Referral */
 .referral-demo { display:flex; gap:16px; align-items:center; }
@@ -584,7 +593,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .cooldown-card { background:#FFFFFF; padding:16px; width:500px; max-width:100%; display:flex; flex-direction:column; gap:12px; }
 [data-theme="dark"] .cooldown-card { background:var(--surface); }
 .cooldown-card__top-row { display:flex; justify-content:space-between; align-items:center; }
-.cooldown-card__amount { font-family:var(--font-mono); font-size:20px; color:#000000; }
+.cooldown-card__amount { font-family:var(--font-mono); font-size:20px; line-height:1.2; color:#000000; }
 [data-theme="dark"] .cooldown-card__amount { color:var(--page-text); }
 .cooldown-card__progress-info { display:flex; align-items:center; gap:8px; }
 .cooldown-card__percent { font-family:var(--font-body); font-size:14px; font-weight:500; color:#000000; }
@@ -595,7 +604,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .cooldown-card__progress-marker { width:8px; height:8px; border-radius:50%; background:#FFFFFF; border:1px solid #0575F3; position:absolute; top:0; }
 .cooldown-card__dates { display:flex; justify-content:space-between; align-items:center; }
 .cooldown-card__date { display:flex; align-items:center; gap:4px; font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
-.cooldown-card__date img { width:14px; height:14px; opacity:0.5; }
+.cooldown-card__date img { width:24px; height:24px; }
 .cooldown-card--claimable { flex-direction:row; gap:12px; align-items:center; }
 .cooldown-card--claimable .cooldown-card__left { flex:1; display:flex; flex-direction:column; gap:4px; }
 .cooldown-card--claimable .cooldown-card__completed { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
@@ -675,11 +684,12 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 /* ============================
    QR MODAL
    ============================ */
-.qr-modal { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:32px; max-width:456px; background:var(--surface); box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+.qr-modal { padding:20px; width:456px; max-width:100%; background:#F5F5F5; }
+[data-theme="dark"] .qr-modal { background:var(--surface-raised); }
 .qr-modal__header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
-.qr-modal__title { font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--page-text); }
+.qr-modal__title { font-family:var(--font-display); font-size:24px; font-weight:600; color:var(--page-text); }
 .qr-modal__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; padding:4px; }
-.qr-modal__desc { font-family:var(--font-body); font-size:14px; color:var(--page-text-secondary); margin-bottom:24px; }
+.qr-modal__desc { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text-secondary); margin-bottom:16px; line-height:1.4; }
 .qr-modal__frame { background:var(--surface-raised); border-radius:var(--radius-lg); padding:32px; display:flex; align-items:center; justify-content:center; position:relative; }
 .qr-modal__corners { position:absolute; inset:16px; pointer-events:none; }
 .qr-modal__corners::before,
@@ -1144,15 +1154,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Secondary Big</p>
     <div class="comp-preview">
       <div class="comp-card">
-        <button class="btn btn--secondary btn--big">Label</button>
+        <button class="btn btn--secondary btn--big"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card">
-        <button class="btn btn--secondary btn--big" style="border-color:#0575F3;color:#045CBF">Label</button>
+        <button class="btn btn--secondary btn--big" style="border-color:#045CBF;color:#045CBF"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
         <span class="state-label">Hover</span>
       </div>
       <div class="comp-card">
-        <button class="btn btn--secondary btn--big btn--disabled">Label</button>
+        <button class="btn btn--secondary btn--big btn--disabled"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
         <span class="state-label">Disabled</span>
       </div>
     </div>
@@ -1245,10 +1255,10 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <div class="comp-group">
     <p class="color-group__label">Segmented Tabs</p>
     <div class="comp-preview">
-      <div style="display:flex;background:var(--surface);border:1px solid var(--stroke);border-radius:var(--radius-md);overflow:hidden">
-        <button style="padding:8px 16px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:var(--surface-raised);color:var(--page-text);cursor:pointer;line-height:1.2">7D</button>
-        <button style="padding:8px 16px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:none;color:var(--page-text-secondary);cursor:pointer;line-height:1.2">30D</button>
-        <button style="padding:8px 16px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:none;color:var(--page-text-secondary);cursor:pointer;line-height:1.2">ALL</button>
+      <div style="display:flex;background:var(--surface);border:1px solid var(--stroke);border-radius:100px;overflow:clip;height:40px;padding:4px;align-items:center">
+        <button style="padding:6px 20px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:var(--surface-raised);color:var(--page-text);cursor:pointer;line-height:1.2;border-radius:100px">7D</button>
+        <button style="padding:6px 20px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:none;color:var(--page-text-secondary);cursor:pointer;line-height:1.2;border-radius:100px">30D</button>
+        <button style="padding:6px 20px;font-family:var(--font-body);font-size:14px;font-weight:500;border:none;background:none;color:var(--page-text-secondary);cursor:pointer;line-height:1.2;border-radius:100px">ALL</button>
       </div>
     </div>
   </div>
@@ -1308,7 +1318,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <div class="stat-card stat-card--secondary stat-card--small">
           <div class="stat-card__header">Points <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
           <div class="stat-card__value">12,450</div>
-          <div class="stat-card__sub stat-card__sub--grey"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon" style="opacity:0.5"> +340</div>
+          <div class="stat-card__sub stat-card__sub--grey"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +340</div>
         </div>
         <span class="state-label">Secondary Small</span>
       </div>
@@ -1320,7 +1330,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--accent">
-          <div class="stat-card__header">Protocol Revenue <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1);opacity:0.8"></div>
+          <div class="stat-card__header">Protocol Revenue <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
           <div class="stat-card__value">$1,209</div>
         </div>
         <span class="state-label">Accent Default</span>
@@ -1333,7 +1343,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--accent stat-card--small">
-          <div class="stat-card__header">Rank <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1);opacity:0.8"></div>
+          <div class="stat-card__header">Rank <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
           <div class="stat-card__value">#42</div>
         </div>
         <span class="state-label">Accent Small</span>
@@ -1345,7 +1355,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Sub Row Colors</p>
     <div class="comp-preview" style="gap:24px">
       <div class="comp-card">
-        <div class="stat-card__sub stat-card__sub--grey" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon" style="opacity:0.5"> +340</div>
+        <div class="stat-card__sub stat-card__sub--grey" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +340</div>
         <span class="state-label">Grey (#858585)</span>
       </div>
       <div class="comp-card">
@@ -1573,7 +1583,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <span class="state-label">Default</span>
     </div>
     <div class="comp-card">
-      <div class="toast">
+      <div class="toast toast--blue">
         <div class="toast__content">
           <div class="toast__icon toast__icon--blue"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
@@ -1584,7 +1594,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <span class="state-label">Blue</span>
     </div>
     <div class="comp-card">
-      <div class="toast">
+      <div class="toast toast--red">
         <div class="toast__content">
           <div class="toast__icon toast__icon--red"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
@@ -1595,7 +1605,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <span class="state-label">Red</span>
     </div>
     <div class="comp-card">
-      <div class="toast">
+      <div class="toast toast--green">
         <div class="toast__content">
           <div class="toast__icon toast__icon--green"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
@@ -1850,6 +1860,23 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
     </div>
   </div>
+
+  <div class="comp-group">
+    <p class="color-group__label">Step 4 — All Complete</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
+      <div class="progress-labels">
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
+      </div>
+      <div class="progress-bar" style="margin-top:12px">
+        <div class="progress-bar__fill" style="width:100%"></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ======== INFOBOX ======== -->
@@ -1861,15 +1888,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:600px;gap:16px">
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:20px;height:20px"></div>
+          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
           <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
         </div>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:20px;height:20px"></div>
-          <div class="infobox__text" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">Your referral code is active <span class="tag tag--blue-outline" style="font-size:11px;padding:2px 6px">In progress</span></div>
+          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="infobox__text" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">Your referral code is active <span class="tag tag--blue-outline" style="font-size:12px;padding:4px 8px">In progress</span></div>
         </div>
         <span class="state-label">With Tag</span>
       </div>
@@ -1892,7 +1919,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Points unlock Token Allocation</div>
             <div class="banner-demo__desc" style="margin-top:4px">Our points determine your maximum purchase limit in the upcoming ICO. This is an allocation access, not a free airdrop.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;filter:invert(1)"></button>
         </div>
         <div class="banner-demo__image">Image area</div>
       </div>
@@ -1908,7 +1935,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Protocol Evolution</div>
             <div class="banner-demo__desc" style="margin-top:4px">Bootstrapping from USDe-backed yield to liquid U.S. real estate.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;filter:invert(1)"></button>
         </div>
         <div style="display:flex;align-items:center;gap:16px;padding:0 40px 0 0;flex-shrink:0">
           <div style="text-align:center">
@@ -1938,7 +1965,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__desc" style="margin-top:4px">$USH becomes a composable claim on American residential real estate—tradable 24/7, usable as DeFi collateral, accessible globally.</div>
           </div>
           <div class="infobox" style="margin-top:4px">
-            <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:20px;height:20px"></div>
+            <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
             <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
           </div>
         </div>
@@ -1958,20 +1985,20 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:32px;align-items:flex-start">
       <div class="comp-card">
         <div class="menu-demo">
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt="" style="width:20px;height:20px"></span>Dashboard</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/pokeball.svg" alt="" style="width:20px;height:20px"></span>Stake</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-down-up.svg" alt="" style="width:20px;height:20px"></span>Swap</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/iconoir-coin.svg" alt="" style="width:20px;height:20px"></span>Mint</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/trophy.svg" alt="" style="width:20px;height:20px"></span>Points</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/leaderboard.svg" alt="" style="width:20px;height:20px"></span>Leaderboard</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-up-right.svg" alt="" style="width:20px;height:20px"></span>Docs</div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/settings.svg" alt="" style="width:20px;height:20px"></span>Settings</div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt=""></span><span class="menu-demo__item-label">Dashboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/pokeball.svg" alt=""></span><span class="menu-demo__item-label">Stake</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span><span class="menu-demo__item-label">Swap</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span><span class="menu-demo__item-label">Mint</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/trophy.svg" alt=""></span><span class="menu-demo__item-label">Points</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/leaderboard.svg" alt=""></span><span class="menu-demo__item-label">Leaderboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span><span class="menu-demo__item-label">Docs</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/settings.svg" alt=""></span><span class="menu-demo__item-label">Settings</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
         </div>
         <span class="state-label">Default (8 items)</span>
       </div>
       <div class="comp-card">
         <div class="menu-demo" style="width:384px">
-          <div class="menu-demo__item" style="background:var(--surface-raised);gap:16px"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt="" style="width:20px;height:20px"></span>Dashboard</div>
+          <div class="menu-demo__item" style="background:var(--surface-raised)"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt=""></span><span class="menu-demo__item-label">Dashboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
         </div>
         <span class="state-label">Hover State</span>
       </div>
@@ -2278,8 +2305,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="comp-card" style="width:100%">
         <div class="cooldown-card cooldown-card--claimable cooldown-card--claimed">
           <div class="cooldown-card__left">
-            <span class="cooldown-card__amount">2,438.24 USH</span>
-            <span class="cooldown-card__completed">Completed: 07/22/2025</span>
+            <span class="cooldown-card__amount">1,958.03 USH</span>
+            <span class="cooldown-card__completed">Claimed: 01/23/2025</span>
           </div>
           <button class="btn btn--primary btn--small cooldown-card__claim-btn" style="background:#FFC2B3;pointer-events:none">Claimed</button>
         </div>
@@ -2293,53 +2320,81 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="slippage">
   <p class="section__eyebrow">Patterns</p>
   <h2 class="section__title">Slippage Popover</h2>
-  <p class="section__desc">Slippage tolerance selector with preset buttons and custom input field. Four states: Default, Input Active, Input Out of Bounds, and Input Hover.</p>
+  <p class="section__desc">Inline slippage tolerance control with "Max slippage" label and pill-shaped input. Four states: Default, Active, Out of Bounds, and Hover. Background uses box-fill-secondary (white), border-radius 99px pill for the value input.</p>
   <div class="comp-group">
-    <div class="comp-preview" style="gap:24px;flex-wrap:wrap">
-      <div class="comp-card">
-        <div style="display:inline-flex;gap:4px;padding:8px 12px;border:1px solid var(--stroke);border-radius:var(--radius-md);background:var(--surface);align-items:center">
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:var(--surface-raised);font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text);text-transform:uppercase">0.1%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--blue-600);background:var(--blue-600);font-family:var(--font-mono);font-size:12px;cursor:pointer;color:white;text-transform:uppercase">0.5%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:var(--surface-raised);font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text);text-transform:uppercase">1.0%</button>
-          <input style="width:48px;padding:4px 8px;border:1px solid var(--stroke);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;text-align:center;background:var(--surface);color:var(--page-text-secondary)" value="Custom" readonly>
+    <div class="comp-preview" style="gap:24px;flex-wrap:wrap;flex-direction:column;align-items:flex-start">
+      <div class="comp-card" style="width:100%">
+        <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
+          <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
         </div>
         <span class="state-label">Default</span>
       </div>
-      <div class="comp-card">
-        <div style="display:inline-flex;gap:4px;padding:8px 12px;border:1px solid var(--stroke);border-radius:var(--radius-md);background:var(--surface);align-items:center">
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">0.1%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">0.5%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">1.0%</button>
-          <input style="width:48px;padding:4px 8px;border:2px solid var(--blue-600);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;text-align:center;background:var(--surface);color:var(--page-text)" value="2.5%" readonly>
+      <div class="comp-card" style="width:100%">
+        <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
+          <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #0575F3;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">1.1%</span>
         </div>
-        <span class="state-label">Input Active</span>
+        <span class="state-label">Active</span>
       </div>
-      <div class="comp-card">
-        <div style="display:inline-flex;gap:4px;padding:8px 12px;border:1px solid var(--stroke);border-radius:var(--radius-md);background:var(--surface);align-items:center">
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">0.1%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">0.5%</button>
-          <button style="padding:4px 10px;border-radius:var(--radius-sm);border:1px solid var(--stroke);background:transparent;font-family:var(--font-mono);font-size:12px;cursor:pointer;color:var(--page-text-secondary);text-transform:uppercase">1.0%</button>
-          <input style="width:48px;padding:4px 8px;border:2px solid var(--orange-600);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;text-align:center;background:var(--surface);color:var(--orange-600)" value="50%" readonly>
+      <div class="comp-card" style="width:100%">
+        <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
+          <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #FF4601;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.00%</span>
         </div>
         <span class="state-label">Out of Bounds</span>
+      </div>
+      <div class="comp-card" style="width:100%">
+        <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #000000;border-radius:var(--radius-md);width:300px;max-width:100%">
+          <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
+        </div>
+        <span class="state-label">Hover</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======== MODALS ======== -->
+<!-- ======== CONNECT WALLET ======== -->
 <section class="section" id="modals">
   <p class="section__eyebrow">Components</p>
-  <h2 class="section__title">Modals</h2>
-  <p class="section__desc">Overlay dialogs for wallet connection, token selection, and confirmations.</p>
-  <div class="comp-preview">
-    <div class="modal-demo">
-      <div class="modal-demo__title">Connect Wallet</div>
-      <div class="modal-demo__list">
-        <div class="modal-demo__item"><div class="modal-demo__item-icon"></div><span class="modal-demo__item-name">MetaMask</span></div>
-        <div class="modal-demo__item"><div class="modal-demo__item-icon"></div><span class="modal-demo__item-name">WalletConnect</span></div>
-        <div class="modal-demo__item"><div class="modal-demo__item-icon"></div><span class="modal-demo__item-name">Coinbase Wallet</span></div>
-        <div class="modal-demo__item"><div class="modal-demo__item-icon"></div><span class="modal-demo__item-name">Phantom</span></div>
+  <h2 class="section__title">Connect Wallet</h2>
+  <p class="section__desc">Wallet selection list with 8 providers. Each row: 60px height, 16px padding, wallet icon (32x32) + name (Season Sans Medium 20px) + optional status tag. Container is 416px wide with border #E0E0E0, box-shadow, and border-bottom dividers between items.</p>
+  <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
+    <div style="width:416px;max-width:100%;border:1px solid #E0E0E0;background:var(--surface)">
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/phantom.svg" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Phantom</span>
+        <span class="tag tag--red" style="margin-left:auto">Best offer</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/walletconnect.svg" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">WalletConnect</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/metamask.svg" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">MetaMask</span>
+        <span class="tag tag--red" style="margin-left:auto">Best offer</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/coinbase.svg" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Coinbase Wallet</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/zerion.svg" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Zerion</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/bitkeep.png" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">BitKeep</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/kaikas.png" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Kaikas</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
+        <img src="assets/tokens/core.png" alt="" style="width:32px;height:32px;border-radius:50%">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Core</span>
       </div>
     </div>
   </div>
