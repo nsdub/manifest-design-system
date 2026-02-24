@@ -264,9 +264,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .comp-preview { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:var(--sp-7); background:var(--surface); display:flex; align-items:center; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; }
 
 /* Buttons — exact Figma specs */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:14px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
-.btn--big { height:58px; font-size:16px; padding:16px 24px; gap:10px; line-height:1.45; }
-.btn--small { padding:8px 14px; font-size:14px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
+.btn--big { height:58px; font-size:18px; padding:16px 24px; gap:10px; line-height:1.45; }
+.btn--small { padding:8px 14px; font-size:16px; }
 .btn--primary { background:#FF4601; color:#FFFFFF; }
 .btn--primary:hover { background:#CC3801; }
 .btn--primary.btn--disabled { background:#FFC2B3; pointer-events:none; cursor:default; }
@@ -634,52 +634,66 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
    EVOLUTION PAGE
    ============================ */
 .evo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:var(--sp-6); }
-.evo-nav { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
-.evo-nav__title { font-family:var(--font-display); font-size:18px; font-weight:600; margin-bottom:4px; color:var(--page-text); }
-.evo-nav__subtitle { font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); margin-bottom:16px; }
-.evo-phase { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:var(--radius-md); margin-bottom:4px; transition:background 0.12s; cursor:pointer; }
+.evo-nav { border:1px solid var(--stroke); width:350px; max-width:100%; }
+.evo-nav__header { display:flex; justify-content:space-between; align-items:flex-end; padding:16px; border-bottom:1px solid var(--stroke); }
+.evo-nav__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.2; color:var(--page-text); }
+.evo-nav__subtitle { font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
+.evo-phase { display:flex; align-items:center; gap:12px; padding:12px 16px; height:64px; transition:background 0.12s; cursor:pointer; }
 .evo-phase:hover { background:var(--surface-overlay); }
-.evo-phase--active { background:var(--accent); color:#fff; border-radius:var(--radius-md); }
+.evo-phase--active { background:var(--accent); color:#fff; }
 .evo-phase--active .evo-phase__label,
 .evo-phase--active .evo-phase__detail { color:#fff; }
-.evo-phase__icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
-.evo-phase__icon--complete { background:var(--green-400); color:#fff; }
-.evo-phase__icon--current { background:var(--accent); color:#fff; }
-.evo-phase__icon--future { background:var(--surface-raised); color:var(--page-text-secondary); border:1px solid var(--stroke); }
-.evo-phase__info { display:flex; flex-direction:column; }
-.evo-phase__label { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--page-text); }
-.evo-phase__detail { font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
-.evo-cap-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
-.evo-cap-card__row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.evo-cap-card__label { font-family:var(--font-body); font-size:13px; color:var(--page-text-secondary); }
-.evo-cap-card__value { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
-.evo-cap-bar { width:100%; height:8px; background:var(--stroke); border-radius:4px; overflow:hidden; margin-bottom:8px; }
-.evo-cap-bar__fill { height:100%; border-radius:4px; transition:width 0.3s; }
+.evo-phase--active .evo-phase__detail { color:rgba(255,255,255,0.8); }
+.evo-phase__icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:16px; font-weight:400; line-height:1.4; flex-shrink:0; }
+.evo-phase__icon--complete { background:var(--surface); border:1px solid var(--green-600); color:var(--green-600); }
+.evo-phase__icon--complete img { width:24px; height:24px; }
+.evo-phase__icon--current { background:rgba(5,117,243,0.1); color:var(--accent); }
+.evo-phase__icon--future { background:var(--surface-raised); color:var(--page-text-secondary); }
+.evo-phase--active .evo-phase__icon { background:#fff; color:var(--accent); border:none; }
+.evo-phase__info { display:flex; flex-direction:column; gap:4px; }
+.evo-phase__label { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); }
+.evo-phase__detail { font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
+.evo-cap-card { background:var(--surface-raised); padding:16px; display:flex; flex-direction:column; gap:12px; }
+.evo-deposit-cap { background:none; border:1px solid var(--stroke); padding:16px; display:flex; flex-direction:column; gap:12px; }
+.evo-cap-card__row { display:flex; justify-content:space-between; align-items:center; }
+.evo-cap-card__label { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); display:flex; align-items:center; gap:8px; }
+.evo-cap-card__dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.evo-cap-card__dot--blue { background:var(--accent); }
+.evo-cap-card__dot--red { background:var(--accent-secondary); }
+.evo-cap-card__dot--green { background:var(--green-600); }
+.evo-cap-card__value { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); display:flex; align-items:center; gap:4px; }
+.evo-cap-card__value-secondary { color:var(--page-text-secondary); }
+.evo-cap-bar { width:100%; height:8px; background:var(--stroke); border-radius:100px; position:relative; }
+.evo-cap-bar__fill { height:100%; border-radius:100px; transition:width 0.3s; position:relative; }
+.evo-cap-bar__fill::after { content:''; position:absolute; right:0; top:0; width:8px; height:8px; border-radius:100px; background:var(--surface); border:1px solid; transform:translateX(50%); box-sizing:border-box; }
 .evo-cap-bar__fill--blue { background:var(--accent); }
-.evo-cap-bar__fill--green { background:var(--green-400); }
+.evo-cap-bar__fill--blue::after { border-color:var(--accent); }
+.evo-cap-bar__fill--green { background:var(--green-600); }
+.evo-cap-bar__fill--green::after { border-color:var(--green-600); }
 .evo-cap-bar__fill--orange { background:var(--accent-secondary); }
-.evo-cap-sub { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
+.evo-cap-bar__fill--orange::after { border-color:var(--accent-secondary); }
+.evo-cap-sub { display:flex; justify-content:space-between; font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
 .evo-chart-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); display:flex; flex-direction:column; align-items:center; }
 .evo-legend { display:flex; gap:16px; margin-top:12px; flex-wrap:wrap; justify-content:center; }
-.evo-legend__item { display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
-.evo-legend__dot { width:8px; height:8px; border-radius:2px; }
+.evo-legend__item { display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.4; color:var(--page-text); }
+.evo-legend__dot { width:12px; height:12px; }
 
 /* ============================
    FAQ
    ============================ */
-.faq-panel { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:24px; max-width:480px; }
-.faq-panel__title { font-family:var(--font-display); font-size:22px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
-.faq-panel__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; }
-.faq-item { border-bottom:1px solid var(--stroke-subtle); }
-.faq-item:last-child { border-bottom:none; }
-.faq-item__question { display:flex; justify-content:space-between; align-items:center; padding:14px 0; cursor:pointer; font-family:var(--font-body); font-size:15px; font-weight:600; color:var(--page-text); user-select:none; }
-.faq-item__arrow { font-size:14px; color:var(--page-text-secondary); transition:transform 0.2s; flex-shrink:0; }
-.faq-item--open .faq-item__arrow { transform:rotate(180deg); }
-.faq-item__answer { font-family:var(--font-body); font-size:14px; line-height:1.6; color:var(--page-text-secondary); padding:0 0 14px; display:none; }
+.faq-panel { background:var(--surface); border:1px solid var(--stroke); padding:24px; width:416px; max-width:100%; display:flex; flex-direction:column; gap:20px; box-shadow:0px 8px 16px 4px rgba(16,24,40,0.06); }
+.faq-panel__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.2; display:flex; justify-content:space-between; align-items:flex-start; gap:8px; color:var(--page-text); }
+.faq-panel__close { color:var(--page-text); cursor:pointer; background:none; border:none; padding:0; display:flex; }
+.faq-panel__close img { width:24px; height:24px; }
+.faq-panel__items { display:flex; flex-direction:column; gap:24px; }
+.faq-item__question { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; cursor:pointer; font-family:var(--font-body); font-size:20px; font-weight:550; line-height:1.2; color:var(--page-text); user-select:none; }
+.faq-item__question img { width:24px; height:24px; flex-shrink:0; }
+.faq-item__answer { font-family:var(--font-body); font-size:16px; line-height:1.2; font-weight:550; color:var(--page-text-secondary); padding:8px 0 0; display:none; }
 .faq-item--open .faq-item__answer { display:block; }
-.faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff; border:none; cursor:pointer; font-size:20px; transition:transform 0.12s,box-shadow 0.12s; }
+.faq-item--open .faq-item__question { gap:8px; }
+.faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:#0575F3; color:#fff; border:none; cursor:pointer; transition:transform 0.12s,box-shadow 0.12s; }
 .faq-trigger:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(5,117,243,0.3); }
-.faq-trigger--active { background:var(--accent-secondary); }
+.faq-trigger--active { background:#045CBF; }
 
 /* ============================
    QR MODAL
@@ -765,6 +779,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Checkbox checkmarks — on colored bg, already visible */
 /* Toast close & external icons (tokens SVGs have own colors, no invert needed) */
+
+/* FAQ chevrons and close (system icons, black stroke) */
+[data-theme="dark"] .faq-item__question img { filter:invert(1); }
+[data-theme="dark"] .faq-item__answer { color:var(--page-text-secondary); }
+
+/* Evolution phase check icons (green stays green, no invert needed) */
+/* Evolution phase number text */
+[data-theme="dark"] .evo-phase__icon--current { background:rgba(5,117,243,0.1); }
+[data-theme="dark"] .evo-phase__icon--future { background:var(--surface-raised); }
 
 /* Secondary buttons in dark mode */
 [data-theme="dark"] .btn--secondary { border-color:var(--btn-secondary-stroke); color:var(--btn-secondary-text); }
@@ -2703,45 +2726,47 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Trigger Button</h3>
   <div style="display:flex;gap:16px;margin-bottom:40px">
     <button style="background:#0575F3;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ default">
-      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:20px;height:20px">
+      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
     <button style="background:#045CBF;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ active">
-      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:20px;height:20px">
+      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Item States</h3>
   <div style="max-width:440px;margin-bottom:40px;border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px">
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" >Question 1 <img src="assets/icons/chevron-down.svg" alt=""></div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" >Question 1 <img src="assets/icons/chevron-up.svg" alt=""></div>
       <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Panel</h3>
-  <div style="background:var(--surface);border:1px solid var(--stroke);box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <span style="font-family:var(--font-display);font-size:24px;font-weight:650">Frequently Asked Questions</span>
-      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex"><img src="assets/tokens/faq-close.svg" alt="" style="width:20px;height:20px"></button>
+  <div style="background:var(--surface);border:1px solid var(--stroke);box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+      <span style="font-family:var(--font-display);font-size:24px;font-weight:650;line-height:1.2">Frequently Asked Questions</span>
+      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex;flex-shrink:0"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
     </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question"  onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <img src="assets/icons/chevron-down.svg" alt=""></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question"  onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <img src="assets/icons/chevron-down.svg" alt=""></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question"  onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <img src="assets/icons/chevron-up.svg" alt=""></div>
       <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question"  onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <img src="assets/icons/chevron-down.svg" alt=""></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
     </div>
   </div>
 </section>
@@ -3041,17 +3066,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Phase Navigation</h3>
   <div class="evo-grid" style="margin-bottom:40px">
     <div class="evo-nav">
-      <div class="evo-nav__title">Phase Progression</div>
-      <div class="evo-nav__subtitle">Phase 3 of 5</div>
+      <div class="evo-nav__header"><div class="evo-nav__title">Phase Progression</div><div class="evo-nav__subtitle">Phase 3 of 5</div></div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt=""></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">Bootstrap</span>
           <span class="evo-phase__detail">Up to 20% HEI, Jan–Feb 2026</span>
         </div>
       </div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt=""></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">First Homes</span>
           <span class="evo-phase__detail">Up to 35% HEI, Mar–Apr 2026</span>
@@ -3081,10 +3105,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     </div>
 
     <div class="evo-nav">
-      <div class="evo-nav__title">Navigation Items</div>
-      <div class="evo-nav__subtitle">States</div>
+      <div class="evo-nav__header"><div class="evo-nav__title">Navigation Items</div><div class="evo-nav__subtitle">States</div></div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt=""></div>
         <div class="evo-phase__info"><span class="evo-phase__label">Completed</span></div>
       </div>
       <div class="evo-phase">
@@ -3097,32 +3120,36 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
       <div class="evo-phase evo-phase--active">
         <div class="evo-phase__icon evo-phase__icon--current">4</div>
-        <div class="evo-phase__info"><span class="evo-phase__label">Active (selected)</span></div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Active</span><span class="evo-phase__detail">Label</span></div>
+      </div>
+      <div class="evo-phase evo-phase--active">
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-blue.svg" alt=""></div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Active w/ icon</span><span class="evo-phase__detail">Label</span></div>
       </div>
     </div>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Deposit Cap</h3>
   <div class="evo-grid" style="margin-bottom:40px">
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposit Cap</span>
-        <span class="evo-cap-card__value">$74.1M / $100M</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--blue"></span>Deposit Cap</span>
+        <span class="evo-cap-card__value">$74.1M <span class="evo-cap-card__value-secondary">/ $100M</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:74.1%"></div></div>
       <div class="evo-cap-sub"><span>Depositors: 3,421</span><span>Remaining: $25.9M</span></div>
     </div>
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposit Cap</span>
-        <span class="evo-cap-card__value">$100M / $100M</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--red"></span>Deposit Cap</span>
+        <span class="evo-cap-card__value">$100M <span class="evo-cap-card__value-secondary">/ $100M</span></span>
       </div>
-      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--orange" style="width:100%"></div></div>
       <div class="evo-cap-sub"><span>Depositors: 6,019</span><span>Filled</span></div>
     </div>
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposits Open</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--green"></span>Deposits Open</span>
         <span class="evo-cap-card__value">$249M</span>
       </div>
       <div class="evo-cap-sub"><span>Depositors: 8,212</span><span>Open</span></div>
@@ -3134,7 +3161,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="evo-cap-card">
       <div class="evo-cap-card__row">
         <span class="evo-cap-card__label">Capacity:</span>
-        <span class="evo-cap-card__value">$12.4M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">69%</span></span>
+        <span class="evo-cap-card__value">$12.4M / $18M <span class="evo-cap-card__value-secondary">69%</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:69%"></div></div>
       <div class="evo-cap-sub"><span>Last 7d: $4.2M</span><span>ETA: 3 Weeks</span></div>
@@ -3142,7 +3169,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="evo-cap-card">
       <div class="evo-cap-card__row">
         <span class="evo-cap-card__label">Capacity:</span>
-        <span class="evo-cap-card__value">$18M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">100%</span></span>
+        <span class="evo-cap-card__value">$18M / $18M <span class="evo-cap-card__value-secondary">100%</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
       <div class="evo-cap-sub"><span>Last 7d: $4.2M</span><span>ETA: --</span></div>
@@ -3156,17 +3183,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Semicircle donut: r=130, stroke-width=40, C=816.81, half=408.41 -->
-            <!-- Segments go from left (180°) clockwise to right (0°) -->
-            <!-- USDe (red) 50%: 204.2 of 408.41 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
-              stroke-dasharray="204.2 612.61" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
-            <!-- Available for HEI (light blue) 12%: 49.0 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#A7C4EC" stroke-width="40"
-              stroke-dasharray="49.0 767.81" stroke-dashoffset="-612.61" stroke-linecap="butt"/>
-            <!-- HEI (blue) 38%: 155.2 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
-              stroke-dasharray="155.2 661.61" stroke-dashoffset="-661.61" stroke-linecap="butt"/>
+            <!-- Semicircle donut from LEFT to RIGHT over the top, pathLength=100 for percentage math -->
+            <!-- HEI (blue) 38% - starts from left -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
+              pathLength="100" stroke-dasharray="38 100" stroke-dashoffset="0"/>
+            <!-- Available for HEI (light blue) 12% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#A7C4EC" stroke-width="40"
+              pathLength="100" stroke-dasharray="12 100" stroke-dashoffset="-38"/>
+            <!-- USDe (red) 50% - reaches right -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
+              pathLength="100" stroke-dasharray="50 100" stroke-dashoffset="-50"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Room to grow:</div>
@@ -3185,12 +3211,12 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- USDe (red) 53%: 216.5 of 408.41 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
-              stroke-dasharray="216.5 600.31" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
-            <!-- HEI (blue) 47%: 191.9 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
-              stroke-dasharray="191.9 624.91" stroke-dashoffset="-624.91" stroke-linecap="butt"/>
+            <!-- HEI (blue) 47% - starts from left -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
+              pathLength="100" stroke-dasharray="47 100" stroke-dashoffset="0"/>
+            <!-- USDe (red) 53% - reaches right -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
+              pathLength="100" stroke-dasharray="53 100" stroke-dashoffset="-47"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Composition</div>
