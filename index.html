@@ -264,9 +264,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .comp-preview { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:var(--sp-7); background:var(--surface); display:flex; align-items:center; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; }
 
 /* Buttons — exact Figma specs */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
-.btn--big { height:58px; font-size:18px; padding:16px 24px; gap:10px; line-height:1.45; }
-.btn--small { padding:8px 14px; font-size:16px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:14px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
+.btn--big { height:58px; font-size:16px; padding:16px 24px; gap:10px; line-height:1.45; }
+.btn--small { padding:8px 14px; font-size:14px; }
 .btn--primary { background:#FF4601; color:#FFFFFF; }
 .btn--primary:hover { background:#CC3801; }
 .btn--primary.btn--disabled { background:#FFC2B3; pointer-events:none; cursor:default; }
@@ -301,7 +301,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .stat-card--accent .stat-card__value { color:#FFFFFF; }
 .stat-card__header { font-family:var(--font-mono); font-size:12px; color:#858585; margin-bottom:8px; text-transform:uppercase; display:flex; align-items:center; gap:4px; line-height:1.4; }
 .stat-card--small .stat-card__header { margin-bottom:4px; }
-.stat-card__header-icon { width:24px; height:24px; }
+.stat-card__header-icon { width:16px; height:16px; }
 .stat-card__value { font-family:var(--font-mono); font-size:28px; font-weight:400; line-height:28px; color:#000000; }
 .stat-card__sub { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:16px; margin-top:2px; line-height:1.4; }
 .stat-card__sub--grey { color:#858585; }
@@ -725,6 +725,52 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .risk-tag__dot--empty { background:transparent; border:1px solid var(--accent); }
 
 /* ============================
+   DARK MODE — Icon & Asset Overrides
+   ============================ */
+/* Topnav logo: swap color→white in dark mode */
+.topnav__logo--dark { display:none; }
+[data-theme="dark"] .topnav__logo--light { display:none; }
+[data-theme="dark"] .topnav__logo--dark { display:block; }
+
+/* Theme toggle icon */
+[data-theme="dark"] .theme-toggle__icon img { filter:invert(1); }
+
+/* Menu panel icons */
+[data-theme="dark"] .menu-demo__item-icon img,
+[data-theme="dark"] .menu-demo__item-icon-right img { filter:invert(1); }
+
+/* Stat card icons */
+[data-theme="dark"] .stat-card__header-icon { filter:invert(1); }
+[data-theme="dark"] .stat-card--accent .stat-card__header-icon { filter:brightness(0) invert(1); }
+[data-theme="dark"] .stat-card__sub-icon { filter:invert(1); }
+
+/* Dropdown chevrons */
+[data-theme="dark"] .dropdown__arrow img { filter:invert(1); }
+
+/* Paginator arrows */
+[data-theme="dark"] .paginator__btn img { filter:invert(1); }
+
+/* Icon grid display */
+[data-theme="dark"] .icon-cell__glyph img { filter:invert(1); }
+
+/* QR modal close */
+[data-theme="dark"] .qr-modal__close img { filter:invert(1); }
+
+/* Header demo logo */
+[data-theme="dark"] .header-demo__logo { filter:invert(1); }
+
+/* Banner arrow icons inside buttons (on primary bg, already white via btn rule) */
+/* Tab dropdown arrows */
+[data-theme="dark"] .tabs-demo .dropdown__arrow img { filter:invert(1); }
+
+/* Checkbox checkmarks — on colored bg, already visible */
+/* Toast close & external icons (tokens SVGs have own colors, no invert needed) */
+
+/* Secondary buttons in dark mode */
+[data-theme="dark"] .btn--secondary { border-color:var(--btn-secondary-stroke); color:var(--btn-secondary-text); }
+[data-theme="dark"] .btn--secondary .btn__icon img { filter:invert(48%) sepia(98%) saturate(1000%) hue-rotate(196deg) brightness(104%) contrast(96%); }
+
+/* ============================
    RESPONSIVE
    ============================ */
 @media(max-width:900px) {
@@ -747,7 +793,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <!-- Top Navigation Bar -->
 <nav class="topnav">
   <a href="#" class="topnav__logo">
-    <img src="assets/logo-color.svg" alt="Manifest" style="height:24px">
+    <img src="assets/logo-color.svg" alt="Manifest" style="height:24px" class="topnav__logo--light">
+    <img src="assets/logo-color-dark.svg" alt="Manifest" style="height:24px" class="topnav__logo--dark">
   </a>
   <div class="topnav__search">
     <span class="topnav__search-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="2"/><path d="M11 11L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></span>
@@ -831,6 +878,67 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 </aside>
 
 <main class="main">
+
+<!-- ======== BRAND ======== -->
+<section class="section" id="brand">
+  <p class="section__eyebrow">Brand</p>
+  <h2 class="section__title">Logo &amp; Assets</h2>
+  <p class="section__desc">The Manifest logo: icon mark + wordmark. Available in color (gradient), black, and white. Right-click or use the download button to save.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:22px;margin-bottom:16px">Full Logo (Icon + Wordmark)</h3>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--light"><img src="assets/logo-color.svg" alt="Logo color"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Logo Color</span><br><span class="logo-card__file">logo-color.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-color.svg','logo-color.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--light"><img src="assets/logo-black.svg" alt="Logo black"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Logo Black</span><br><span class="logo-card__file">logo-black.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-black.svg','logo-black.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/logo-white.svg" alt="Logo white"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Logo White</span><br><span class="logo-card__file">logo-white.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-white.svg','logo-white.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/logo-color-dark.svg" alt="Logo color on dark"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Logo Color on Dark</span><br><span class="logo-card__file">logo-color-dark.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-color-dark.svg','logo-color-dark.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:22px;margin-top:40px;margin-bottom:16px">Icon Mark Only</h3>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-color.svg" alt="Icon gradient" style="max-height:48px"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Icon Gradient</span><br><span class="logo-card__file">icon-color.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color.svg','icon-color.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-color-flat.svg" alt="Icon flat" style="max-height:48px"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Icon Flat Color</span><br><span class="logo-card__file">icon-color-flat.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color-flat.svg','icon-color-flat.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-black.svg" alt="Icon black" style="max-height:48px"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Icon Black</span><br><span class="logo-card__file">icon-black.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-black.svg','icon-black.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/icon-white.svg" alt="Icon white" style="max-height:48px"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Icon White</span><br><span class="logo-card__file">icon-white.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-white.svg','icon-white.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/icon-color-flat.svg" alt="Icon on dark" style="max-height:48px"></div>
+      <div class="logo-card__info"><div><span class="logo-card__name">Icon Color on Dark</span><br><span class="logo-card__file">icon-color-flat.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color-flat.svg','icon-color-flat.svg');return false" class="logo-card__download">Download</a></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:22px;margin-top:48px;margin-bottom:12px">Border Radius</h3>
+  <div class="comp-preview" style="gap:32px">
+    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-sm)"></div><span class="state-label">4px sm</span></div>
+    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-md)"></div><span class="state-label">6px md</span></div>
+    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-lg)"></div><span class="state-label">12px lg</span></div>
+    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-xl)"></div><span class="state-label">20px xl</span></div>
+    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-full)"></div><span class="state-label">Full</span></div>
+  </div>
+</section>
+
 
 <!-- ======== COLORS ======== -->
 <section class="section" id="colors">
@@ -1082,7 +1190,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   </div>
   <p class="color-group__label" style="margin-bottom:8px">GT America Mono</p>
   <div class="weight-grid">
-    <div class="weight-card"><div class="weight-card__sample" style="font-family:var(--font-mono);font-weight:400">Manifest</div><div class="weight-card__label">Regular 400</div></div>
+    <div class="weight-card"><div class="weight-card__sample" style="font-family:var(--font-mono);font-weight:400;text-transform:uppercase">Manifest</div><div class="weight-card__label">Regular 400</div></div>
   </div>
 </section>
 
@@ -1574,44 +1682,44 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-card">
       <div class="toast">
         <div class="toast__content">
-          <div class="toast__icon toast__icon--default"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="toast__icon toast__icon--default"><img src="assets/tokens/clock-default.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/icons/external.svg" alt="" style="width:24px;height:24px"></button>
-        <button class="toast__close"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Default</span>
     </div>
     <div class="comp-card">
       <div class="toast toast--blue">
         <div class="toast__content">
-          <div class="toast__icon toast__icon--blue"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="toast__icon toast__icon--blue"><img src="assets/tokens/clock-blue.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/icons/external.svg" alt="" style="width:24px;height:24px"></button>
-        <button class="toast__close"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Blue</span>
     </div>
     <div class="comp-card">
       <div class="toast toast--red">
         <div class="toast__content">
-          <div class="toast__icon toast__icon--red"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="toast__icon toast__icon--red"><img src="assets/tokens/clock-red.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/icons/external.svg" alt="" style="width:24px;height:24px"></button>
-        <button class="toast__close"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Red</span>
     </div>
     <div class="comp-card">
       <div class="toast toast--green">
         <div class="toast__content">
-          <div class="toast__icon toast__icon--green"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="toast__icon toast__icon--green"><img src="assets/tokens/clock-green.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/icons/external.svg" alt="" style="width:24px;height:24px"></button>
-        <button class="toast__close"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Green</span>
     </div>
@@ -1888,14 +1996,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:600px;gap:16px">
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
           <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
         </div>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
+          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
           <div class="infobox__text" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">Your referral code is active <span class="tag tag--blue-outline" style="font-size:12px;padding:4px 8px">In progress</span></div>
         </div>
         <span class="state-label">With Tag</span>
@@ -1919,7 +2027,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Points unlock Token Allocation</div>
             <div class="banner-demo__desc" style="margin-top:4px">Our points determine your maximum purchase limit in the upcoming ICO. This is an allocation access, not a free airdrop.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
         </div>
         <div class="banner-demo__image">Image area</div>
       </div>
@@ -1935,7 +2043,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Protocol Evolution</div>
             <div class="banner-demo__desc" style="margin-top:4px">Bootstrapping from USDe-backed yield to liquid U.S. real estate.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
         </div>
         <div style="display:flex;align-items:center;gap:16px;padding:0 40px 0 0;flex-shrink:0">
           <div style="text-align:center">
@@ -1965,7 +2073,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__desc" style="margin-top:4px">$USH becomes a composable claim on American residential real estate—tradable 24/7, usable as DeFi collateral, accessible globally.</div>
           </div>
           <div class="infobox" style="margin-top:4px">
-            <div class="infobox__icon"><img src="assets/icons/info.svg" alt="" style="width:24px;height:24px"></div>
+            <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
             <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
           </div>
         </div>
@@ -2595,45 +2703,45 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Trigger Button</h3>
   <div style="display:flex;gap:16px;margin-bottom:40px">
     <button style="background:#0575F3;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ default">
-      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:24px;height:24px">
+      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:20px;height:20px">
     </button>
     <button style="background:#045CBF;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ active">
-      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:24px;height:24px">
+      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:20px;height:20px">
     </button>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Item States</h3>
-  <div style="max-width:440px;margin-bottom:40px;border:1px solid #E0E0E0;border-radius:var(--radius-lg);padding:16px">
+  <div style="max-width:440px;margin-bottom:40px;border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px">
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:24px;height:24px"></div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:24px;height:24px"></div>
-      <div class="faq-item__answer" style="display:block;font-size:16px;color:#858585">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Panel</h3>
-  <div style="background:white;border:1px solid #E0E0E0;box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px">
+  <div style="background:var(--surface);border:1px solid var(--stroke);box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <span style="font-family:var(--font-display);font-size:24px;font-weight:650">Frequently Asked Questions</span>
-      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex"><img src="assets/tokens/faq-close.svg" alt="" style="width:24px;height:24px"></button>
+      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex"><img src="assets/tokens/faq-close.svg" alt="" style="width:20px;height:20px"></button>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:24px;height:24px"></div>
-      <div class="faq-item__answer" style="font-size:16px;color:#858585">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:24px;height:24px"></div>
-      <div class="faq-item__answer" style="font-size:16px;color:#858585">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:24px;height:24px"></div>
-      <div class="faq-item__answer" style="display:block;font-size:16px;color:#858585">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:24px;height:24px"></div>
-      <div class="faq-item__answer" style="font-size:16px;color:#858585">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
     </div>
   </div>
 </section>
@@ -2671,11 +2779,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Desktop Size</h3>
   <div class="ref-status-grid" style="margin-bottom:32px">
     <div class="ref-status ref-status--applied">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:24px;height:24px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:16px;height:16px"></span>
       Applied
     </div>
     <div class="ref-status ref-status--error">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:24px;height:24px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:16px;height:16px"></span>
       Clear
     </div>
   </div>
@@ -2683,11 +2791,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Mobile Size</h3>
   <div class="ref-status-grid">
     <div class="ref-status ref-status--applied ref-status--sm">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:24px;height:24px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:16px;height:16px"></span>
       Applied
     </div>
     <div class="ref-status ref-status--error ref-status--sm">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:24px;height:24px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:16px;height:16px"></span>
       Clear
     </div>
   </div>
@@ -2743,180 +2851,180 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
   <div style="display:grid;grid-template-columns:repeat(3,452px);gap:24px;overflow-x:auto">
     <!-- HODLer Card -->
-    <div style="background:#F5F5F5;padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
       <!-- Amount -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Amount</span>
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Amount</span>
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585;text-align:right">0</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
           </div>
         </div>
       </div>
       <!-- FDV Hypothesis -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black;text-align:right">3518 M</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
           </div>
         </div>
       </div>
       <!-- Time period -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Time period</span>
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Time period</span>
         </div>
-        <div style="position:relative;width:100%;height:8px;background:#E0E0E0;border-radius:4px">
+        <div style="position:relative;width:100%;height:8px;background:var(--stroke);border-radius:4px">
           <div style="position:absolute;left:0;top:0;width:30%;height:100%;background:#0575F3;border-radius:4px"></div>
           <img src="assets/tokens/slider-handle.svg" alt="" style="position:absolute;left:30%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px">
         </div>
-        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:14px;color:#858585">
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:14px;color:var(--page-text-secondary)">
           <span>3M</span><span>6M</span><span>12M</span><span>24M</span><span>36M</span>
         </div>
       </div>
       <!-- Divider -->
-      <div style="width:100%;height:1px;background:#E0E0E0"></div>
+      <div style="width:100%;height:1px;background:var(--stroke)"></div>
       <!-- USH returns -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">USH returns</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">USH returns</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585;text-align:right">0</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
           </div>
         </div>
       </div>
       <!-- Approximate reward -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585;text-align:right">0</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Influencer Card -->
-    <div style="background:#F5F5F5;padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
       <!-- Points supply earned by referrals -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Points supply earned by referrals</span>
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Points supply earned by referrals</span>
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585">0</span>
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary)">0</span>
         </div>
       </div>
       <!-- FDV Hypothesis -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black;text-align:right">3518 M</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
           </div>
         </div>
       </div>
       <!-- Approximate reward -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585;text-align:right">0</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Degen Card -->
-    <div style="background:#F5F5F5;padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
       <!-- Points supply earned -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Points supply earned</span>
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Points supply earned</span>
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585">0</span>
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary)">0</span>
         </div>
       </div>
       <!-- FDV Hypothesis -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black;text-align:right">3518 M</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
           </div>
         </div>
       </div>
       <!-- Approximate reward -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
-          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
         </div>
-        <div style="background:white;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
+        <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:black">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:24px;height:24px">
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
+            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
-            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:#858585;text-align:right">0</span>
+            <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
           </div>
         </div>
       </div>
@@ -2936,14 +3044,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="evo-nav__title">Phase Progression</div>
       <div class="evo-nav__subtitle">Phase 3 of 5</div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:24px;height:24px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">Bootstrap</span>
           <span class="evo-phase__detail">Up to 20% HEI, Jan–Feb 2026</span>
         </div>
       </div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:24px;height:24px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">First Homes</span>
           <span class="evo-phase__detail">Up to 35% HEI, Mar–Apr 2026</span>
@@ -2976,7 +3084,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="evo-nav__title">Navigation Items</div>
       <div class="evo-nav__subtitle">States</div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:24px;height:24px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
         <div class="evo-phase__info"><span class="evo-phase__label">Completed</span></div>
       </div>
       <div class="evo-phase">
@@ -3046,21 +3154,21 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <!-- Room to Grow -->
     <div class="evo-chart-card" style="width:614px">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
-        <div style="position:relative;width:339px;height:170px">
-          <!-- Blue arc (HEI) -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:341px;height:341px">
-            <img src="assets/tokens/evo-chart-rtg-blue.svg" alt="" style="position:absolute;top:7.44%;left:68%;right:0;bottom:50%;width:auto;height:auto;max-width:none">
-          </div>
-          <!-- Light blue arc (Available for HEI) -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:341px;height:341px">
-            <img src="assets/tokens/evo-chart-rtg-light.svg" alt="" style="position:absolute;top:0.67%;left:0;right:55.58%;bottom:49.81%;width:auto;height:auto;max-width:none">
-          </div>
-          <!-- Red arc (USDe) -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:341px;height:341px">
-            <img src="assets/tokens/evo-chart-rtg-red.svg" alt="" style="position:absolute;top:0.67%;left:0;right:55.58%;bottom:49.81%;width:auto;height:auto;max-width:none">
-          </div>
-          <!-- Center label -->
-          <div style="position:absolute;top:calc(50% + 46px);left:calc(50% + 1px);transform:translate(-50%,-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
+        <div style="position:relative;width:340px;height:200px">
+          <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Semicircle donut: r=130, stroke-width=40, C=816.81, half=408.41 -->
+            <!-- Segments go from left (180°) clockwise to right (0°) -->
+            <!-- USDe (red) 50%: 204.2 of 408.41 -->
+            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
+              stroke-dasharray="204.2 612.61" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
+            <!-- Available for HEI (light blue) 12%: 49.0 -->
+            <circle cx="170" cy="175" r="130" fill="none" stroke="#A7C4EC" stroke-width="40"
+              stroke-dasharray="49.0 767.81" stroke-dashoffset="-612.61" stroke-linecap="butt"/>
+            <!-- HEI (blue) 38%: 155.2 -->
+            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
+              stroke-dasharray="155.2 661.61" stroke-dashoffset="-661.61" stroke-linecap="butt"/>
+          </svg>
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Room to grow:</div>
             <div style="font-weight:600">+12% HEI</div>
           </div>
@@ -3075,17 +3183,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <!-- Composition -->
     <div class="evo-chart-card" style="width:614px">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
-        <div style="position:relative;width:339px;height:170px">
-          <!-- Red arc (USDe) -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:341px;height:341px">
-            <img src="assets/tokens/evo-chart-comp-red.svg" alt="" style="position:absolute;top:0.67%;left:0;right:55.58%;bottom:49.81%;width:auto;height:auto;max-width:none">
-          </div>
-          <!-- Blue arc (HEI) - larger portion -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:341px;height:341px">
-            <img src="assets/tokens/evo-chart-rtg-blue.svg" alt="" style="position:absolute;top:0;left:43.31%;right:0;bottom:50%;width:auto;height:auto;max-width:none">
-          </div>
-          <!-- Center label -->
-          <div style="position:absolute;top:calc(50% + 46px);left:calc(50% + 1px);transform:translate(-50%,-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
+        <div style="position:relative;width:340px;height:200px">
+          <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
+            <!-- USDe (red) 53%: 216.5 of 408.41 -->
+            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
+              stroke-dasharray="216.5 600.31" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
+            <!-- HEI (blue) 47%: 191.9 -->
+            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
+              stroke-dasharray="191.9 624.91" stroke-dashoffset="-624.91" stroke-linecap="butt"/>
+          </svg>
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Composition</div>
             <div style="font-weight:600">47% HEI / 53% USDe</div>
           </div>
@@ -3098,63 +3205,6 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     </div>
   </div>
 </section>
-
-<!-- ======== BRAND ======== -->
-<section class="section" id="brand">
-  <p class="section__eyebrow">Brand</p>
-  <h2 class="section__title">Logo &amp; Assets</h2>
-  <p class="section__desc">The Manifest logo: icon mark + wordmark. Available in color (gradient), black, and white. Right-click or use the download button to save.</p>
-
-  <h3 style="font-family:var(--font-display);font-size:22px;margin-bottom:16px">Full Logo (Icon + Wordmark)</h3>
-  <div class="logo-grid">
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--light"><img src="assets/logo-color.svg" alt="Logo color"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Logo Color</span><br><span class="logo-card__file">logo-color.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-color.svg','logo-color.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--light"><img src="assets/logo-black.svg" alt="Logo black"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Logo Black</span><br><span class="logo-card__file">logo-black.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-black.svg','logo-black.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/logo-white.svg" alt="Logo white"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Logo White</span><br><span class="logo-card__file">logo-white.svg</span></div><a href="#" onclick="downloadAsset('assets/logo-white.svg','logo-white.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:22px;margin-top:40px;margin-bottom:16px">Icon Mark Only</h3>
-  <div class="logo-grid">
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-color.svg" alt="Icon gradient" style="max-height:48px"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Icon Gradient</span><br><span class="logo-card__file">icon-color.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color.svg','icon-color.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-color-flat.svg" alt="Icon flat" style="max-height:48px"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Icon Flat Color</span><br><span class="logo-card__file">icon-color-flat.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color-flat.svg','icon-color-flat.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--light"><img src="assets/icon-black.svg" alt="Icon black" style="max-height:48px"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Icon Black</span><br><span class="logo-card__file">icon-black.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-black.svg','icon-black.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/icon-white.svg" alt="Icon white" style="max-height:48px"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Icon White</span><br><span class="logo-card__file">icon-white.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-white.svg','icon-white.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-    <div class="logo-card">
-      <div class="logo-card__preview logo-card__preview--dark"><img src="assets/icon-color-flat.svg" alt="Icon on dark" style="max-height:48px"></div>
-      <div class="logo-card__info"><div><span class="logo-card__name">Icon Color on Dark</span><br><span class="logo-card__file">icon-color-flat.svg</span></div><a href="#" onclick="downloadAsset('assets/icon-color-flat.svg','icon-color-flat.svg');return false" class="logo-card__download">Download</a></div>
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:22px;margin-top:48px;margin-bottom:12px">Border Radius</h3>
-  <div class="comp-preview" style="gap:32px">
-    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-sm)"></div><span class="state-label">4px sm</span></div>
-    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-md)"></div><span class="state-label">6px md</span></div>
-    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-lg)"></div><span class="state-label">12px lg</span></div>
-    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-xl)"></div><span class="state-label">20px xl</span></div>
-    <div style="text-align:center"><div style="width:64px;height:64px;background:var(--surface-raised);border:1px solid var(--stroke);border-radius:var(--radius-full)"></div><span class="state-label">Full</span></div>
-  </div>
-</section>
-
 <!-- ======== TOKEN REFERENCE ======== -->
 <section class="section" id="tokens">
   <p class="section__eyebrow">Reference</p>
