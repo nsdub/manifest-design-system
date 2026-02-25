@@ -264,14 +264,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .comp-preview { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:var(--sp-7); background:var(--surface); display:flex; align-items:center; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; }
 
 /* Buttons — exact Figma specs */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:14px; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
-.btn--big { height:58px; font-size:16px; padding:16px 24px; gap:10px; line-height:1.45; }
-.btn--small { padding:8px 14px; font-size:14px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border-radius:var(--radius-full); font-family:var(--font-mono); font-size:16px; font-weight:400; text-transform:uppercase; letter-spacing:0; border:none; cursor:pointer; line-height:1.5; transition:all 0.12s; white-space:nowrap; }
+.btn--big { height:58px; font-size:18px; padding:16px 24px; gap:10px; line-height:1.45; }
+.btn--small { padding:8px 14px; font-size:16px; }
 .btn--primary { background:#FF4601; color:#FFFFFF; }
 .btn--primary:hover { background:#CC3801; }
 .btn--primary.btn--disabled { background:#FFC2B3; pointer-events:none; cursor:default; }
 .btn--secondary { background:transparent; border:1px solid #0575F3; color:#0575F3; }
-.btn--secondary:hover { border-color:#045CBF; color:#045CBF; }
+.btn--secondary:hover { color:#045CBF; }
+.btn--secondary.btn--small:hover { border-color:#045CBF; color:#045CBF; }
 .btn--secondary.btn--disabled { border-color:#A7C4EC; color:#A7C4EC; pointer-events:none; cursor:default; }
 .btn--icon-only { padding:11px; border:1px solid #0575F3; border-radius:var(--radius-full); background:transparent; }
 .btn__icon { width:24px; height:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -291,25 +292,29 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .tab--active { color:var(--tab-active-text); border-bottom:2px solid var(--tab-active-stroke); background:var(--tab-active-fill); }
 
 /* Stats — exact Figma specs */
-.stat-card { padding:16px; min-width:200px; width:262px; border:none; border-radius:0; }
+.stat-card { padding:16px; min-width:200px; width:262px; border:none; border-radius:0; display:flex; flex-direction:column; gap:8px; }
 .stat-card--primary { background:#F5F5F5; }
 .stat-card--secondary { background:#FFFFFF; }
-.stat-card--accent { background:#0575F3; }
-.stat-card--small { padding:12px; }
-.stat-card--small .stat-card__value { font-size:20px; line-height:20px; }
-.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.8); }
+.stat-card--accent { background:#000000; }
+.stat-card--small { padding:12px; gap:4px; }
+.stat-card--small .stat-card__value { font-size:20px; line-height:1.2; }
+.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.6); }
 .stat-card--accent .stat-card__value { color:#FFFFFF; }
-.stat-card__header { font-family:var(--font-mono); font-size:12px; color:#858585; margin-bottom:8px; text-transform:uppercase; display:flex; align-items:center; gap:4px; line-height:1.4; }
-.stat-card--small .stat-card__header { margin-bottom:4px; }
-.stat-card__header-icon { width:16px; height:16px; }
+.stat-card--accent { border-color:transparent; }
+.stat-card__header { font-family:var(--font-mono); font-size:12px; font-weight:400; color:#858585; line-height:1.4; display:flex; align-items:center; gap:4px; text-transform:uppercase; }
+.stat-card--small .stat-card__header { margin-bottom:0; }
+.stat-card__header-icon { width:24px; height:24px; }
 .stat-card__value { font-family:var(--font-mono); font-size:28px; font-weight:400; line-height:28px; color:#000000; }
 .stat-card__sub { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:16px; margin-top:2px; line-height:1.4; }
 .stat-card__sub--grey { color:#858585; }
 .stat-card__sub--green { color:#009E50; }
 .stat-card__sub--red { color:#FF4601; }
-.stat-card__sub-icon { width:16px; height:16px; }
-[data-theme="dark"] .stat-card--primary { background:var(--surface-raised); }
+.stat-card__sub-icon { width:24px; height:24px; }
+[data-theme="dark"] .stat-card { border-color:var(--stroke); }
+[data-theme="dark"] .stat-card--primary { background:var(--surface); }
 [data-theme="dark"] .stat-card--secondary { background:var(--surface); }
+[data-theme="dark"] .stat-card--accent { background:#000000; border-color:transparent; }
+[data-theme="dark"] .stat-card__header { color:var(--page-text-secondary); }
 [data-theme="dark"] .stat-card__value { color:var(--page-text); }
 
 /* Sidebar component — exact Figma specs */
@@ -331,18 +336,19 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .sidebar-demo--collapsed .sidebar-demo__item--active { margin:4px; }
 
 /* Dropdown */
-.dropdown { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; background:var(--dropdown-fill); border:1px solid var(--dropdown-stroke); border-radius:var(--radius-md); font-family:var(--font-mono); font-size:13px; color:var(--dropdown-text); cursor:pointer; text-transform:uppercase; }
-.dropdown__arrow { font-size:10px; opacity:0.5; }
+.dropdown { display:inline-flex; align-items:center; gap:8px; padding:10px 12px; height:40px; background:var(--dropdown-fill); border:1px solid var(--dropdown-stroke); border-radius:100px; font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:var(--dropdown-text); cursor:pointer; box-sizing:border-box; }
+.dropdown__arrow { display:flex; align-items:center; }
+.dropdown__arrow img { width:24px; height:24px; }
 
 /* Table */
 .table-demo { width:100%; border-collapse:collapse; font-size:13px; }
-.table-demo th { text-align:left; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--table-header-text); padding:10px 14px; border-bottom:1px solid var(--table-stroke); font-weight:400; }
-.table-demo td { padding:10px 14px; border-bottom:1px solid var(--table-stroke); color:var(--table-row-text); }
+.table-demo th { text-align:left; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0; color:var(--table-header-text); padding:16px 16px 8px 16px; border-bottom:1px solid var(--table-stroke); font-weight:400; line-height:1.4; }
+.table-demo td { padding:12px 16px; border-bottom:1px solid var(--table-stroke); color:var(--table-row-text); font-family:var(--font-body); font-size:16px; font-weight:500; line-height:1.2; }
 
 /* Pagination */
-.paginator { display:flex; align-items:center; gap:4px; }
-.paginator__btn { width:32px; height:32px; display:flex; align-items:center; justify-content:center; border:none; background:none; border-radius:var(--radius-md); font-family:var(--font-mono); font-size:13px; cursor:pointer; color:var(--pagination-default-text); text-transform:uppercase; }
-.paginator__btn--active { background:var(--pagination-active-fill); color:var(--pagination-active-text); font-weight:600; }
+.paginator { display:flex; align-items:center; gap:16px; justify-content:center; }
+.paginator__btn { width:40px; height:40px; display:flex; align-items:center; justify-content:center; border:none; background:none; border-radius:100px; font-family:var(--font-mono); font-size:14px; font-weight:400; line-height:1.4; cursor:pointer; color:var(--pagination-default-text); }
+.paginator__btn--active { background:var(--pagination-active-fill); color:var(--pagination-active-text); }
 
 /* Toast (matches Figma Toaster component exactly) */
 .toast { position:relative; display:flex; flex-direction:column; gap:16px; padding:16px; width:284px; background:var(--surface); border:1px solid var(--stroke); box-shadow:0 8px 16px rgba(16,24,40,0.06); }
@@ -364,9 +370,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .toast__btn:hover { background:var(--surface-overlay); }
 
 /* Header bar */
-.header-demo { display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:56px; border:1px solid var(--header-stroke); border-radius:var(--radius-md); background:var(--header-bg); }
+.header-demo { display:flex; align-items:center; justify-content:space-between; padding:20px 40px; border:1px solid var(--header-stroke); border-radius:var(--radius-md); background:var(--header-bg); }
 .header-demo__logo { height:16px; filter:var(--logo-filter); }
-.header-demo__right { display:flex; align-items:center; gap:12px; }
+.header-demo__right { display:flex; align-items:center; gap:8px; }
 .header-demo__pill { font-family:var(--font-mono); font-size:12px; padding:4px 12px; border-radius:var(--radius-full); background:var(--accent); color:#fff; text-transform:uppercase; }
 
 /* Footer demo */
@@ -375,8 +381,18 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .footer-demo__link { color:var(--footer-link); text-decoration:none; font-weight:500; }
 
 /* Modal */
-.modal-demo { border:1px solid var(--stroke); border-radius:var(--radius-xl); padding:32px; max-width:400px; background:var(--surface); box-shadow:0 8px 40px rgba(0,0,0,0.12); }
-.modal-demo__title { font-family:var(--font-display); font-size:22px; margin-bottom:var(--sp-4); }
+.modal-demo { border:1px solid rgba(0,0,0,0.16); border-radius:16px; padding:20px; width:400px; max-width:100%; background:#FFFFFF; display:flex; flex-direction:column; gap:24px; }
+[data-theme="dark"] .modal-demo { background:var(--surface); border-color:var(--stroke); }
+.modal-demo__title { font-family:var(--font-body); font-size:24px; font-weight:500; line-height:28px; color:#000000; }
+[data-theme="dark"] .modal-demo__title { color:var(--page-text); }
+.modal-demo__desc { font-family:var(--font-body); font-size:16px; font-weight:500; line-height:1.4; color:#888888; }
+.modal-demo__checkbox-row { display:flex; align-items:center; gap:8px; }
+.modal-demo__checkbox { width:16px; height:16px; border:1px solid #000000; border-radius:4px; flex-shrink:0; }
+[data-theme="dark"] .modal-demo__checkbox { border-color:var(--page-text); }
+.modal-demo__checkbox-label { font-family:var(--font-body); font-size:16px; font-weight:500; line-height:1.4; color:#000000; }
+[data-theme="dark"] .modal-demo__checkbox-label { color:var(--page-text); }
+.modal-demo__btn { background:#000000; color:#FFFFFF; border:none; border-radius:12px; padding:15px 16px; font-family:var(--font-body); font-size:18px; font-weight:600; line-height:1.45; cursor:pointer; text-align:center; width:100%; }
+.modal-demo__btn:hover { opacity:0.9; }
 .modal-demo__list { display:flex; flex-direction:column; gap:8px; }
 .modal-demo__item { display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid var(--stroke); border-radius:var(--radius-md); cursor:pointer; transition:border-color 0.12s; }
 .modal-demo__item:hover { border-color:var(--accent); }
@@ -392,7 +408,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Checkbox — exact Figma specs */
 .checkbox { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:#000000; }
-.checkbox__box { width:20px; height:20px; border:1px solid #E0E0E0; background:#FFFFFF; border-radius:2px; display:flex; align-items:center; justify-content:center; transition:all 0.12s; flex-shrink:0; }
+.checkbox__box { width:20px; height:20px; border:1px solid rgba(0,0,0,0.24); background:#FFFFFF; border-radius:4px; display:flex; align-items:center; justify-content:center; transition:all 0.12s; flex-shrink:0; }
 .checkbox--active .checkbox__box { background:#0575F3; border-color:#0575F3; }
 .checkbox__check { display:flex; align-items:center; justify-content:center; width:14px; height:14px; }
 .checkbox__check img { width:14px; height:14px; filter:brightness(0) invert(1); }
@@ -401,7 +417,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Tooltip demo */
 .tooltip-demo { display:inline-flex; flex-direction:column; align-items:center; position:relative; }
-.tooltip-pill { background:var(--black); color:var(--white); font-family:var(--font-body); font-size:14px; font-weight:400; line-height:1.4; padding:6px 12px; border-radius:6px; text-align:center; box-shadow:0 16px 16px rgba(16,24,40,0.06); white-space:nowrap; }
+.tooltip-pill { background:var(--black); color:var(--white); font-family:var(--font-body); font-size:14px; font-weight:400; line-height:1.4; padding:6px 12px; border-radius:6px; text-align:center; box-shadow:0 16px 16px 4px rgba(16,24,40,0.06),0 8px 8px -4px rgba(16,24,40,0.06),0 4px 4px -4px rgba(16,24,40,0.06),0 2px 2px -4px rgba(16,24,40,0.06),0 1px 1px -4px rgba(16,24,40,0.06); white-space:nowrap; }
 [data-theme="dark"] .tooltip-pill { background:var(--white); color:var(--black); }
 .tooltip-arrow { width:0; height:0; border-left:6px solid transparent; border-right:6px solid transparent; border-top:6px solid var(--black); }
 [data-theme="dark"] .tooltip-arrow { border-top-color:var(--white); }
@@ -444,29 +460,29 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .chart-color__tip { position:absolute; top:-30px; left:50%; transform:translateX(-50%); background:var(--black); color:var(--white); font-family:var(--font-mono); font-size:10px; padding:3px 8px; border-radius:var(--radius-sm); white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.15s; }
 .chart-color:hover .chart-color__tip { opacity:1; }
 
-/* Progress / Transaction */
-.progress-bar { display:flex; align-items:center; justify-content:space-between; background:var(--surface-raised); border-radius:var(--radius-full); height:36px; position:relative; }
-.progress-bar__fill { position:absolute; left:0; top:0; bottom:0; background:var(--blue-600); border-radius:var(--radius-full); transition:width 0.3s; }
-.progress-mark { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; position:relative; z-index:1; flex-shrink:0; box-sizing:border-box; }
+/* Progress / Transaction — exact Figma specs */
+.progress-bar { display:flex; align-items:center; justify-content:space-between; background:var(--surface); border-radius:100px; height:24px; position:relative; overflow:visible; }
+.progress-bar__fill { position:absolute; left:0; top:0; bottom:0; background:var(--blue-600); border-radius:100px; transition:width 0.3s; }
+.progress-mark { width:36px; height:36px; border-radius:999px; display:flex; align-items:center; justify-content:center; position:relative; z-index:1; flex-shrink:0; box-sizing:border-box; padding:6px; }
 .progress-mark--on { background:var(--surface); border:1px solid var(--blue-600); }
-.progress-mark--off { background:var(--surface-raised); }
+.progress-mark--off { background:transparent; }
 .progress-mark__icon { font-size:14px; }
-.progress-labels { display:flex; justify-content:space-between; margin-top:8px; }
-.progress-label { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; }
+.progress-labels { display:flex; justify-content:space-between; }
+.progress-label { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; display:flex; align-items:center; gap:4px; }
 .progress-label--active { color:var(--page-text); }
 .progress-label--inactive { color:var(--page-text-secondary); }
 
 /* Infobox */
 .infobox { display:flex; gap:8px; align-items:flex-start; padding:12px; background:rgba(5,117,243,0.1); border:1px solid #a7c4ec; }
 [data-theme="dark"] .infobox { background:rgba(65,160,247,0.08); border-color:rgba(65,160,247,0.3); }
-.infobox__icon { flex-shrink:0; width:24px; height:24px; display:flex; align-items:center; color:var(--blue-600); }
+.infobox__icon { flex-shrink:0; width:24px; height:24px; display:flex; align-items:center; color:var(--blue-600); overflow:clip; }
 .infobox__icon img { width:24px; height:24px; }
 .infobox__text { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:var(--page-text); flex:1; }
 
 /* Banners */
 .banner-demo { background:var(--surface-raised); min-width:200px; display:flex; align-items:center; overflow:hidden; }
 .banner-demo__content { flex:1; padding:24px; display:flex; flex-direction:column; gap:16px; }
-.banner-demo__title { font-family:var(--font-display); font-size:24px; font-weight:600; line-height:1.2; }
+.banner-demo__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.2; }
 .banner-demo__desc { font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.2; color:var(--page-text-secondary); }
 .banner-demo__image { width:200px; height:100%; background:var(--surface-overlay); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); min-height:120px; text-transform:uppercase; }
 
@@ -482,7 +498,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Referral */
 .referral-demo { display:flex; gap:16px; align-items:center; }
-.referral-box { width:72px; height:88px; border:1px solid rgba(255,255,255,0.32); border-radius:100px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:28px; line-height:28px; text-transform:uppercase; }
+.referral-box { width:72px; height:88px; border:1px solid rgba(255,255,255,0.32); border-radius:12px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:40px; font-weight:500; line-height:40px; text-transform:uppercase; }
 .referral-box--filled { color:var(--white); }
 .referral-box--empty { }
 .referral-box--disabled { color:rgba(255,255,255,0.32); border-color:rgba(255,255,255,0.32); }
@@ -520,7 +536,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .token-badge__icon img { width:22px; height:22px; border-radius:50%; }
 .token-badge__name { font-family:var(--font-body); font-size:20px; font-weight:500; color:#000000; }
 [data-theme="dark"] .token-badge__name { color:var(--page-text); }
-.token-badge__chevron { width:16px; height:16px; }
+.token-badge__chevron { width:24px; height:24px; }
 .token-badge__network-label { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
 .token-badge--with-network .token-badge__icon-wrap { position:relative; width:40px; height:40px; flex-shrink:0; }
 .token-badge--with-network .token-badge__main-icon { width:22px; height:22px; border-radius:50%; position:absolute; top:0; left:0; }
@@ -552,40 +568,41 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 [data-theme="dark"] .token-select-menu { background:var(--surface); border-color:var(--stroke); }
 
 /* Swap Form — exact Figma specs */
-.swap-input { background:#FFFFFF; padding:12px 16px 16px 16px; width:500px; max-width:100%; }
-[data-theme="dark"] .swap-input { background:var(--surface); }
-.swap-input__header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.swap-input__label { font-family:var(--font-mono); font-size:12px; color:#858585; text-transform:uppercase; }
-.swap-input__dollar { font-family:var(--font-mono); font-size:12px; color:#0575F3; }
+.swap-input { background:#FFFFFF; padding:16px; width:500px; max-width:100%; border:1px solid rgba(0,0,0,0.16); border-radius:12px; display:flex; flex-direction:column; gap:12px; overflow:hidden; }
+[data-theme="dark"] .swap-input { background:var(--surface); border-color:var(--stroke); }
+.swap-input__header { display:flex; justify-content:space-between; align-items:center; }
+.swap-input__label { font-family:var(--font-body); font-size:14px; font-weight:600; line-height:20px; color:#000000; }
+.swap-input__dollar { font-family:var(--font-body); font-size:14px; font-weight:400; line-height:20px; color:#000000; opacity:0.6; }
 .swap-input__token-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .swap-input__token { display:flex; align-items:center; gap:8px; }
-.swap-input__token-icon-wrap { position:relative; width:40px; height:40px; flex-shrink:0; }
-.swap-input__token-main-icon { width:40px; height:40px; border-radius:50%; }
+.swap-input__token-icon-wrap { position:relative; width:24px; height:24px; flex-shrink:0; }
+.swap-input__token-main-icon { width:24px; height:24px; border-radius:50%; }
 .swap-input__token-network-badge { width:18px; height:18px; border-radius:4px; border:2px solid #FFFFFF; position:absolute; bottom:0; right:0; overflow:hidden; }
 .swap-input__token-info { display:flex; flex-direction:column; }
 .swap-input__token-name-row { display:flex; align-items:center; gap:4px; }
 .swap-input__token-name { font-family:var(--font-body); font-size:20px; font-weight:500; color:#000000; }
 [data-theme="dark"] .swap-input__token-name { color:var(--page-text); }
 .swap-input__token-network { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
-.swap-input__amount { font-family:var(--font-mono); font-size:20px; color:#858585; text-align:right; }
+.swap-input__amount { font-family:var(--font-body); font-size:20px; font-weight:500; line-height:28px; color:#858585; text-align:right; }
 .swap-input__amount--filled { color:#000000; }
 [data-theme="dark"] .swap-input__amount--filled { color:var(--page-text); }
-.swap-input__balance-row { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
-.swap-input__balance { font-family:var(--font-body); font-size:14px; font-weight:500; }
+.swap-input__balance-row { display:flex; justify-content:space-between; align-items:center; }
+.swap-input__balance { font-family:var(--font-body); font-size:14px; font-weight:400; line-height:20px; opacity:0.6; }
 .swap-input__balance-label { color:#858585; }
 .swap-input__balance-value { color:#000000; }
 [data-theme="dark"] .swap-input__balance-value { color:var(--page-text); }
 .swap-input__controls { display:flex; gap:4px; }
-.swap-input__max-btn { font-family:var(--font-mono); font-size:12px; text-transform:uppercase; border:1px solid #FF4601; border-radius:var(--radius-full); color:#FF4601; background:transparent; padding:2px 8px; cursor:pointer; }
+.swap-input__max-btn { font-family:var(--font-mono); font-size:12px; font-weight:500; line-height:16px; text-transform:uppercase; border:none; border-radius:4px; color:#000000; background:#EBEBEB; padding:4px 8px; cursor:pointer; }
 .swap-stat-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; }
-.swap-stat-row__label { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; display:flex; align-items:center; gap:4px; }
-.swap-stat-row__value { font-family:var(--font-mono); font-size:14px; color:#000000; }
+.swap-stat-row__label { font-family:var(--font-body); font-size:16px; font-weight:500; line-height:20px; color:#000000; opacity:0.6; display:flex; align-items:center; gap:4px; }
+.swap-stat-row__value { font-family:var(--font-body); font-size:16px; font-weight:700; line-height:20px; color:#000000; }
+[data-theme="dark"] .swap-stat-row__label { color:var(--page-text); }
 [data-theme="dark"] .swap-stat-row__value { color:var(--page-text); }
 .swap-divider { display:flex; align-items:center; gap:12px; padding:8px 0; }
 .swap-divider__line { flex:1; height:1px; background:#E0E0E0; }
 .swap-divider__text { font-family:var(--font-body); font-size:14px; font-weight:500; color:#858585; }
-.swap-arrow-btn { width:40px; height:40px; border-radius:var(--radius-full); background:#F5F5F5; border:1px solid #E0E0E0; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.12s; }
-.swap-arrow-btn:hover { background:#E0E0E0; }
+.swap-arrow-btn { width:40px; height:40px; border-radius:12px; background:#FFFFFF; border:1px solid #EBEBEB; display:flex; align-items:center; justify-content:center; padding:10px; cursor:pointer; transition:background 0.12s; }
+.swap-arrow-btn:hover { background:#F5F5F5; }
 .swap-arrow-btn img { width:20px; height:20px; }
 [data-theme="dark"] .swap-arrow-btn { background:var(--surface-raised); border-color:var(--stroke); }
 
@@ -634,52 +651,67 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
    EVOLUTION PAGE
    ============================ */
 .evo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:var(--sp-6); }
-.evo-nav { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
-.evo-nav__title { font-family:var(--font-display); font-size:18px; font-weight:600; margin-bottom:4px; color:var(--page-text); }
-.evo-nav__subtitle { font-family:var(--font-mono); font-size:11px; color:var(--page-text-secondary); margin-bottom:16px; }
-.evo-phase { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:var(--radius-md); margin-bottom:4px; transition:background 0.12s; cursor:pointer; }
+.evo-nav { border:1px solid var(--stroke); width:350px; max-width:100%; }
+.evo-nav__header { display:flex; justify-content:space-between; align-items:flex-end; padding:16px; border-bottom:1px solid var(--stroke); }
+.evo-nav__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.2; color:var(--page-text); }
+.evo-nav__subtitle { font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
+.evo-phase { display:flex; align-items:center; gap:12px; padding:12px 16px; height:64px; transition:background 0.12s; cursor:pointer; }
 .evo-phase:hover { background:var(--surface-overlay); }
-.evo-phase--active { background:var(--accent); color:#fff; border-radius:var(--radius-md); }
+.evo-phase--active { background:var(--accent); color:#fff; }
 .evo-phase--active .evo-phase__label,
 .evo-phase--active .evo-phase__detail { color:#fff; }
-.evo-phase__icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
-.evo-phase__icon--complete { background:var(--green-400); color:#fff; }
-.evo-phase__icon--current { background:var(--accent); color:#fff; }
-.evo-phase__icon--future { background:var(--surface-raised); color:var(--page-text-secondary); border:1px solid var(--stroke); }
-.evo-phase__info { display:flex; flex-direction:column; }
-.evo-phase__label { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--page-text); }
-.evo-phase__detail { font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
-.evo-cap-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:20px; }
-.evo-cap-card__row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.evo-cap-card__label { font-family:var(--font-body); font-size:13px; color:var(--page-text-secondary); }
-.evo-cap-card__value { font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--page-text); }
-.evo-cap-bar { width:100%; height:8px; background:var(--stroke); border-radius:4px; overflow:hidden; margin-bottom:8px; }
-.evo-cap-bar__fill { height:100%; border-radius:4px; transition:width 0.3s; }
+.evo-phase--active .evo-phase__detail { color:rgba(255,255,255,0.8); }
+.evo-phase__icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:16px; font-weight:400; line-height:1.4; flex-shrink:0; }
+.evo-phase__icon--complete { background:var(--surface); border:1px solid var(--green-600); color:var(--green-600); }
+.evo-phase__icon--complete img { width:24px; height:24px; }
+.evo-phase__icon--current { background:rgba(5,117,243,0.1); color:var(--accent); }
+.evo-phase__icon--future { background:var(--surface-raised); color:var(--page-text-secondary); }
+.evo-phase--active .evo-phase__icon { background:#fff; color:var(--accent); border:none; }
+.evo-phase__info { display:flex; flex-direction:column; gap:4px; }
+.evo-phase__label { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); }
+.evo-phase__detail { font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
+.evo-cap-card { background:var(--surface-raised); padding:16px; display:flex; flex-direction:column; gap:12px; }
+.evo-deposit-cap { background:none; border:1px solid var(--stroke); padding:16px; display:flex; flex-direction:column; gap:12px; }
+.evo-cap-card__row { display:flex; justify-content:space-between; align-items:center; }
+.evo-cap-card__label { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); display:flex; align-items:center; gap:8px; }
+.evo-cap-card__dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.evo-cap-card__dot--blue { background:var(--accent); }
+.evo-cap-card__dot--red { background:var(--accent-secondary); }
+.evo-cap-card__dot--green { background:var(--green-600); }
+.evo-cap-card__value { font-family:var(--font-body); font-size:16px; font-weight:550; line-height:1.2; color:var(--page-text); display:flex; align-items:center; gap:4px; }
+.evo-cap-card__value-secondary { color:var(--page-text-secondary); }
+.evo-cap-bar { width:100%; height:8px; background:var(--stroke); border-radius:100px; position:relative; }
+.evo-cap-bar__fill { height:100%; border-radius:100px; transition:width 0.3s; position:relative; }
+.evo-cap-bar__fill::after { content:''; position:absolute; right:0; top:0; width:8px; height:8px; border-radius:100px; background:var(--surface); border:1px solid; transform:translateX(50%); box-sizing:border-box; }
 .evo-cap-bar__fill--blue { background:var(--accent); }
-.evo-cap-bar__fill--green { background:var(--green-400); }
+.evo-cap-bar__fill--blue::after { border-color:var(--accent); }
+.evo-cap-bar__fill--green { background:var(--green-600); }
+.evo-cap-bar__fill--green::after { border-color:var(--green-600); }
 .evo-cap-bar__fill--orange { background:var(--accent-secondary); }
-.evo-cap-sub { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
+.evo-cap-bar__fill--orange::after { border-color:var(--accent-secondary); }
+.evo-cap-sub { display:flex; justify-content:space-between; font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.2; color:var(--page-text-secondary); }
 .evo-chart-card { border:1px solid var(--stroke); border-radius:var(--radius-lg); display:flex; flex-direction:column; align-items:center; }
 .evo-legend { display:flex; gap:16px; margin-top:12px; flex-wrap:wrap; justify-content:center; }
-.evo-legend__item { display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:10px; color:var(--page-text-secondary); }
-.evo-legend__dot { width:8px; height:8px; border-radius:2px; }
+.evo-legend__item { display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:14px; font-weight:550; line-height:1.4; color:var(--page-text); }
+.evo-legend__dot { width:12px; height:12px; }
 
 /* ============================
    FAQ
    ============================ */
-.faq-panel { border:1px solid var(--stroke); border-radius:var(--radius-lg); padding:24px; max-width:480px; }
-.faq-panel__title { font-family:var(--font-display); font-size:22px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
-.faq-panel__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; }
-.faq-item { border-bottom:1px solid var(--stroke-subtle); }
-.faq-item:last-child { border-bottom:none; }
-.faq-item__question { display:flex; justify-content:space-between; align-items:center; padding:14px 0; cursor:pointer; font-family:var(--font-body); font-size:15px; font-weight:600; color:var(--page-text); user-select:none; }
-.faq-item__arrow { font-size:14px; color:var(--page-text-secondary); transition:transform 0.2s; flex-shrink:0; }
-.faq-item--open .faq-item__arrow { transform:rotate(180deg); }
-.faq-item__answer { font-family:var(--font-body); font-size:14px; line-height:1.6; color:var(--page-text-secondary); padding:0 0 14px; display:none; }
+.faq-panel { background:var(--surface); border:1px solid var(--stroke); padding:24px; width:416px; max-width:100%; display:flex; flex-direction:column; gap:20px; box-shadow:0px 8px 16px 4px rgba(16,24,40,0.06); }
+.faq-panel__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.2; display:flex; justify-content:space-between; align-items:flex-start; gap:8px; color:var(--page-text); }
+.faq-panel__close { color:var(--page-text); cursor:pointer; background:none; border:none; padding:0; display:flex; }
+.faq-panel__close img { width:24px; height:24px; }
+.faq-panel__items { display:flex; flex-direction:column; gap:24px; }
+.faq-item__question { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; cursor:pointer; font-family:var(--font-body); font-size:20px; font-weight:550; line-height:1.2; color:var(--page-text); user-select:none; }
+.faq-item__arrow { display:flex; align-items:center; height:28px; flex-shrink:0; }
+.faq-item__arrow img { width:24px; height:24px; }
+.faq-item__answer { font-family:var(--font-body); font-size:16px; line-height:1.2; font-weight:550; color:var(--page-text-secondary); padding:8px 0 0; display:none; }
 .faq-item--open .faq-item__answer { display:block; }
-.faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff; border:none; cursor:pointer; font-size:20px; transition:transform 0.12s,box-shadow 0.12s; }
+.faq-item--open .faq-item__question { gap:8px; }
+.faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:#0575F3; color:#fff; border:none; cursor:pointer; transition:transform 0.12s,box-shadow 0.12s; }
 .faq-trigger:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(5,117,243,0.3); }
-.faq-trigger--active { background:var(--accent-secondary); }
+.faq-trigger--active { background:#045CBF; }
 
 /* ============================
    QR MODAL
@@ -687,7 +719,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .qr-modal { padding:20px; width:456px; max-width:100%; background:#F5F5F5; }
 [data-theme="dark"] .qr-modal { background:var(--surface-raised); }
 .qr-modal__header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
-.qr-modal__title { font-family:var(--font-display); font-size:24px; font-weight:600; color:var(--page-text); }
+.qr-modal__title { font-family:var(--font-display); font-size:24px; font-weight:650; line-height:1.4; color:var(--page-text); }
 .qr-modal__close { font-size:18px; color:var(--page-text-secondary); cursor:pointer; background:none; border:none; padding:4px; }
 .qr-modal__desc { font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--page-text-secondary); margin-bottom:16px; line-height:1.4; }
 .qr-modal__frame { background:var(--surface-raised); border-radius:var(--radius-lg); padding:32px; display:flex; align-items:center; justify-content:center; position:relative; }
@@ -708,7 +740,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
    REFERRAL STATUS
    ============================ */
 .ref-status-grid { display:flex; gap:var(--sp-6); flex-wrap:wrap; }
-.ref-status { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:var(--radius-full); font-family:var(--font-body); font-size:14px; font-weight:500; }
+.ref-status { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:var(--radius-full); font-family:var(--font-body); font-size:20px; font-weight:400; padding-bottom:2px; }
 .ref-status--applied { background:rgba(0,158,80,0.1); color:var(--green-600); }
 .ref-status--applied .ref-status__icon { color:var(--green-600); }
 .ref-status--error { background:rgba(255,70,1,0.1); color:var(--accent-secondary); }
@@ -722,7 +754,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .risk-tag { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border:1px solid var(--accent); border-radius:var(--radius-full); font-family:var(--font-mono); font-size:11px; color:var(--accent); }
 .risk-tag__dots { display:flex; gap:3px; }
 .risk-tag__dot { width:6px; height:6px; border-radius:50%; background:var(--accent); }
-.risk-tag__dot--empty { background:transparent; border:1px solid var(--accent); }
+.risk-tag__dot--empty { background:#A7C4EC; }
 
 /* ============================
    DARK MODE — Icon & Asset Overrides
@@ -765,6 +797,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Checkbox checkmarks — on colored bg, already visible */
 /* Toast close & external icons (tokens SVGs have own colors, no invert needed) */
+
+/* FAQ chevrons and close (system icons, black stroke) */
+[data-theme="dark"] .faq-item__answer { color:var(--page-text-secondary); }
+
+/* Evolution phase check icons (green stays green, no invert needed) */
+/* Evolution phase number text */
+[data-theme="dark"] .evo-phase__icon--current { background:rgba(5,117,243,0.1); }
+[data-theme="dark"] .evo-phase__icon--future { background:var(--surface-raised); }
 
 /* Secondary buttons in dark mode */
 [data-theme="dark"] .btn--secondary { border-color:var(--btn-secondary-stroke); color:var(--btn-secondary-text); }
@@ -1266,7 +1306,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card">
-        <button class="btn btn--secondary btn--big" style="border-color:#045CBF;color:#045CBF"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
+        <button class="btn btn--secondary btn--big" style="color:#045CBF"><span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span>Label<span class="btn__icon"><img src="assets/icons/sun.svg" alt=""></span></button>
         <span class="state-label">Hover</span>
       </div>
       <div class="comp-card">
@@ -1339,8 +1379,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <div class="comp-group">
     <p class="color-group__label">Dropdowns</p>
     <div class="comp-preview">
-      <div class="comp-card"><div class="dropdown">Last 30 days <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:12px;height:12px;vertical-align:-1px"></span></div><span class="state-label">Default</span></div>
-      <div class="comp-card"><div class="dropdown" style="border-color:var(--accent)">USD <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:12px;height:12px;vertical-align:-1px"></span></div><span class="state-label">Focus</span></div>
+      <div class="comp-card"><div class="dropdown">Last 30 days <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Default</span></div>
+      <div class="comp-card"><div class="dropdown" style="border-color:var(--accent)">USD <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Focus</span></div>
     </div>
   </div>
 </section>
@@ -1517,7 +1557,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="header-demo">
       <img src="assets/logo-black.svg" alt="Manifest" class="header-demo__logo">
       <div class="header-demo__right">
-        <div class="dropdown">Overview <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:12px;height:12px;vertical-align:-1px"></span></div>
+        <div class="dropdown">Overview <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div>
         <div class="header-demo__pill">Connect</div>
       </div>
     </div>
@@ -1685,8 +1725,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div class="toast__icon toast__icon--default"><img src="assets/tokens/clock-default.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
-        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg?v=3" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg?v=3" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Default</span>
     </div>
@@ -1696,8 +1736,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div class="toast__icon toast__icon--blue"><img src="assets/tokens/clock-blue.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
-        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg?v=3" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg?v=3" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Blue</span>
     </div>
@@ -1707,8 +1747,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div class="toast__icon toast__icon--red"><img src="assets/tokens/clock-red.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
-        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg?v=3" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg?v=3" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Red</span>
     </div>
@@ -1718,8 +1758,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div class="toast__icon toast__icon--green"><img src="assets/tokens/clock-green.svg" alt="" style="width:20px;height:20px"></div>
           <div class="toast__text"><div class="toast__title">Header</div><div class="toast__desc">Text</div></div>
         </div>
-        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg" alt="" style="width:16px;height:16px"></button>
-        <button class="toast__close"><img src="assets/tokens/close-toast.svg" alt="" style="width:20px;height:20px"></button>
+        <button class="toast__btn">View on explorer <img src="assets/tokens/external-blue.svg?v=3" alt="" style="width:16px;height:16px"></button>
+        <button class="toast__close"><img src="assets/tokens/close-toast.svg?v=3" alt="" style="width:20px;height:20px"></button>
       </div>
       <span class="state-label">Green</span>
     </div>
@@ -1908,11 +1948,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Progress Marks</p>
     <div class="comp-preview" style="gap:24px">
       <div class="comp-card">
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
         <span class="state-label">On</span>
       </div>
       <div class="comp-card">
-        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
+        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
         <span class="state-label">Off</span>
       </div>
     </div>
@@ -1922,15 +1962,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 1 — Approve in wallet</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
         <span class="progress-label progress-label--inactive">Sign message</span>
         <span class="progress-label progress-label--inactive">Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:0%"></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
-        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
+        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
       </div>
     </div>
   </div>
@@ -1939,15 +1979,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 2 — Sign message</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
         <span class="progress-label progress-label--inactive">Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:50%"></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--off"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--page-text-secondary)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--page-text-secondary)"/></svg></div>
       </div>
     </div>
   </div>
@@ -1956,15 +1996,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 3 — Confirm transaction</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:100%"></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
       </div>
     </div>
   </div>
@@ -1973,15 +2013,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 4 — All Complete</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:100%"></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
-        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="14" height="9" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
+        <div class="progress-mark progress-mark--on"><svg viewBox="0 0 2000 1293" width="24" height="24" fill="none"><path d="M0 543V1293L1000 750V0L0 543Z" fill="var(--blue-600)"/><path d="M2000 1042V1292L1000 750V500L2000 1042ZM2000 542V792L1000 250V0L2000 542Z" fill="var(--blue-600)"/></svg></div>
       </div>
     </div>
   </div>
@@ -1996,14 +2036,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:600px;gap:16px">
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
+          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px"></div>
           <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
         </div>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div class="infobox">
-          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
+          <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px"></div>
           <div class="infobox__text" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">Your referral code is active <span class="tag tag--blue-outline" style="font-size:12px;padding:4px 8px">In progress</span></div>
         </div>
         <span class="state-label">With Tag</span>
@@ -2073,7 +2113,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__desc" style="margin-top:4px">$USH becomes a composable claim on American residential real estate—tradable 24/7, usable as DeFi collateral, accessible globally.</div>
           </div>
           <div class="infobox" style="margin-top:4px">
-            <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:20px;height:20px"></div>
+            <div class="infobox__icon"><img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px"></div>
             <div class="infobox__text">Schedules and projections are subject to change. We act in depositors' best interest.</div>
           </div>
         </div>
@@ -2220,7 +2260,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="swapform">
   <p class="section__eyebrow">Patterns</p>
   <h2 class="section__title">Swap Form</h2>
-  <p class="section__desc">Swap interface with "You pay" and "You receive" inputs. Each input: bg white, pt=12px pb=16px px=16px, w=500px. Header row with label and dollar value. Token display with 40px icon + network badge. Amount in GT America Mono 20px. Balance row with MAX button. Includes stat row, divider with "or", and arrow button.</p>
+  <p class="section__desc">Swap interface with "You pay" and "You receive" inputs. Each input: bg white, p=16px, w=500px, border 1px rgba(0,0,0,0.16), radius 12px. Token display with 24px icon, name in Season Sans 20px/500, chevron 20px. Amount in Season Sans 20px/500. Balance row with HALF + MAX buttons. Includes stat row, divider, and arrow button.</p>
 
   <div class="comp-group">
     <p class="color-group__label">Swap Input &mdash; "You pay" (empty)</p>
@@ -2232,18 +2272,10 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         </div>
         <div class="swap-input__token-row">
           <div class="swap-input__token">
-            <div class="swap-input__token-icon-wrap">
-              <img src="assets/tokens/usdc-swap.png" alt="USDC" style="width:40px;height:40px;border-radius:50%">
-              <div style="width:18px;height:18px;border-radius:4px;border:2px solid #FFFFFF;position:absolute;bottom:0;right:0;background:#627EEA;display:flex;align-items:center;justify-content:center;overflow:hidden">
-                <img src="assets/tokens/eth-swap.svg" alt="ETH" style="width:14px;height:14px">
-              </div>
-            </div>
-            <div class="swap-input__token-info">
-              <div class="swap-input__token-name-row">
-                <span class="swap-input__token-name">USDC</span>
-                <img src="assets/tokens/chevron-swap.svg" alt="" style="width:16px;height:16px;opacity:0.5">
-              </div>
-              <span class="swap-input__token-network">Ethereum</span>
+            <img src="assets/tokens/usdc-swap.png" alt="USDC" style="width:24px;height:24px;border-radius:50%;overflow:hidden">
+            <div class="swap-input__token-name-row">
+              <span class="swap-input__token-name">USDC</span>
+              <img src="assets/tokens/chevron-swap.svg?v=3" alt="" style="width:20px;height:20px;opacity:0.5">
             </div>
           </div>
           <span class="swap-input__amount">0.00</span>
@@ -2251,6 +2283,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <div class="swap-input__balance-row">
           <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">213.44</span></span>
           <div class="swap-input__controls">
+            <button class="swap-input__max-btn">HALF</button>
             <button class="swap-input__max-btn">MAX</button>
           </div>
         </div>
@@ -2264,29 +2297,22 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="swap-input">
         <div class="swap-input__header">
           <span class="swap-input__label">You pay</span>
-          <span class="swap-input__dollar">~ $100.00</span>
+          <span class="swap-input__dollar">~ $100,765.09</span>
         </div>
         <div class="swap-input__token-row">
           <div class="swap-input__token">
-            <div class="swap-input__token-icon-wrap">
-              <img src="assets/tokens/usdc-swap.png" alt="USDC" style="width:40px;height:40px;border-radius:50%">
-              <div style="width:18px;height:18px;border-radius:4px;border:2px solid #FFFFFF;position:absolute;bottom:0;right:0;background:#627EEA;display:flex;align-items:center;justify-content:center;overflow:hidden">
-                <img src="assets/tokens/eth-swap.svg" alt="ETH" style="width:14px;height:14px">
-              </div>
-            </div>
-            <div class="swap-input__token-info">
-              <div class="swap-input__token-name-row">
-                <span class="swap-input__token-name">USDC</span>
-                <img src="assets/tokens/chevron-swap.svg" alt="" style="width:16px;height:16px;opacity:0.5">
-              </div>
-              <span class="swap-input__token-network">Ethereum</span>
+            <img src="assets/tokens/usdc-swap.png" alt="USDC" style="width:24px;height:24px;border-radius:50%;overflow:hidden">
+            <div class="swap-input__token-name-row">
+              <span class="swap-input__token-name">USDC</span>
+              <img src="assets/tokens/chevron-swap.svg?v=3" alt="" style="width:20px;height:20px;opacity:0.5">
             </div>
           </div>
-          <span class="swap-input__amount swap-input__amount--filled">100.00</span>
+          <span class="swap-input__amount swap-input__amount--filled">100,765.09</span>
         </div>
         <div class="swap-input__balance-row">
-          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">213.44</span></span>
+          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">93,528.04 USDC</span></span>
           <div class="swap-input__controls">
+            <button class="swap-input__max-btn">HALF</button>
             <button class="swap-input__max-btn">MAX</button>
           </div>
         </div>
@@ -2300,28 +2326,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="swap-input">
         <div class="swap-input__header">
           <span class="swap-input__label">You receive</span>
-          <span class="swap-input__dollar">~ $101.50</span>
+          <span class="swap-input__dollar">~ $100,765.09</span>
         </div>
         <div class="swap-input__token-row">
           <div class="swap-input__token">
-            <div class="swap-input__token-icon-wrap">
-              <img src="assets/tokens/ush-swap.svg" alt="USH" style="width:40px;height:40px;border-radius:50%">
-              <div style="width:18px;height:18px;border-radius:4px;border:2px solid #FFFFFF;position:absolute;bottom:0;right:0;background:#E84142;display:flex;align-items:center;justify-content:center;overflow:hidden">
-                <img src="assets/tokens/avax-swap.svg" alt="AVAX" style="width:14px;height:14px">
-              </div>
-            </div>
-            <div class="swap-input__token-info">
-              <div class="swap-input__token-name-row">
-                <span class="swap-input__token-name">USH</span>
-                <img src="assets/tokens/chevron-swap.svg" alt="" style="width:16px;height:16px;opacity:0.5">
-              </div>
-              <span class="swap-input__token-network">Avalanche</span>
+            <img src="assets/tokens/ush-swap.svg" alt="USH" style="width:24px;height:24px;border-radius:50%;overflow:hidden">
+            <div class="swap-input__token-name-row">
+              <span class="swap-input__token-name">USH</span>
             </div>
           </div>
-          <span class="swap-input__amount swap-input__amount--filled">102.04</span>
-        </div>
-        <div class="swap-input__balance-row">
-          <span class="swap-input__balance"><span class="swap-input__balance-label">Balance: </span><span class="swap-input__balance-value">0.00</span></span>
+          <span class="swap-input__amount swap-input__amount--filled">1,007,650.90</span>
         </div>
       </div>
     </div>
@@ -2332,7 +2346,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="flex-direction:column;align-items:flex-start;gap:24px;max-width:500px">
       <div class="comp-card" style="width:100%">
         <div class="swap-stat-row" style="width:100%">
-          <span class="swap-stat-row__label">Price impact <img src="assets/tokens/info-line.svg" alt="" style="width:14px;height:14px;opacity:0.4"></span>
+          <span class="swap-stat-row__label">Price impact <img src="assets/tokens/info-line.svg" alt="" style="width:24px;height:24px"></span>
           <span class="swap-stat-row__value">0.12%</span>
         </div>
         <span class="state-label">Stat Row</span>
@@ -2347,13 +2361,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
       <div class="comp-card">
         <div class="swap-arrow-btn">
-          <img src="assets/tokens/arrow-swap.svg" alt="" style="width:20px;height:20px">
+          <img src="assets/tokens/arrow-swap.svg?v=3" alt="" style="width:20px;height:20px">
         </div>
         <span class="state-label">Arrow Button</span>
       </div>
-      <div class="comp-card">
+      <div class="comp-card" style="display:flex;flex-direction:row;gap:4px">
+        <button class="swap-input__max-btn">HALF</button>
         <button class="swap-input__max-btn">MAX</button>
-        <span class="state-label">MAX Button</span>
+        <span class="state-label">HALF / MAX Buttons</span>
       </div>
     </div>
   </div>
@@ -2434,28 +2449,28 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div class="comp-card" style="width:100%">
         <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
           <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
-          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:2px;padding:1px 10px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
         </div>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
           <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
-          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #0575F3;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">1.1%</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:2px;padding:1px 10px;border:1px solid #0575F3;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">1.1%</span>
         </div>
         <span class="state-label">Active</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #858585;border-radius:var(--radius-md);width:300px;max-width:100%">
           <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
-          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #FF4601;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.00%</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:2px;padding:1px 10px;border:1px solid #FF4601;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.00%</span>
         </div>
         <span class="state-label">Out of Bounds</span>
       </div>
       <div class="comp-card" style="width:100%">
         <div style="display:flex;align-items:center;gap:36px;padding:12px;background:var(--surface);border:1px solid #000000;border-radius:var(--radius-md);width:300px;max-width:100%">
           <span style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.4;color:var(--page-text)">Max slippage</span>
-          <span style="margin-left:auto;display:inline-flex;align-items:center;padding:4px 12px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:2px;padding:1px 10px;border:1px solid #858585;border-radius:99px;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text);text-transform:uppercase">0.1%</span>
         </div>
         <span class="state-label">Hover</span>
       </div>
@@ -2467,42 +2482,59 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 <section class="section" id="modals">
   <p class="section__eyebrow">Components</p>
   <h2 class="section__title">Connect Wallet</h2>
-  <p class="section__desc">Wallet selection list with 8 providers. Each row: 60px height, 16px padding, wallet icon (32x32) + name (Season Sans Medium 20px) + optional status tag. Container is 416px wide with border #E0E0E0, box-shadow, and border-bottom dividers between items.</p>
+  <p class="section__desc">Wallet selection list with 8 providers. Each row: 60px height, 16px padding, wallet icon (24x24) + name (Season Sans Medium 20px) + optional status tag. Container is 416px wide with border #E0E0E0, box-shadow, and border-bottom dividers between items.</p>
   <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
     <div style="width:416px;max-width:100%;border:1px solid #E0E0E0;background:var(--surface)">
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/phantom.svg" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Phantom</span>
-        <span class="tag tag--red" style="margin-left:auto">Best offer</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/phantom.svg" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Phantom</span></div>
+        <span class="tag tag--red">Best offer</span>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/walletconnect.svg" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">WalletConnect</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/walletconnect.svg" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">WalletConnect</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/metamask.svg" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">MetaMask</span>
-        <span class="tag tag--red" style="margin-left:auto">Best offer</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/metamask.svg" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">MetaMask</span></div>
+        <span class="tag tag--red">Best offer</span>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/coinbase.svg" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Coinbase Wallet</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/coinbase.svg" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Coinbase Wallet</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/zerion.svg" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Zerion</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/zerion.svg" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Zerion</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/bitkeep.png" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">BitKeep</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/bitkeep.png" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">BitKeep</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;border-bottom:1px solid #E0E0E0;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/kaikas.png" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Kaikas</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/kaikas.png" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Kaikas</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;padding:16px;height:60px;cursor:pointer;transition:background 0.12s" onmouseover="this.style.background='var(--surface-raised)'" onmouseout="this.style.background=''">
-        <img src="assets/tokens/core.png" alt="" style="width:32px;height:32px;border-radius:50%">
-        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Core</span>
+        <div style="display:flex;align-items:center;gap:8px;flex:1"><img src="assets/tokens/core.png" alt="" style="width:24px;height:24px;border-radius:50%;overflow:clip">
+        <span style="font-family:var(--font-body);font-size:20px;font-weight:500;color:var(--page-text)">Core</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group" style="margin-top:32px">
+    <p class="color-group__label">Terms &amp; Conditions Modal</p>
+    <div class="comp-preview" style="flex-direction:column;align-items:flex-start">
+      <div class="modal-demo">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="modal-demo__title">Confirm the Terms and Conditions</div>
+          <div class="modal-demo__desc">By connecting a wallet, you agree to Manifest's Terms and Conditions and acknowledge that you've read and understand the protocol documentation and associated risks</div>
+        </div>
+        <div class="modal-demo__checkbox-row">
+          <div class="modal-demo__checkbox"></div>
+          <span class="modal-demo__checkbox-label">I accept the Terms and Conditions</span>
+        </div>
+        <button class="modal-demo__btn">I accept</button>
       </div>
     </div>
   </div>
@@ -2541,7 +2573,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div style="display:flex;flex-direction:column">
             <div style="display:flex;align-items:center;gap:4px">
               <span class="token-badge__name">USDC</span>
-              <img src="assets/tokens/chevron-swap.svg" alt="" style="width:16px;height:16px;opacity:0.5">
+              <img src="assets/tokens/chevron-swap.svg?v=3" alt="" style="width:20px;height:20px;opacity:0.5">
             </div>
             <span class="token-badge__network-label">Ethereum</span>
           </div>
@@ -2703,45 +2735,47 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Trigger Button</h3>
   <div style="display:flex;gap:16px;margin-bottom:40px">
     <button style="background:#0575F3;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ default">
-      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:20px;height:20px">
+      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
     <button style="background:#045CBF;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ active">
-      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:20px;height:20px">
+      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Item States</h3>
   <div style="max-width:440px;margin-bottom:40px;border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px">
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" >Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center">Question 1 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" >Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-up.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Panel</h3>
-  <div style="background:var(--surface);border:1px solid var(--stroke);box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <span style="font-family:var(--font-display);font-size:24px;font-weight:650">Frequently Asked Questions</span>
-      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex"><img src="assets/tokens/faq-close.svg" alt="" style="width:20px;height:20px"></button>
+  <div style="background:var(--surface);border:1px solid var(--stroke);box-shadow:0 8px 16px 4px rgba(16,24,40,0.06);padding:24px;width:416px;display:flex;flex-direction:column;gap:20px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+      <span style="font-family:var(--font-display);font-size:24px;font-weight:650;line-height:1.2">Frequently Asked Questions</span>
+      <button style="background:none;border:none;cursor:pointer;padding:0;display:flex;flex-shrink:0"><img src="assets/tokens/faq-close.svg?v=3" alt="" style="width:24px;height:24px"></button>
     </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 2 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <img src="assets/tokens/faq-chevron-up.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 3 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-up.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-item__question" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <img src="assets/tokens/faq-chevron-down.svg" alt="" style="width:16px;height:16px"></div>
+      <div class="faq-item__question" onclick="this.parentElement.classList.toggle('faq-item--open')">Question 4 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="font-size:16px;color:var(--page-text-secondary)">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
     </div>
   </div>
 </section>
@@ -2779,11 +2813,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Desktop Size</h3>
   <div class="ref-status-grid" style="margin-bottom:32px">
     <div class="ref-status ref-status--applied">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:16px;height:16px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg?v=3" alt="" style="width:24px;height:24px"></span>
       Applied
     </div>
     <div class="ref-status ref-status--error">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:16px;height:16px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg?v=3" alt="" style="width:24px;height:24px"></span>
       Clear
     </div>
   </div>
@@ -2791,11 +2825,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Mobile Size</h3>
   <div class="ref-status-grid">
     <div class="ref-status ref-status--applied ref-status--sm">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg" alt="" style="width:16px;height:16px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-check-applied.svg?v=3" alt="" style="width:16px;height:16px"></span>
       Applied
     </div>
     <div class="ref-status ref-status--error ref-status--sm">
-      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg" alt="" style="width:16px;height:16px"></span>
+      <span class="ref-status__icon"><img src="assets/tokens/ref-refresh-error.svg?v=3" alt="" style="width:16px;height:16px"></span>
       Clear
     </div>
   </div>
@@ -2851,7 +2885,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
   <div style="display:grid;grid-template-columns:repeat(3,452px);gap:24px;overflow-x:auto">
     <!-- HODLer Card -->
-    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:24px">
       <!-- Amount -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
@@ -2861,7 +2895,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
@@ -2872,13 +2906,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
@@ -2890,11 +2924,11 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Time period</span>
         </div>
-        <div style="position:relative;width:100%;height:8px;background:var(--stroke);border-radius:4px">
-          <div style="position:absolute;left:0;top:0;width:30%;height:100%;background:#0575F3;border-radius:4px"></div>
+        <div style="position:relative;width:100%;height:8px;background:var(--stroke);border-radius:1000px">
+          <div style="position:absolute;left:0;top:0;width:30%;height:100%;background:#0575F3;border-radius:100px"></div>
           <img src="assets/tokens/slider-handle.svg" alt="" style="position:absolute;left:30%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px">
         </div>
-        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:14px;color:var(--page-text-secondary)">
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--page-text)">
           <span>3M</span><span>6M</span><span>12M</span><span>24M</span><span>36M</span>
         </div>
       </div>
@@ -2904,13 +2938,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">USH returns</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
@@ -2921,13 +2955,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
@@ -2937,7 +2971,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     </div>
 
     <!-- Influencer Card -->
-    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:24px">
       <!-- Points supply earned by referrals -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
@@ -2951,13 +2985,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
@@ -2968,13 +3002,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
@@ -2984,7 +3018,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     </div>
 
     <!-- Degen Card -->
-    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--surface-raised);padding:24px;display:flex;flex-direction:column;gap:24px">
       <!-- Points supply earned -->
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
@@ -2998,13 +3032,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">FDV Hypothesis</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text);text-align:right">3518 M</span>
@@ -3015,13 +3049,13 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;gap:12px;width:100%">
         <div style="display:flex;gap:4px;align-items:center">
           <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Approximate reward</span>
-          <img src="assets/tokens/info-icon.svg" alt="" style="width:16px;height:16px">
+          <img src="assets/tokens/info-icon.svg" alt="" style="width:24px;height:24px">
         </div>
         <div style="background:var(--surface);padding:16px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden">
           <div style="display:flex;gap:8px;align-items:center">
             <img src="assets/tokens/ethena.svg" alt="Ethena" style="width:24px;height:24px">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text)">Ethena</span>
-            <img src="assets/tokens/chevron-down-black.svg" alt="" style="width:16px;height:16px">
+            <img src="assets/tokens/chevron-down-black.svg?v=3" alt="" style="width:24px;height:24px">
           </div>
           <div style="display:flex;gap:4px;align-items:center">
             <span style="font-family:var(--font-body);font-size:20px;font-weight:550;color:var(--page-text-secondary);text-align:right">0</span>
@@ -3041,17 +3075,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Phase Navigation</h3>
   <div class="evo-grid" style="margin-bottom:40px">
     <div class="evo-nav">
-      <div class="evo-nav__title">Phase Progression</div>
-      <div class="evo-nav__subtitle">Phase 3 of 5</div>
+      <div class="evo-nav__header"><div class="evo-nav__title">Phase Progression</div><div class="evo-nav__subtitle">Phase 3 of 5</div></div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg?v=2" alt=""></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">Bootstrap</span>
           <span class="evo-phase__detail">Up to 20% HEI, Jan–Feb 2026</span>
         </div>
       </div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg?v=2" alt=""></div>
         <div class="evo-phase__info">
           <span class="evo-phase__label">First Homes</span>
           <span class="evo-phase__detail">Up to 35% HEI, Mar–Apr 2026</span>
@@ -3081,10 +3114,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     </div>
 
     <div class="evo-nav">
-      <div class="evo-nav__title">Navigation Items</div>
-      <div class="evo-nav__subtitle">States</div>
+      <div class="evo-nav__header"><div class="evo-nav__title">Navigation Items</div><div class="evo-nav__subtitle">States</div></div>
       <div class="evo-phase">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg" alt="" style="width:20px;height:20px"></div>
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-green.svg?v=2" alt=""></div>
         <div class="evo-phase__info"><span class="evo-phase__label">Completed</span></div>
       </div>
       <div class="evo-phase">
@@ -3097,32 +3129,36 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
       <div class="evo-phase evo-phase--active">
         <div class="evo-phase__icon evo-phase__icon--current">4</div>
-        <div class="evo-phase__info"><span class="evo-phase__label">Active (selected)</span></div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Active</span><span class="evo-phase__detail">Label</span></div>
+      </div>
+      <div class="evo-phase evo-phase--active">
+        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-blue.svg?v=2" alt=""></div>
+        <div class="evo-phase__info"><span class="evo-phase__label">Active w/ icon</span><span class="evo-phase__detail">Label</span></div>
       </div>
     </div>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Deposit Cap</h3>
   <div class="evo-grid" style="margin-bottom:40px">
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposit Cap</span>
-        <span class="evo-cap-card__value">$74.1M / $100M</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--blue"></span>Deposit Cap</span>
+        <span class="evo-cap-card__value">$74.1M <span class="evo-cap-card__value-secondary">/ $100M</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:74.1%"></div></div>
       <div class="evo-cap-sub"><span>Depositors: 3,421</span><span>Remaining: $25.9M</span></div>
     </div>
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposit Cap</span>
-        <span class="evo-cap-card__value">$100M / $100M</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--red"></span>Deposit Cap</span>
+        <span class="evo-cap-card__value">$100M <span class="evo-cap-card__value-secondary">/ $100M</span></span>
       </div>
-      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
+      <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--orange" style="width:100%"></div></div>
       <div class="evo-cap-sub"><span>Depositors: 6,019</span><span>Filled</span></div>
     </div>
-    <div class="evo-cap-card">
+    <div class="evo-deposit-cap">
       <div class="evo-cap-card__row">
-        <span class="evo-cap-card__label">Deposits Open</span>
+        <span class="evo-cap-card__label"><span class="evo-cap-card__dot evo-cap-card__dot--green"></span>Deposits Open</span>
         <span class="evo-cap-card__value">$249M</span>
       </div>
       <div class="evo-cap-sub"><span>Depositors: 8,212</span><span>Open</span></div>
@@ -3134,7 +3170,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="evo-cap-card">
       <div class="evo-cap-card__row">
         <span class="evo-cap-card__label">Capacity:</span>
-        <span class="evo-cap-card__value">$12.4M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">69%</span></span>
+        <span class="evo-cap-card__value">$12.4M / $18M <span class="evo-cap-card__value-secondary">69%</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--blue" style="width:69%"></div></div>
       <div class="evo-cap-sub"><span>Last 7d: $4.2M</span><span>ETA: 3 Weeks</span></div>
@@ -3142,7 +3178,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="evo-cap-card">
       <div class="evo-cap-card__row">
         <span class="evo-cap-card__label">Capacity:</span>
-        <span class="evo-cap-card__value">$18M / $18M <span style="color:var(--page-text-secondary);font-weight:400;font-size:12px">100%</span></span>
+        <span class="evo-cap-card__value">$18M / $18M <span class="evo-cap-card__value-secondary">100%</span></span>
       </div>
       <div class="evo-cap-bar"><div class="evo-cap-bar__fill evo-cap-bar__fill--green" style="width:100%"></div></div>
       <div class="evo-cap-sub"><span>Last 7d: $4.2M</span><span>ETA: --</span></div>
@@ -3156,17 +3192,16 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Semicircle donut: r=130, stroke-width=40, C=816.81, half=408.41 -->
-            <!-- Segments go from left (180°) clockwise to right (0°) -->
-            <!-- USDe (red) 50%: 204.2 of 408.41 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
-              stroke-dasharray="204.2 612.61" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
-            <!-- Available for HEI (light blue) 12%: 49.0 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#A7C4EC" stroke-width="40"
-              stroke-dasharray="49.0 767.81" stroke-dashoffset="-612.61" stroke-linecap="butt"/>
-            <!-- HEI (blue) 38%: 155.2 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
-              stroke-dasharray="155.2 661.61" stroke-dashoffset="-661.61" stroke-linecap="butt"/>
+            <!-- Semicircle donut from LEFT to RIGHT over the top, pathLength=100 for percentage math -->
+            <!-- HEI (blue) 38% - starts from left -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
+              pathLength="100" stroke-dasharray="38 100" stroke-dashoffset="0"/>
+            <!-- Available for HEI (light blue) 12% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#A7C4EC" stroke-width="40"
+              pathLength="100" stroke-dasharray="12 100" stroke-dashoffset="-38"/>
+            <!-- USDe (red) 50% - reaches right -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
+              pathLength="100" stroke-dasharray="50 100" stroke-dashoffset="-50"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Room to grow:</div>
@@ -3185,12 +3220,12 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- USDe (red) 53%: 216.5 of 408.41 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#FF4601" stroke-width="40"
-              stroke-dasharray="216.5 600.31" stroke-dashoffset="-408.41" stroke-linecap="butt"/>
-            <!-- HEI (blue) 47%: 191.9 -->
-            <circle cx="170" cy="175" r="130" fill="none" stroke="#0575F3" stroke-width="40"
-              stroke-dasharray="191.9 624.91" stroke-dashoffset="-624.91" stroke-linecap="butt"/>
+            <!-- HEI (blue) 47% - starts from left -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
+              pathLength="100" stroke-dasharray="47 100" stroke-dashoffset="0"/>
+            <!-- USDe (red) 53% - reaches right -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
+              pathLength="100" stroke-dasharray="53 100" stroke-dashoffset="-47"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Composition</div>
