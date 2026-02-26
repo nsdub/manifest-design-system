@@ -295,10 +295,10 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .stat-card { padding:16px; min-width:200px; width:262px; border:none; border-radius:0; display:flex; flex-direction:column; gap:8px; }
 .stat-card--primary { background:#F5F5F5; }
 .stat-card--secondary { background:#FFFFFF; }
-.stat-card--accent { background:#000000; }
+.stat-card--accent { background:#0575F3; }
 .stat-card--small { padding:12px; gap:4px; }
 .stat-card--small .stat-card__value { font-size:20px; line-height:1.2; }
-.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.6); }
+.stat-card--accent .stat-card__header { color:rgba(255,255,255,0.8); }
 .stat-card--accent .stat-card__value { color:#FFFFFF; }
 .stat-card--accent { border-color:transparent; }
 .stat-card__header { font-family:var(--font-mono); font-size:12px; font-weight:400; color:#858585; line-height:1.4; display:flex; align-items:center; gap:4px; text-transform:uppercase; }
@@ -313,7 +313,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 [data-theme="dark"] .stat-card { border-color:var(--stroke); }
 [data-theme="dark"] .stat-card--primary { background:var(--surface); }
 [data-theme="dark"] .stat-card--secondary { background:var(--surface); }
-[data-theme="dark"] .stat-card--accent { background:#000000; border-color:transparent; }
+[data-theme="dark"] .stat-card--accent { background:#0575F3; border-color:transparent; }
 [data-theme="dark"] .stat-card__header { color:var(--page-text-secondary); }
 [data-theme="dark"] .stat-card__value { color:var(--page-text); }
 
@@ -498,7 +498,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 
 /* Referral */
 .referral-demo { display:flex; gap:16px; align-items:center; }
-.referral-box { width:72px; height:88px; border:1px solid rgba(255,255,255,0.32); border-radius:12px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:40px; font-weight:500; line-height:40px; text-transform:uppercase; }
+.referral-box { width:72px; height:120px; border:1px solid rgba(255,255,255,0.32); border-radius:12px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:40px; font-weight:500; line-height:1.4; text-transform:uppercase; }
 .referral-box--filled { color:var(--white); }
 .referral-box--empty { }
 .referral-box--disabled { color:rgba(255,255,255,0.32); border-color:rgba(255,255,255,0.32); }
@@ -703,10 +703,10 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
 .faq-panel__close { color:var(--page-text); cursor:pointer; background:none; border:none; padding:0; display:flex; }
 .faq-panel__close img { width:24px; height:24px; }
 .faq-panel__items { display:flex; flex-direction:column; gap:24px; }
-.faq-item__question { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; cursor:pointer; font-family:var(--font-body); font-size:20px; font-weight:550; line-height:1.2; color:var(--page-text); user-select:none; }
+.faq-item__question { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; cursor:pointer; font-family:var(--font-body); font-size:20px; font-weight:500; line-height:1.2; color:var(--page-text); user-select:none; }
 .faq-item__arrow { display:flex; align-items:center; height:28px; flex-shrink:0; }
 .faq-item__arrow img { width:24px; height:24px; }
-.faq-item__answer { font-family:var(--font-body); font-size:16px; line-height:1.2; font-weight:550; color:var(--page-text-secondary); padding:8px 0 0; display:none; }
+.faq-item__answer { font-family:var(--font-body); font-size:16px; line-height:1.2; font-weight:500; color:var(--page-text-secondary); padding:8px 0 0; display:none; }
 .faq-item--open .faq-item__answer { display:block; }
 .faq-item--open .faq-item__question { gap:8px; }
 .faq-trigger { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:#0575F3; color:#fff; border:none; cursor:pointer; transition:transform 0.12s,box-shadow 0.12s; }
@@ -740,7 +740,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
    REFERRAL STATUS
    ============================ */
 .ref-status-grid { display:flex; gap:var(--sp-6); flex-wrap:wrap; }
-.ref-status { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:var(--radius-full); font-family:var(--font-body); font-size:20px; font-weight:400; padding-bottom:2px; }
+.ref-status { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:var(--radius-full); font-family:var(--font-body); font-size:20px; font-weight:400; }
 .ref-status--applied { background:rgba(0,158,80,0.1); color:var(--green-600); }
 .ref-status--applied .ref-status__icon { color:var(--green-600); }
 .ref-status--error { background:rgba(255,70,1,0.1); color:var(--accent-secondary); }
@@ -1379,8 +1379,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <div class="comp-group">
     <p class="color-group__label">Dropdowns</p>
     <div class="comp-preview">
-      <div class="comp-card"><div class="dropdown">Last 30 days <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Default</span></div>
-      <div class="comp-card"><div class="dropdown" style="border-color:var(--accent)">USD <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Focus</span></div>
+      <div class="comp-card"><div class="dropdown">Last 30 days <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg?v=4" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Default</span></div>
+      <div class="comp-card"><div class="dropdown" style="border-color:var(--accent)">USD <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg?v=4" alt="" style="width:24px;height:24px"></span></div><span class="state-label">Focus</span></div>
     </div>
   </div>
 </section>
@@ -1423,9 +1423,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--primary">
-          <div class="stat-card__header">Total Value Locked <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__header">Total Value Locked <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon"></div>
           <div class="stat-card__value">$112,482</div>
-          <div class="stat-card__sub stat-card__sub--green"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +2.4%</div>
+          <div class="stat-card__sub stat-card__sub--green"><img src="assets/icons/arrow-trend-up.svg?v=4" alt="" class="stat-card__sub-icon"> +2.4%</div>
         </div>
         <span class="state-label">Primary Default</span>
       </div>
@@ -1437,7 +1437,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--primary stat-card--small">
-          <div class="stat-card__header">HEI Allocation <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__header">HEI Allocation <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon"></div>
           <div class="stat-card__value">38%</div>
         </div>
         <span class="state-label">Primary Small</span>
@@ -1450,9 +1450,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--secondary">
-          <div class="stat-card__header">Staking APY <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__header">Staking APY <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon"></div>
           <div class="stat-card__value">8.3%</div>
-          <div class="stat-card__sub stat-card__sub--red"><img src="assets/icons/arrow-trend-down.svg" alt="" class="stat-card__sub-icon"> -0.5%</div>
+          <div class="stat-card__sub stat-card__sub--red"><img src="assets/icons/arrow-trend-down.svg?v=4" alt="" class="stat-card__sub-icon"> -0.5%</div>
         </div>
         <span class="state-label">Secondary Default</span>
       </div>
@@ -1464,9 +1464,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--secondary stat-card--small">
-          <div class="stat-card__header">Points <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon"></div>
+          <div class="stat-card__header">Points <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon"></div>
           <div class="stat-card__value">12,450</div>
-          <div class="stat-card__sub stat-card__sub--grey"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +340</div>
+          <div class="stat-card__sub stat-card__sub--grey"><img src="assets/icons/arrow-trend-up.svg?v=4" alt="" class="stat-card__sub-icon"> +340</div>
         </div>
         <span class="state-label">Secondary Small</span>
       </div>
@@ -1478,7 +1478,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--accent">
-          <div class="stat-card__header">Protocol Revenue <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
+          <div class="stat-card__header">Protocol Revenue <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
           <div class="stat-card__value">$1,209</div>
         </div>
         <span class="state-label">Accent Default</span>
@@ -1491,7 +1491,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:16px">
       <div class="comp-card">
         <div class="stat-card stat-card--accent stat-card--small">
-          <div class="stat-card__header">Rank <img src="assets/icons/info.svg" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
+          <div class="stat-card__header">Rank <img src="assets/icons/info.svg?v=4" alt="" class="stat-card__header-icon" style="filter:brightness(0) invert(1)"></div>
           <div class="stat-card__value">#42</div>
         </div>
         <span class="state-label">Accent Small</span>
@@ -1503,15 +1503,15 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Sub Row Colors</p>
     <div class="comp-preview" style="gap:24px">
       <div class="comp-card">
-        <div class="stat-card__sub stat-card__sub--grey" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +340</div>
+        <div class="stat-card__sub stat-card__sub--grey" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg?v=4" alt="" class="stat-card__sub-icon"> +340</div>
         <span class="state-label">Grey (#858585)</span>
       </div>
       <div class="comp-card">
-        <div class="stat-card__sub stat-card__sub--green" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg" alt="" class="stat-card__sub-icon"> +2.4%</div>
+        <div class="stat-card__sub stat-card__sub--green" style="font-size:16px"><img src="assets/icons/arrow-trend-up.svg?v=4" alt="" class="stat-card__sub-icon"> +2.4%</div>
         <span class="state-label">Green (#009E50)</span>
       </div>
       <div class="comp-card">
-        <div class="stat-card__sub stat-card__sub--red" style="font-size:16px"><img src="assets/icons/arrow-trend-down.svg" alt="" class="stat-card__sub-icon"> -0.5%</div>
+        <div class="stat-card__sub stat-card__sub--red" style="font-size:16px"><img src="assets/icons/arrow-trend-down.svg?v=4" alt="" class="stat-card__sub-icon"> -0.5%</div>
         <span class="state-label">Red (#FF4601)</span>
       </div>
     </div>
@@ -1557,7 +1557,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="header-demo">
       <img src="assets/logo-black.svg" alt="Manifest" class="header-demo__logo">
       <div class="header-demo__right">
-        <div class="dropdown">Overview <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg" alt="" style="width:24px;height:24px"></span></div>
+        <div class="dropdown">Overview <span class="dropdown__arrow"><img src="assets/icons/chevron-down.svg?v=4" alt="" style="width:24px;height:24px"></span></div>
         <div class="header-demo__pill">Connect</div>
       </div>
     </div>
@@ -1568,14 +1568,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="justify-content:flex-start;gap:32px;align-items:flex-start">
       <div class="comp-card">
         <div class="sidebar-demo">
-          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg" alt=""></span>Stake</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span>Swap</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span>Mint</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg" alt=""></span>Points</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg" alt=""></span>Leaderboard</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span>Docs</div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg" alt=""></span>Settings</div>
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg?v=4" alt=""></span>Dashboard</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg?v=4" alt=""></span>Stake</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg?v=4" alt=""></span>Swap</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg?v=4" alt=""></span>Mint</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg?v=4" alt=""></span>Points</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg?v=4" alt=""></span>Leaderboard</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg?v=4" alt=""></span>Docs</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg?v=4" alt=""></span>Settings</div>
         </div>
         <span class="state-label">Default + Active</span>
       </div>
@@ -1587,14 +1587,14 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="justify-content:flex-start">
       <div class="comp-card">
         <div class="sidebar-demo sidebar-demo--collapsed">
-          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span></div>
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg" alt=""></span></div>
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/pokeball.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-down-up.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/iconoir-coin.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/trophy.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/leaderboard.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/arrow-up-right.svg?v=4" alt=""></span></div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/settings.svg?v=4" alt=""></span></div>
         </div>
         <span class="state-label">Collapsed</span>
       </div>
@@ -1606,19 +1606,19 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:24px;align-items:flex-start">
       <div class="comp-card">
         <div class="sidebar-demo" style="width:auto;border:none">
-          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+          <div class="sidebar-demo__item"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg?v=4" alt=""></span>Dashboard</div>
         </div>
         <span class="state-label">Default</span>
       </div>
       <div class="comp-card">
         <div class="sidebar-demo" style="width:auto;border:none">
-          <div class="sidebar-demo__item" style="background:var(--surface-raised)"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+          <div class="sidebar-demo__item" style="background:var(--surface-raised)"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg?v=4" alt=""></span>Dashboard</div>
         </div>
         <span class="state-label">Hover</span>
       </div>
       <div class="comp-card">
         <div class="sidebar-demo" style="width:auto;border:none">
-          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg" alt=""></span>Dashboard</div>
+          <div class="sidebar-demo__item sidebar-demo__item--active"><span class="sidebar-demo__icon"><img src="assets/icons/hamburger-md.svg?v=4" alt=""></span>Dashboard</div>
         </div>
         <span class="state-label">Active</span>
       </div>
@@ -1671,7 +1671,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <span class="state-label">Default (no text)</span>
     </div>
     <div class="comp-card">
-      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg" alt=""></span></div></div>
+      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg?v=4" alt=""></span></div></div>
       <span class="state-label">Active (no text)</span>
     </div>
     <div class="comp-card">
@@ -1679,7 +1679,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <span class="state-label">Default with text</span>
     </div>
     <div class="comp-card">
-      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg" alt=""></span></div><span>Label</span></div>
+      <div class="checkbox checkbox--active"><div class="checkbox__box"><span class="checkbox__check"><img src="assets/icons/check-big.svg?v=4" alt=""></span></div><span>Label</span></div>
       <span class="state-label">Active with text</span>
     </div>
   </div>
@@ -1806,40 +1806,40 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <div class="icon-grid">
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="manifest"><div class="icon-cell__glyph"><img src="assets/icons/manifest.svg" alt="manifest"></div><span class="icon-cell__name">Manifest</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="sun"><div class="icon-cell__glyph"><img src="assets/icons/sun.svg" alt="sun"></div><span class="icon-cell__name">Sun</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-up-right"><div class="icon-cell__glyph"><img src="assets/icons/arrow-up-right.svg" alt="arrow-up-right"></div><span class="icon-cell__name">arrow-up-right</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="check-big"><div class="icon-cell__glyph"><img src="assets/icons/check-big.svg" alt="check-big"></div><span class="icon-cell__name">Check_Big</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="clock"><div class="icon-cell__glyph"><img src="assets/icons/clock.svg" alt="clock"></div><span class="icon-cell__name">Clock</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-up-right"><div class="icon-cell__glyph"><img src="assets/icons/arrow-up-right.svg?v=4" alt="arrow-up-right"></div><span class="icon-cell__name">arrow-up-right</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="check-big"><div class="icon-cell__glyph"><img src="assets/icons/check-big.svg?v=4" alt="check-big"></div><span class="icon-cell__name">Check_Big</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="clock"><div class="icon-cell__glyph"><img src="assets/icons/clock.svg?v=4" alt="clock"></div><span class="icon-cell__name">Clock</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="external"><div class="icon-cell__glyph"><img src="assets/icons/external.svg" alt="external"></div><span class="icon-cell__name">external</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="info"><div class="icon-cell__glyph"><img src="assets/icons/info.svg" alt="info"></div><span class="icon-cell__name">Info</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="pokeball"><div class="icon-cell__glyph"><img src="assets/icons/pokeball.svg" alt="pokeball"></div><span class="icon-cell__name">pokeball</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="iconoir-coin"><div class="icon-cell__glyph"><img src="assets/icons/iconoir-coin.svg" alt="iconoir-coin"></div><span class="icon-cell__name">iconoir:coin</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="info"><div class="icon-cell__glyph"><img src="assets/icons/info.svg?v=4" alt="info"></div><span class="icon-cell__name">Info</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="pokeball"><div class="icon-cell__glyph"><img src="assets/icons/pokeball.svg?v=4" alt="pokeball"></div><span class="icon-cell__name">pokeball</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="iconoir-coin"><div class="icon-cell__glyph"><img src="assets/icons/iconoir-coin.svg?v=4" alt="iconoir-coin"></div><span class="icon-cell__name">iconoir:coin</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="document-download"><div class="icon-cell__glyph"><img src="assets/icons/document-download.svg" alt="document-download"></div><span class="icon-cell__name">document-download</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="more-horizontal"><div class="icon-cell__glyph"><img src="assets/icons/more-horizontal.svg" alt="more-horizontal"></div><span class="icon-cell__name">More_Horizontal</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-right-md"><div class="icon-cell__glyph"><img src="assets/icons/arrow-right-md.svg" alt="arrow-right-md"></div><span class="icon-cell__name">Arrow_Right_MD</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-left-md"><div class="icon-cell__glyph"><img src="assets/icons/arrow-left-md.svg" alt="arrow-left-md"></div><span class="icon-cell__name">Arrow_Left_MD</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-down"><div class="icon-cell__glyph"><img src="assets/icons/chevron-down.svg" alt="chevron-down"></div><span class="icon-cell__name">Chevron_Down</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-up"><div class="icon-cell__glyph"><img src="assets/icons/chevron-up.svg" alt="chevron-up"></div><span class="icon-cell__name">Chevron_Up</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-down"><div class="icon-cell__glyph"><img src="assets/icons/chevron-down.svg?v=4" alt="chevron-down"></div><span class="icon-cell__name">Chevron_Down</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-up"><div class="icon-cell__glyph"><img src="assets/icons/chevron-up.svg?v=4" alt="chevron-up"></div><span class="icon-cell__name">Chevron_Up</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-right"><div class="icon-cell__glyph"><img src="assets/icons/chevron-right.svg" alt="chevron-right"></div><span class="icon-cell__name">Chevron_Right</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="chevron-left"><div class="icon-cell__glyph"><img src="assets/icons/chevron-left.svg" alt="chevron-left"></div><span class="icon-cell__name">Chevron_Left</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="close"><div class="icon-cell__glyph"><img src="assets/icons/close.svg" alt="close"></div><span class="icon-cell__name">Close</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="close"><div class="icon-cell__glyph"><img src="assets/icons/close.svg?v=4" alt="close"></div><span class="icon-cell__name">Close</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="lock"><div class="icon-cell__glyph"><img src="assets/icons/lock.svg" alt="lock"></div><span class="icon-cell__name">lock</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="check-read"><div class="icon-cell__glyph"><img src="assets/icons/check-read.svg" alt="check-read"></div><span class="icon-cell__name">check-read</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="trophy"><div class="icon-cell__glyph"><img src="assets/icons/trophy.svg" alt="trophy"></div><span class="icon-cell__name">trophy</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="trophy"><div class="icon-cell__glyph"><img src="assets/icons/trophy.svg?v=4" alt="trophy"></div><span class="icon-cell__name">trophy</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="twitter"><div class="icon-cell__glyph"><img src="assets/icons/twitter.svg" alt="twitter"></div><span class="icon-cell__name">twitter</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="calendar"><div class="icon-cell__glyph"><img src="assets/icons/calendar.svg" alt="calendar"></div><span class="icon-cell__name">calendar</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="settings"><div class="icon-cell__glyph"><img src="assets/icons/settings.svg" alt="settings"></div><span class="icon-cell__name">Settings</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="settings"><div class="icon-cell__glyph"><img src="assets/icons/settings.svg?v=4" alt="settings"></div><span class="icon-cell__name">Settings</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="copy"><div class="icon-cell__glyph"><img src="assets/icons/copy.svg" alt="copy"></div><span class="icon-cell__name">Copy</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="tdesign-copy"><div class="icon-cell__glyph"><img src="assets/icons/tdesign-copy.svg" alt="tdesign-copy"></div><span class="icon-cell__name">tdesign:copy</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="link"><div class="icon-cell__glyph"><img src="assets/icons/link.svg" alt="link"></div><span class="icon-cell__name">link</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="telegram"><div class="icon-cell__glyph"><img src="assets/icons/telegram.svg" alt="telegram"></div><span class="icon-cell__name">telegram</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="qr-code"><div class="icon-cell__glyph"><img src="assets/icons/qr-code.svg" alt="qr-code"></div><span class="icon-cell__name">qr-code</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-down-up"><div class="icon-cell__glyph"><img src="assets/icons/arrow-down-up.svg" alt="arrow-down-up"></div><span class="icon-cell__name">Arrow_Down_Up</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="hamburger-md"><div class="icon-cell__glyph"><img src="assets/icons/hamburger-md.svg" alt="hamburger-md"></div><span class="icon-cell__name">Hamburger_MD</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-down-up"><div class="icon-cell__glyph"><img src="assets/icons/arrow-down-up.svg?v=4" alt="arrow-down-up"></div><span class="icon-cell__name">Arrow_Down_Up</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="hamburger-md"><div class="icon-cell__glyph"><img src="assets/icons/hamburger-md.svg?v=4" alt="hamburger-md"></div><span class="icon-cell__name">Hamburger_MD</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="refresh"><div class="icon-cell__glyph"><img src="assets/icons/refresh.svg" alt="refresh"></div><span class="icon-cell__name">refresh</span><span class="icon-cell__hint">Download</span></div>
     <div class="icon-cell" onclick="downloadIcon(this)" data-icon="moon"><div class="icon-cell__glyph"><img src="assets/icons/moon.svg" alt="moon"></div><span class="icon-cell__name">moon</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="leaderboard"><div class="icon-cell__glyph"><img src="assets/icons/leaderboard.svg" alt="leaderboard"></div><span class="icon-cell__name">leaderboard</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-trend-up"><div class="icon-cell__glyph"><img src="assets/icons/arrow-trend-up.svg" alt="arrow-trend-up"></div><span class="icon-cell__name">arrow-trend-up</span><span class="icon-cell__hint">Download</span></div>
-    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-trend-down"><div class="icon-cell__glyph"><img src="assets/icons/arrow-trend-down.svg" alt="arrow-trend-down"></div><span class="icon-cell__name">arrow-trend-down</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="leaderboard"><div class="icon-cell__glyph"><img src="assets/icons/leaderboard.svg?v=4" alt="leaderboard"></div><span class="icon-cell__name">leaderboard</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-trend-up"><div class="icon-cell__glyph"><img src="assets/icons/arrow-trend-up.svg?v=4" alt="arrow-trend-up"></div><span class="icon-cell__name">arrow-trend-up</span><span class="icon-cell__hint">Download</span></div>
+    <div class="icon-cell" onclick="downloadIcon(this)" data-icon="arrow-trend-down"><div class="icon-cell__glyph"><img src="assets/icons/arrow-trend-down.svg?v=4" alt="arrow-trend-down"></div><span class="icon-cell__name">arrow-trend-down</span><span class="icon-cell__hint">Download</span></div>
   </div>
 </section>
 
@@ -1896,7 +1896,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       </div>
       <div class="chart-card">
         <div class="chart-card__preview">
-          <svg width="120" height="80" viewBox="0 0 120 80"><path d="M10,80 A50,50 0 0,1 110,80" fill="none" stroke="var(--chart-dividers)" stroke-width="8"/><path d="M10,80 A50,50 0 0,1 60,30" fill="none" stroke="var(--chart-blue)" stroke-width="8"/><path d="M60,30 A50,50 0 0,1 95,55" fill="none" stroke="var(--chart-green)" stroke-width="8"/></svg>
+          <svg width="120" height="80" viewBox="0 0 120 80"><path d="M15,75 A45,45 0 0,1 105,75" fill="none" stroke="var(--chart-dividers)" stroke-width="20" stroke-linecap="butt"/><path d="M15,75 A45,45 0 0,1 60,30" fill="none" stroke="var(--chart-blue)" stroke-width="20" stroke-linecap="butt"/><path d="M60,30 A45,45 0 0,1 90,55" fill="none" stroke="var(--chart-green)" stroke-width="20" stroke-linecap="butt"/></svg>
         </div>
         <div class="chart-card__info"><span class="chart-card__name">Semi-circle</span><span class="chart-card__desc">Gauge / half-donut</span></div>
       </div>
@@ -1962,7 +1962,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 1 — Approve in wallet</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
         <span class="progress-label progress-label--inactive">Sign message</span>
         <span class="progress-label progress-label--inactive">Confirm trxn</span>
       </div>
@@ -1979,8 +1979,8 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 2 — Sign message</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
         <span class="progress-label progress-label--inactive">Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
@@ -1996,9 +1996,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 3 — Confirm transaction</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/clock.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:100%"></div>
@@ -2013,9 +2013,9 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <p class="color-group__label">Step 4 — All Complete</p>
     <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:500px">
       <div class="progress-labels">
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
-        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Approve in wallet</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Sign message</span>
+        <span class="progress-label progress-label--active"><img src="assets/icons/check-big.svg?v=4" alt="" style="width:24px;height:24px;vertical-align:-4px;margin-right:4px;filter:brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(97%)"> Confirm trxn</span>
       </div>
       <div class="progress-bar" style="margin-top:12px">
         <div class="progress-bar__fill" style="width:100%"></div>
@@ -2067,7 +2067,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Points unlock Token Allocation</div>
             <div class="banner-demo__desc" style="margin-top:4px">Our points determine your maximum purchase limit in the upcoming ICO. This is an allocation access, not a free airdrop.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Article <img src="assets/icons/arrow-up-right.svg?v=4" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
         </div>
         <div class="banner-demo__image">Image area</div>
       </div>
@@ -2083,7 +2083,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
             <div class="banner-demo__title">Protocol Evolution</div>
             <div class="banner-demo__desc" style="margin-top:4px">Bootstrapping from USDe-backed yield to liquid U.S. real estate.</div>
           </div>
-          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
+          <button class="btn btn--primary" style="align-self:flex-start">Read the Plan <img src="assets/icons/arrow-up-right.svg?v=4" alt="" style="width:16px;height:16px;vertical-align:-2px;filter:invert(1)"></button>
         </div>
         <div style="display:flex;align-items:center;gap:16px;padding:0 40px 0 0;flex-shrink:0">
           <div style="text-align:center">
@@ -2133,20 +2133,20 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
     <div class="comp-preview" style="gap:32px;align-items:flex-start">
       <div class="comp-card">
         <div class="menu-demo">
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt=""></span><span class="menu-demo__item-label">Dashboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/pokeball.svg" alt=""></span><span class="menu-demo__item-label">Stake</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-down-up.svg" alt=""></span><span class="menu-demo__item-label">Swap</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/iconoir-coin.svg" alt=""></span><span class="menu-demo__item-label">Mint</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/trophy.svg" alt=""></span><span class="menu-demo__item-label">Points</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/leaderboard.svg" alt=""></span><span class="menu-demo__item-label">Leaderboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/arrow-up-right.svg" alt=""></span><span class="menu-demo__item-label">Docs</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
-          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/settings.svg" alt=""></span><span class="menu-demo__item-label">Settings</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
+          <div class="menu-demo__item"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
         </div>
         <span class="state-label">Default (8 items)</span>
       </div>
       <div class="comp-card">
         <div class="menu-demo" style="width:384px">
-          <div class="menu-demo__item" style="background:var(--surface-raised)"><span class="menu-demo__item-icon"><img src="assets/icons/hamburger-md.svg" alt=""></span><span class="menu-demo__item-label">Dashboard</span><span class="menu-demo__item-icon-right"><img src="assets/icons/sun.svg" alt=""></span></div>
+          <div class="menu-demo__item" style="background:var(--surface-raised);gap:16px"><span class="menu-demo__item-icon"><img src="assets/icons/sun.svg?v=4" alt=""></span><span class="menu-demo__item-label">Label</span></div>
         </div>
         <span class="state-label">Hover State</span>
       </div>
@@ -2733,22 +2733,28 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <p class="section__desc">Frequently Asked Questions accordion component with expandable/collapsible items. Includes a floating trigger button and a panel view.</p>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Trigger Button</h3>
-  <div style="display:flex;gap:16px;margin-bottom:40px">
-    <button style="background:#0575F3;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ default">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:40px;max-width:200px">
+    <button style="background:#0575F3;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Default (Desktop)">
       <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
-    <button style="background:#045CBF;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="FAQ active">
+    <button style="background:#045CBF;border:none;border-radius:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Active (Desktop)">
+      <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:24px;height:24px">
+    </button>
+    <button style="background:#0575F3;border:none;border-radius:100px;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Default (Mobile)">
+      <img src="assets/tokens/faq-btn-default.svg" alt="FAQ" style="width:24px;height:24px">
+    </button>
+    <button style="background:#045CBF;border:none;border-radius:100px;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Active (Mobile)">
       <img src="assets/tokens/faq-btn-active.svg" alt="FAQ" style="width:24px;height:24px">
     </button>
   </div>
 
   <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">FAQ Item States</h3>
-  <div style="max-width:440px;margin-bottom:40px;border:1px solid var(--stroke);border-radius:var(--radius-lg);padding:16px">
+  <div style="max-width:416px;margin-bottom:40px;border:1px solid var(--stroke);display:flex;flex-direction:column;gap:24px;padding:24px">
     <div class="faq-item">
-      <div class="faq-item__question" >Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
+      <div class="faq-item__question">Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-down.svg?v=3" alt=""></span></div>
     </div>
     <div class="faq-item faq-item--open">
-      <div class="faq-item__question" >Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-up.svg?v=3" alt=""></span></div>
+      <div class="faq-item__question">Question 1 <span class="faq-item__arrow"><img src="assets/tokens/faq-chevron-up.svg?v=3" alt=""></span></div>
       <div class="faq-item__answer" style="display:block;font-size:16px;color:var(--page-text-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </div>
   </div>
@@ -2789,7 +2795,7 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
   <div class="qr-modal">
     <div class="qr-modal__header">
       <div class="qr-modal__title">Scan QR code</div>
-      <button class="qr-modal__close"><img src="assets/icons/close.svg" alt="" style="width:24px;height:24px"></button>
+      <button class="qr-modal__close"><img src="assets/icons/close.svg?v=4" alt="" style="width:24px;height:24px"></button>
     </div>
     <div class="qr-modal__desc">Scan this code with your camera to access your referral link.</div>
     <div class="qr-modal__frame">
@@ -3131,10 +3137,6 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
         <div class="evo-phase__icon evo-phase__icon--current">4</div>
         <div class="evo-phase__info"><span class="evo-phase__label">Active</span><span class="evo-phase__detail">Label</span></div>
       </div>
-      <div class="evo-phase evo-phase--active">
-        <div class="evo-phase__icon evo-phase__icon--complete"><img src="assets/tokens/evo-check-blue.svg?v=2" alt=""></div>
-        <div class="evo-phase__info"><span class="evo-phase__label">Active w/ icon</span><span class="evo-phase__detail">Label</span></div>
-      </div>
     </div>
   </div>
 
@@ -3192,27 +3194,26 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Semicircle donut from LEFT to RIGHT over the top, pathLength=100 for percentage math -->
-            <!-- HEI (blue) 38% - starts from left -->
-            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
-              pathLength="100" stroke-dasharray="38 100" stroke-dashoffset="0"/>
+            <!-- HEI (blue) 38% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="60"
+              pathLength="100" stroke-dasharray="38 100" stroke-dashoffset="0" stroke-linecap="butt"/>
             <!-- Available for HEI (light blue) 12% -->
-            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#A7C4EC" stroke-width="40"
-              pathLength="100" stroke-dasharray="12 100" stroke-dashoffset="-38"/>
-            <!-- USDe (red) 50% - reaches right -->
-            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
-              pathLength="100" stroke-dasharray="50 100" stroke-dashoffset="-50"/>
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#A7C4EC" stroke-width="60"
+              pathLength="100" stroke-dasharray="12 100" stroke-dashoffset="-38" stroke-linecap="butt"/>
+            <!-- USDe (red) 50% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="60"
+              pathLength="100" stroke-dasharray="50 100" stroke-dashoffset="-50" stroke-linecap="butt"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Room to grow:</div>
-            <div style="font-weight:600">+12% HEI</div>
+            <div style="font-weight:400">+12% HEI</div>
           </div>
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding:0 16px 16px">
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#0575F3"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:550">HEI</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#A7C4EC"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:550">Available for HEI</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#FF4601"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:550">USDe</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#0575F3"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:500">HEI</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#A7C4EC"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:500">Available for HEI</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#FF4601"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:500">USDe</span></div>
       </div>
     </div>
     <!-- Composition -->
@@ -3220,22 +3221,22 @@ body { font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px 16px">
         <div style="position:relative;width:340px;height:200px">
           <svg viewBox="0 0 340 200" width="340" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- HEI (blue) 47% - starts from left -->
-            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="40"
-              pathLength="100" stroke-dasharray="47 100" stroke-dashoffset="0"/>
-            <!-- USDe (red) 53% - reaches right -->
-            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="40"
-              pathLength="100" stroke-dasharray="53 100" stroke-dashoffset="-47"/>
+            <!-- HEI (blue) 47% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#0575F3" stroke-width="60"
+              pathLength="100" stroke-dasharray="47 100" stroke-dashoffset="0" stroke-linecap="butt"/>
+            <!-- USDe (red) 53% -->
+            <path d="M 40 175 A 130 130 0 0 1 300 175" fill="none" stroke="#FF4601" stroke-width="60"
+              pathLength="100" stroke-dasharray="53 100" stroke-dashoffset="-47" stroke-linecap="butt"/>
           </svg>
           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font-body);font-size:14px;line-height:20px;color:var(--page-text)">
             <div>Composition</div>
-            <div style="font-weight:600">47% HEI / 53% USDe</div>
+            <div style="font-weight:400">47% HEI / 53% USDe</div>
           </div>
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding:0 16px 16px">
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#0575F3"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:550">HEI</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#FF4601"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:550">USDe</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#0575F3"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:500">HEI</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#FF4601"></div><span style="font-family:var(--font-body);font-size:14px;font-weight:500">USDe</span></div>
       </div>
     </div>
   </div>
